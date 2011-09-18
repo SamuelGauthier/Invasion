@@ -41,3 +41,7 @@ JOURNAL DE BORD : Programmation
 
 - The Aslan m'a repassé un .obj corrigé. Le chargement se fait avec succès
 - Application d'une texture que The Aslan m'a donnée sur le terrain
+
+===========
+18.09.2011
+===========
