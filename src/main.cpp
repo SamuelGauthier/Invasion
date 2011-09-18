@@ -6,7 +6,8 @@
 
 // Variables globales
 GFreeFlyCamera* cam = 0;
-// GTerrain* trn = 0;
+GTerrain* trn = 0;
+GOBJModel* maison = 0;
 
 bool key_state[256] = {false};
 const int width = 800, height = 600;
@@ -24,11 +25,15 @@ void OnTest();
 
 void OnCreate(){
 	cam = new GFreeFlyCamera;
-	// trn = loadHeightMap("heightmap.bmp");
-	// setTexture(trn, "Texture_herbe.bmp", 4.f);
+	trn = loadHeightMap("heightmap.bmp");
+	setTexture(trn, "Texture_herbe.bmp", 4.f);
+
+	maison = loadOBJ("maison.obj");
+	setTexture(maison, "maison.bmp");
 }
 
 void OnRelease(){
+	releaseAll();
 	delete cam;
 }
 
@@ -39,7 +44,8 @@ void OnRender(){
 	glLoadIdentity();
 
 	cam->OnLook();
-	// render(trn);
+	render(maison);
+	render(trn);
 
 	glutSwapBuffers();
 }

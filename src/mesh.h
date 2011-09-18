@@ -22,25 +22,6 @@ void setTexture(GTerrain* t, const char* filename, const float shrink = 1.f);
 void render(const GTerrain* t);
 void releaseTerrain(void* t);
 
-class GOBJModel 
-{
-public:
-	GOBJModel();
-	GOBJModel(const char* filename);
-	~GOBJModel();
-
-	
-	void OnLoad(const char* filename);
-	void OnRender() const;
-
-	Vec3f *vertices3, *vertices4;
-	Vec3f *normals3, *normals4;
-	Vec2f *texcoords3, *texcoords4;
-
-	uint num3, num4;
-	GLuint texture;
-};
-
 struct GOBJModel
 {
 	Vec3f *vertices3, *vertices4;

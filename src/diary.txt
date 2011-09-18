@@ -14,7 +14,7 @@ JOURNAL DE BORD : Programmation
 06.09.2011
 ===========
 
-- The Aslan m'a passé une heightmap en format et une maison .obj que je vais essayer d'intégrer dans le projet
+- The Aslan m'a passé une heightmap en format .bmp et une maison .obj que je vais essayer d'intégrer dans le projet
 - J'ai réussi à créé un loader .BMP
 - Réussi à créer une caméra freefly
 - J'ai essayer de charger la map que The Aslan m'a passé, mais seulement une moitié et affichée
@@ -45,3 +45,6 @@ JOURNAL DE BORD : Programmation
 ===========
 18.09.2011
 ===========
+
+- Implémentation d'un ramasse-miettes ( garbage collector ) très basique
+

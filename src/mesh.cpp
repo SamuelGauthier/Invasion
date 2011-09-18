@@ -80,23 +80,8 @@ void releaseTerrain(void* t)
 	delete tmp;
 }
 
-GOBJModel::~GOBJModel(){
-	if(vertices3)
-		delete[] vertices3;
-	if(vertices4)
-		delete[] vertices4;
-	if(texcoords3)
-		delete[] texcoords3;
-	if(texcoords4)
-		delete[] texcoords4;
-	if(normals3)
-		delete[] normals3;
-	if(normals4)
-		delete[] normals4;
-}
-
 GOBJModel* loadOBJ(const char* filename){
-	OBJModel* m = new OBJModel;
+	GOBJModel* m = new GOBJModel;
 
 	// Initialiser
 	m->num3 = 0; m->num4 = 0;
@@ -105,6 +90,7 @@ GOBJModel* loadOBJ(const char* filename){
 	FILE* input = fopen(filename,"r");
 	assert(input);
 
+	// Tout les variables qui vont nous servir pour l'entre chargement
 	std::vector<Vec3f> vec,norm,vec3, norm3, vec4,norm4;
 	std::vector<Vec2f> tex, tex3, tex4;
 	uint num_vertices = 0, num_texcoords = 0, num_normals = 0;
@@ -159,16 +145,16 @@ GOBJModel* loadOBJ(const char* filename){
 			{
 				for(int i=0;i<3;i++)
 				{
-					m->vec3.push_back(vec[tmp[index]-1]);
+					vec3.push_back(vec[tmp[index]-1]);
 					index++;
 
 					if(num_texcoords){
-						m->tex3.push_back(tex[tmp[index]-1]);
+						tex3.push_back(tex[tmp[index]-1]);
 						index++;
 					}
 
 					if(num_normals){
-						m->norm3.push_back(norm[tmp[index]]);
+						norm3.push_back(norm[tmp[index]]);
 						index++;
 					}
 				}
@@ -192,7 +178,7 @@ GOBJModel* loadOBJ(const char* filename){
 						index++;
 					}
 				}
-				num4+=4;
+				m->num4+=4;
 
 			}
 		}
@@ -200,43 +186,47 @@ GOBJModel* loadOBJ(const char* filename){
 	}
 
 	// Copier le tout
-	vertices3 = new Vec3f[num3];
-	vertices4 = new Vec3f[num4];
+	m->vertices3 = new Vec3f[m->num3];
+	m->vertices4 = new Vec3f[m->num4];
 
-	for(uint i=0;i<num3;i++)
-		vertices3[i] = vec3[i];
-	for(uint i=0;i<num4;i++)
-		vertices4[i] = vec4[i];
+	for(uint i=0;i<m->num3;i++)
+		m->vertices3[i] = vec3[i];
+	for(uint i=0;i<m->num4;i++)
+		m->vertices4[i] = vec4[i];
 
 	if(num_texcoords)
 	{
-		texcoords3 = new Vec2f[num3];
-		texcoords4 = new Vec2f[num4];
+		m->texcoords3 = new Vec2f[m->num3];
+		m->texcoords4 = new Vec2f[m->num4];
 
-		for(uint i=0;i<num3;i++)
-			texcoords3[i] = tex3[i];
-		for(uint i=0;i<num4;i++)
-			texcoords4[i] = tex4[i];
+		for(uint i=0;i<m->num3;i++)
+			m->texcoords3[i] = tex3[i];
+		for(uint i=0;i<m->num4;i++)
+			m->texcoords4[i] = tex4[i];
 	}
 
 	if(num_normals)
 	{
-		normals3 = new Vec3f[num3];
-		normals4 = new Vec3f[num4];
+		m->normals3 = new Vec3f[m->num3];
+		m->normals4 = new Vec3f[m->num4];
 
-		for(uint i=0;i<num3;i++)
-			normals3[i] = norm3[i];
-		for(uint i=0;i<num4;i++)
-			normals4[i] = norm4[i];
+		for(uint i=0;i<m->num3;i++)
+			m->normals3[i] = norm3[i];
+		for(uint i=0;i<m->num4;i++)
+			m->normals4[i] = norm4[i];
 	}
 
 	fclose(input);
+	addRelease(releaseOBJ, m);
+
+	return m;
 }
 
-void GOBJModel::OnRender() const{
+void render(const GOBJModel* m)
+{
 	bool isTex = false;
 
-	if(texture && (texcoords4 || texcoords3))
+	if(m->texture && (m->texcoords4 || m->texcoords3))
 	{
 		isTex = true;
 	}
@@ -244,7 +234,7 @@ void GOBJModel::OnRender() const{
 	if(isTex)
 	{
 		glEnable(GL_TEXTURE_2D);	
-		glBindTexture(GL_TEXTURE_2D, texture);
+		glBindTexture(GL_TEXTURE_2D, m->texture);
 
  		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
  		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -253,24 +243,24 @@ void GOBJModel::OnRender() const{
 
 	glBegin(GL_TRIANGLES);
 	
-	for(uint i=0;i<num3;i++)
+	for(uint i=0;i<m->num3;i++)
 	{
 		if(isTex)
-			glTexCoord2f(texcoords3[i].x, texcoords3[i].y);
+			glTexCoord2f(m->texcoords3[i].x, m->texcoords3[i].y);
 	
-		glVertex3f(vertices3[i].x, vertices3[i].y, vertices3[i].z);
+		glVertex3f(m->vertices3[i].x, m->vertices3[i].y, m->vertices3[i].z);
 	}
 
 	glEnd();
 
 	glBegin(GL_QUADS);
 
-	for(uint i=0;i<num4;i++)
+	for(uint i=0;i<m->num4;i++)
 	{
 		if(isTex)
-			glTexCoord2f(texcoords4[i].x, texcoords4[i].y);
+			glTexCoord2f(m->texcoords4[i].x, m->texcoords4[i].y);
 
-		glVertex3f(vertices4[i].x, vertices4[i].y, vertices4[i].z);
+		glVertex3f(m->vertices4[i].x, m->vertices4[i].y, m->vertices4[i].z);
 	}
 
 	glEnd();
@@ -279,7 +269,29 @@ void GOBJModel::OnRender() const{
 	{
 		glDisable(GL_TEXTURE_2D);
 	}
-
-
 }
-*/
+
+void releaseOBJ(void* o)
+{
+	GOBJModel* m = (GOBJModel*)o;
+
+	if(m->vertices3)
+		delete[] m->vertices3;
+	if(m->vertices4)
+		delete[] m->vertices4;
+	if(m->texcoords3)
+		delete[] m->texcoords3;
+	if(m->texcoords4)
+		delete[] m->texcoords4;
+	if(m->normals3)
+		delete[] m->normals3;
+	if(m->normals4)
+		delete[] m->normals4;
+	
+	delete m;
+}
+
+void setTexture(GOBJModel* m, const char* filename)
+{
+	m->texture = loadTexture(filename);
+}
