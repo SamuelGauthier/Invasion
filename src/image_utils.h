@@ -4,24 +4,18 @@
 #include "utils.h"
 #include "file_struct.h"
 
-class GImage 
+struct GImage
 {
-public:
-	GImage();
-	GImage(const char* filename);
-	~GImage();
-
-	void OnLoad(const char* filename);
-	void OnRelease();
-
-	// Specific loader for each format
-	void OnLoadBMP(const char*);
-
 	unsigned char* pixel;
-	
+
 	uint width;
 	uint height;
 	ushort bpp;
 };
+
+GImage* loadImage(const char* filename);
+GImage* loadBMP(const char* filename);
+GLuint allowGLTex(const GImage* img);
+void releaseImage(GImage* img);
 
 #endif
