@@ -4,17 +4,15 @@
 
 GImage* loadImage(const char* filename)
 {
-	char* buffer = new char[64];
-	strcpy(buffer,filename);
-
-	char* extension = buffer+1;
-	while(*(extension-1) != '.')
-		extension++;
-
 	// BMP File Format
-	if(strncmp(extension,"bmp",3) == 0)
+	if(isExtension(filename,"bmp"))
 	{
 		return loadBMP(filename);
+	}
+
+	else if(isExtension(filename,"tga"))
+	{
+		return loadTGA(filename);
 	}
 
 	else 
@@ -22,9 +20,41 @@ GImage* loadImage(const char* filename)
 		assert(0);
 	}
 
-	delete[] buffer;
-
 	return NULL;
+}
+
+GImage* loadTGA(const char* filename)
+{
+	GImage* img = new GImage;
+	
+	uchar* beg = getContent(filename, 0);
+
+	uchar idlength = *(beg);
+	img->width = (uint)readShort(beg + TGA_HD_IMAGE_SPECS + 4);
+	img->height = (uint)readShort(beg + TGA_HD_IMAGE_SPECS + 6);
+	img->bpp = (ushort)*(beg + TGA_HD_IMAGE_SPECS + 8);
+
+	// La table des couleurs n'est pour l'instant par supportée par le loader
+	assert(*(beg + TGA_HD_COLORMAP_TYPE) == 0);
+
+	// Get the data offset
+	uchar* data = beg + TGA_IMG_ID_FIELD + idlength + 0;
+
+	// Store data
+	img->pixel = new uchar[img->width*img->height*(uint)(img->bpp/8)];
+	memcpy(img->pixel, data, img->width*img->height*(uint)(img->bpp/8));
+
+	// échanger les rouges et les bleus
+	uchar tmp;
+	for(uint i = 0;i < img->width*img->height*(uint)(img->bpp/8);i+=3)
+	{
+		tmp = img->pixel[i];
+		img->pixel[i] = img->pixel[i+2];
+		img->pixel[i+2] = tmp;
+	}
+	
+	delete[] beg;
+	return img;
 }
 
 GImage* loadBMP(const char* filename)
@@ -61,11 +91,6 @@ GImage* loadBMP(const char* filename)
 
 GLuint allowGLTex(const GImage* img)
 {
-	if(!img->pixel)
-	{
-		return 0;
-	}
-
 	// Création d'une texture OpenGL
 	GLuint texture_id;
 	glGenTextures(1, &texture_id);

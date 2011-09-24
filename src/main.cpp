@@ -1,5 +1,4 @@
 #include <GL/glut.h>
-#include "garbage_collector.h"
 #include "utils.h"
 #include "camera.h"
 #include "mesh.h"
@@ -25,16 +24,12 @@ void OnTest();
 
 void OnCreate(){
 	cam = new GFreeFlyCamera;
+
 	trn = loadHeightMap("heightmap.bmp");
-	setTexture(trn, "Texture_herbe.bmp", 4.f);
+	setTexture(trn, "grass.tga", 4.f);
 
 	maison = loadOBJ("maison.obj");
 	setTexture(maison, "maison.bmp");
-}
-
-void OnRelease(){
-	releaseAll();
-	delete cam;
 }
 
 void OnRender(){
@@ -133,3 +128,10 @@ int main(int argc, char** argv){
 	/* entrée dans la boucle principale de glut */
 	glutMainLoop();
 }
+
+void OnRelease(){
+	releaseAll();
+	delete cam;
+}
+
+

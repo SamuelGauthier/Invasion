@@ -23,7 +23,7 @@ GTerrain* loadHeightMap(const char* filename,const float fScaleY,const float fSc
 	}
 
 	releaseImage(hmap);
-	addRelease(releaseTerrain, (void*)t);
+	addRelease(releaseTerrain,(void*)t);
 
 	return t;
 }
@@ -66,6 +66,7 @@ void render(const GTerrain* t)
 void setTexture(GTerrain* t, const char* filename, const float stretch)
 {
 	GImage* tex = loadImage(filename);
+	printf("width : %u height : %u bpp : %u \n",tex->width,tex->height,tex->bpp);
 	t->texture = allowGLTex(tex);
 	releaseImage(tex);
 
@@ -75,7 +76,6 @@ void setTexture(GTerrain* t, const char* filename, const float stretch)
 void releaseTerrain(void* t)
 {
 	GTerrain* tmp = (GTerrain*)t;
-
 	delete[] tmp->height;
 	delete tmp;
 }
@@ -85,6 +85,8 @@ GOBJModel* loadOBJ(const char* filename){
 
 	// Initialiser
 	m->num3 = 0; m->num4 = 0;
+	m->texcoords3 = 0;m->texcoords4 = 0;
+	m->normals3 = 0;m->normals4 = 0;
 
 	// Charger le fichier obj
 	FILE* input = fopen(filename,"r");
@@ -217,7 +219,7 @@ GOBJModel* loadOBJ(const char* filename){
 	}
 
 	fclose(input);
-	addRelease(releaseOBJ, m);
+	addRelease(releaseOBJ,(void*)m);
 
 	return m;
 }
@@ -274,7 +276,6 @@ void render(const GOBJModel* m)
 void releaseOBJ(void* o)
 {
 	GOBJModel* m = (GOBJModel*)o;
-
 	if(m->vertices3)
 		delete[] m->vertices3;
 	if(m->vertices4)

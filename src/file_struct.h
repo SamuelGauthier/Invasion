@@ -10,4 +10,12 @@
 #define BMP_HI_BPP 0x1C
 #define BMP_HI_COMPRESSION 0x1E
 
+// TGA File Format
+#define TGA_HD_ID_LENGTH 0
+#define TGA_HD_COLORMAP_TYPE 1
+#define TGA_HD_IMAGE_TYPE 2
+#define TGA_HD_COLORMAP_SPECS 3
+#define TGA_HD_IMAGE_SPECS 8
+#define TGA_IMG_ID_FIELD 0x12
+
 #endif

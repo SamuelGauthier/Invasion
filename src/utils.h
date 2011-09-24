@@ -3,8 +3,10 @@
 #include <GL/glut.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <assert.h>
 #include "image_utils.h"
+#include "garbage_collector.h"
 
 typedef unsigned char uchar;
 typedef unsigned short int ushort;
@@ -14,6 +16,7 @@ typedef unsigned long int ulong;
 float Csqrt(float);
 float Cabs(float);
 uchar* getContent(const char* filename, uint* size);
+bool isExtension(const char* filename, const char* extension);
 
 void Bmp24Data(uchar* dst, const uchar* src,uint height, uint width);
 

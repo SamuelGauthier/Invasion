@@ -15,6 +15,7 @@ struct GImage
 
 GImage* loadImage(const char* filename);
 GImage* loadBMP(const char* filename);
+GImage* loadTGA(const char* filename);
 GLuint allowGLTex(const GImage* img);
 void releaseImage(GImage* img);
 

@@ -1,7 +1,6 @@
 #ifndef MESH_H
 #define MESH_H
 #include <GL/glu.h>
-#include "garbage_collector.h"
 #include "utils.h"
 #include "image_utils.h"
 #include "vector.h"
