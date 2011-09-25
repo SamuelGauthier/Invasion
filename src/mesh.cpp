@@ -19,7 +19,7 @@ GTerrain* loadHeightMap(const char* filename,const float fScaleY,const float fSc
 
 	for(int i = 0;i < t->length * t->width;i++)
 	{
-		t->height[i] =  ((float)(hmap->pixel[(hmap->bpp/8)*i]) - 127.f) / 255.f * 10.f * fScaleY;
+		t->height[i] =  ((float)(hmap->pixel[(int)(hmap->bpp)*i]) - 127.f) / 255.f * 10.f * fScaleY;
 	}
 
 	releaseImage(hmap);
@@ -66,7 +66,6 @@ void render(const GTerrain* t)
 void setTexture(GTerrain* t, const char* filename, const float stretch)
 {
 	GImage* tex = loadImage(filename);
-	printf("width : %u height : %u bpp : %u \n",tex->width,tex->height,tex->bpp);
 	t->texture = allowGLTex(tex);
 	releaseImage(tex);
 

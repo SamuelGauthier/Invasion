@@ -1,5 +1,11 @@
 #ifndef UTILS_H
 #define UTILS_H
+
+typedef unsigned char uchar;
+typedef unsigned short int ushort;
+typedef unsigned int uint;
+typedef unsigned long int ulong;
+
 #include <GL/glut.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,11 +13,6 @@
 #include <assert.h>
 #include "image_utils.h"
 #include "garbage_collector.h"
-
-typedef unsigned char uchar;
-typedef unsigned short int ushort;
-typedef unsigned int uint;
-typedef unsigned long int ulong;
 
 float Csqrt(float);
 float Cabs(float);
@@ -27,4 +28,5 @@ uint countchar(const char* str,char c);
 void replacechar(char* str, char from, char by);
 
 GLuint loadTexture(const char* filename);
+
 #endif

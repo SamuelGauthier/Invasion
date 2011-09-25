@@ -97,7 +97,7 @@ GLuint loadTexture(const char* filename)
 	GImage* img = loadImage(filename);
 	GLuint texture_id = allowGLTex(img);
 
-	delete img;
+	releaseImage(img);
 	return texture_id;
 }
 
@@ -125,3 +125,4 @@ bool isExtension(const char* filename, const char* extension)
 	delete[] buffer;
 	return false;
 }
+

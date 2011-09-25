@@ -18,4 +18,12 @@
 #define TGA_HD_IMAGE_SPECS 8
 #define TGA_IMG_ID_FIELD 0x12
 
+#define TGA_NO_DATA 0
+#define TGA_UNCOMP_COLORMAP 1
+#define TGA_UNCOMP_RGB 2
+#define TGA_UNCOMP_BNW 3
+#define TGA_RLE_COLORMAP 9
+#define TGA_RLE_RGB 10
+#define TGA_RLE_BNW 11
+
 #endif

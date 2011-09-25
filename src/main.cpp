@@ -2,11 +2,13 @@
 #include "utils.h"
 #include "camera.h"
 #include "mesh.h"
+#include "text.h"
 
 // Variables globales
 GFreeFlyCamera* cam = 0;
 GTerrain* trn = 0;
 GOBJModel* maison = 0;
+GFont* f = 0;
 
 bool key_state[256] = {false};
 const int width = 800, height = 600;
@@ -25,6 +27,7 @@ void OnTest();
 void OnCreate(){
 	cam = new GFreeFlyCamera;
 
+	f = loadFont("Test.fnt");
 	trn = loadHeightMap("heightmap.bmp");
 	setTexture(trn, "grass.tga", 4.f);
 
@@ -39,8 +42,9 @@ void OnRender(){
 	glLoadIdentity();
 
 	cam->OnLook();
-	render(maison);
 	render(trn);
+	render(f, "Salut");
+
 
 	glutSwapBuffers();
 }

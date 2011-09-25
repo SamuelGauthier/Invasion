@@ -48,3 +48,8 @@ JOURNAL DE BORD : Programmation
 
 - Implémentation d'un ramasse-miettes ( garbage collector ) très basique
 
+===========
+24.09.2011
+===========
+
+- Création d'un loader de fichier targa (.tga)

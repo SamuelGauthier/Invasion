@@ -10,7 +10,8 @@ struct GImage
 
 	uint width;
 	uint height;
-	ushort bpp;
+	uchar bpp;
+	bool grayscale;
 };
 
 GImage* loadImage(const char* filename);
