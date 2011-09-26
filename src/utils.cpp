@@ -91,3 +91,38 @@ void Bmp24Data(uchar* dst, const uchar* src,uint height, uint width)
 	} 
 }
 
+// Petite fonction qui simplifie le chargement de textures OpenGL
+GLuint loadTexture(const char* filename)
+{
+	GImage* img = loadImage(filename);
+	GLuint texture_id = allowGLTex(img);
+
+	releaseImage(img);
+	return texture_id;
+}
+
+bool isExtension(const char* filename, const char* extension)
+{
+	char* buffer = new char[64];
+	strcpy(buffer,filename);
+
+	char* search = buffer;
+	while(*(search+3))
+		search++;
+
+	if(*(search-1) != '.')
+	{
+		delete[] buffer;
+		return false;
+	}
+
+	if(!strncasecmp(search,extension,3))
+	{
+		delete[] buffer;
+		return true;
+	}
+
+	delete[] buffer;
+	return false;
+}
+
