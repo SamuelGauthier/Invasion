@@ -2,11 +2,13 @@
 #include "utils.h"
 #include "camera.h"
 #include "mesh.h"
+#include "text.h"
 
 // Variables globales
 GFreeFlyCamera* cam = 0;
 GTerrain* trn = 0;
-GOBJModel* cube = 0;
+GOBJModel* maison = 0;
+GFont* f = 0;
 
 bool key_state[256] = {false};
 const int width = 800, height = 600;
@@ -24,18 +26,13 @@ void OnTest();
 
 void OnCreate(){
 	cam = new GFreeFlyCamera;
-	trn = new GTerrain("heightmap.bmp");
-	trn->texture = loadTexture("Texture_herbe.bmp");
-	trn->tex_size = 0.25f;
-	cube = new GOBJModel("maison.obj");
-	cube->texture = loadTexture("maison.bmp");
 
-}
+	f = loadFont("Test.fnt");
+	trn = loadHeightMap("heightmap.bmp");
+	setTexture(trn, "grass.tga", 4.f);
 
-void OnRelease(){
-	delete cube;
-	delete trn;
-	delete cam;
+	maison = loadOBJ("maison.obj");
+	setTexture(maison, "maison.bmp");
 }
 
 void OnRender(){
@@ -45,15 +42,9 @@ void OnRender(){
 	glLoadIdentity();
 
 	cam->OnLook();
-	glPushMatrix();
-	glTranslatef(0.f,-0.9f,0.f);
-	cube->OnRender();
-	glTranslatef(-2.f,0.f,-5.f);
-	cube->OnRender();
-	glTranslatef(10.f,0.f,4.f);
-	cube->OnRender();
-	glPopMatrix();
-	trn->OnRender();
+	render(trn);
+	render(f, "Salut");
+
 
 	glutSwapBuffers();
 }
@@ -141,3 +132,10 @@ int main(int argc, char** argv){
 	/* entrée dans la boucle principale de glut */
 	glutMainLoop();
 }
+
+void OnRelease(){
+	releaseAll();
+	delete cam;
+}
+
+
