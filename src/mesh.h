@@ -6,18 +6,8 @@
 #include "vector.h"
 
 
-class GTerrain
+struct GTerrain
 {
-public:
-	GTerrain(const char* filename, float fScaleY = 1.f, float fScaleXZ = 1.f);
-
-	void OnLoadTexture(const char* filename);
-	void OnLoad(const char* filename, float fScaleY = 1.f, float fScaleXZ = 1.f);
-	void OnRender() const; 
-	void OnSubdivide();
-
-	~GTerrain();
-
 	float* height;
 	int width, length;
 	float cellX, cellZ;
@@ -26,17 +16,13 @@ public:
 	float tex_size;
 };
 
-class GOBJModel 
+GTerrain* loadHeightMap(const char* filename, const float ScaleY = 1.f, const float ScaleXZ = 1.f);
+void setTexture(GTerrain* t, const char* filename, const float shrink = 1.f);
+void render(const GTerrain* t);
+void releaseTerrain(void* t);
+
+struct GOBJModel
 {
-public:
-	GOBJModel();
-	GOBJModel(const char* filename);
-	~GOBJModel();
-
-	
-	void OnLoad(const char* filename);
-	void OnRender() const;
-
 	Vec3f *vertices3, *vertices4;
 	Vec3f *normals3, *normals4;
 	Vec2f *texcoords3, *texcoords4;
@@ -45,6 +31,9 @@ public:
 	GLuint texture;
 };
 
-GLuint loadTexture(const char* filename);
+GOBJModel* loadOBJ(const char* filename);
+void setTexture(GOBJModel* m, const char* filename);
+void render(const GOBJModel* m);
+void releaseOBJ(void* m);
 
 #endif
