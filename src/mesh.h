@@ -1,22 +1,26 @@
 #ifndef MESH_H
 #define MESH_H
+#define F_PI 3.14159f
 #include <GL/glu.h>
 #include "utils.h"
 #include "image_utils.h"
 #include "vector.h"
+#include "math.h"
 
 
 struct GTerrain
 {
 	float* height;
 	int width, length;
-	float cellX, cellZ;
+	float cell;
 
 	GLuint texture;
 	float tex_size;
 };
 
 GTerrain* loadHeightMap(const char* filename, const float ScaleY = 1.f, const float ScaleXZ = 1.f);
+GTerrain* generateTerrain(const uint width, const uint max, const uint min);
+void createMountain(float* heights,const  uint width, const int x, const int y, const float height, const float radius);
 void setTexture(GTerrain* t, const char* filename, const float shrink = 1.f);
 void render(const GTerrain* t);
 void releaseTerrain(void* t);
