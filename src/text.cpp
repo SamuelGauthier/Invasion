@@ -15,6 +15,10 @@ GFont* loadFont(const char* descfile)
 
 	char line[128];
 	
+	// initialize
+	for(int i=0;i<128;i++)
+		f->desc[i].width = 0.f;
+
 	uint id, px, py, width, height, tex_width, tex_height;
 	while(fgets(line, 128, input))
 	{
@@ -62,6 +66,10 @@ void render(GFont* f, const char* s)
 {
 	float posx = 0.f, posy = 0.f;
 	uchar index = 0;
+		
+	// Enable Alpha Blending
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_ONE, GL_ONE);
 
 	// Enable texture
 	glEnable(GL_TEXTURE_2D);
@@ -72,29 +80,39 @@ void render(GFont* f, const char* s)
 
 	glBegin(GL_QUADS);
 
+	GLetter* l;
 	while(s[index])
 	{
-		GLetter* l = &f->desc[s[index]];
+		l = &f->desc[s[index]];
 		
-		glTexCoord2f(l->x, l->y);
-		glVertex3f(posx, posy, 0.f);
+		if(l->width)
+		{
+			glTexCoord2f(l->x, l->y + l->height);
+			glVertex3f(posx, posy, 0.f);
 
-		glTexCoord2f(l->x + l->width, l->y);
-		glVertex3f(posx + l->width * 10.f, posy, 0.f);
+			glTexCoord2f(l->x + l->width, l->y + l->height);
+			glVertex3f(posx + l->width * 10.f, posy, 0.f);
 
-		glTexCoord2f(l->x + l->width, l->y + l->height);
-		glVertex3f(posx + l->width * 10.f, posy + l->height * 10.f, 0.f);
+			glTexCoord2f(l->x + l->width, l->y);
+			glVertex3f(posx + l->width * 10.f, posy + l->height * 10.f, 0.f);
 
-		glTexCoord2f(l->x, l->y + l->height);
-		glVertex3f(posx, posy + l->height * 10.f, 0.f);
+			glTexCoord2f(l->x, l->y);
+			glVertex3f(posx, posy + l->height * 10.f, 0.f);
 
-		posx += l->width * 10.f;
+			posx += l->width * 10.f + 0.05f ;
+		}
+
+		else
+		{
+			posx += f->desc[43].width * 10.f + 0.05f;
+		}
 
 		index++;
 	}
 
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
+	glDisable(GL_BLEND);
 }
 
 void releaseFont(void* f)

@@ -28,8 +28,8 @@ void OnCreate(){
 	cam = new GFreeFlyCamera;
 
 	f = loadFont("Test.fnt");
-	trn = loadHeightMap("heightmap.bmp");
-	setTexture(trn, "grass.tga", 4.f);
+	trn = generateTerrain(100, 100, 10);
+	setTexture(trn, "grass.tga", 8.f);
 
 	maison = loadOBJ("maison.obj");
 	setTexture(maison, "maison.bmp");
@@ -43,7 +43,6 @@ void OnRender(){
 
 	cam->OnLook();
 	render(trn);
-	render(f, "Salut");
 
 
 	glutSwapBuffers();

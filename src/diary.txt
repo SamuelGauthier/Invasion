@@ -53,3 +53,18 @@ JOURNAL DE BORD : Programmation
 ===========
 
 - Création d'un loader de fichier targa (.tga)
+
+===========
+25.09.2011
+===========
+
+- Création d'un utilitaire d'écriture de texte à peu près fonctionnel
+
+===========
+26.09.2011
+===========
+
+- Le texte est parfaitement affiché avec les effets de transparence. Prochaine étape : la génération d'un terrain aléatoire
+- J'ai réussi à créer une première montagne par interpolation cosinus.
+
+

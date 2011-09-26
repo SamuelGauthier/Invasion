@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <vector>
 #include <string.h>
+#include <time.h>
 #include "mesh.h"
 
 GTerrain* loadHeightMap(const char* filename,const float fScaleY,const float fScaleXZ)
@@ -11,8 +12,7 @@ GTerrain* loadHeightMap(const char* filename,const float fScaleY,const float fSc
 	t->width = hmap->width;
 	t->length = hmap->height;
 
-	t->cellX = 1.f * fScaleXZ;
-	t->cellZ = 1.f * fScaleXZ;
+	t->cell = 1.f * fScaleXZ;
 
 	t->height = new float[t->width * t->length];
 	t->texture = 0;
@@ -28,6 +28,71 @@ GTerrain* loadHeightMap(const char* filename,const float fScaleY,const float fSc
 	return t;
 }
 
+GTerrain* generateTerrain(const uint width, const uint max, const uint min)
+{
+	GTerrain* t = new GTerrain;
+	
+	// Initialiser le seed
+	srand(time((unsigned int)0));
+
+	t->cell = 1.f;
+
+	t->width = width;
+	t->length = width;
+
+	t->height = new float[width * width];
+	t->texture = 0;
+
+	float* map = t->height;
+
+	for(uint i=0;i<width*width;i++)
+		map[i] = 0.f;
+
+	createMountain(map, width, 50, 50, 10.f, 15.f);
+
+	addRelease(releaseTerrain,(void*)t);
+
+	return t;
+}
+
+void createMountain(float* heights,const uint width,const int x,const int y,const float height, const float radius)
+{
+	int starti = x-(int)radius, startj = y-(int)radius;
+	if(starti < 0)
+		starti=0;
+	if(startj < 0)
+		startj=0;
+
+	float percent;
+	int dx,dy;
+	int distance;
+
+	for(int i=starti;i < x+(int)radius;i++)
+	{
+		if(i >= (int)width)
+			break;
+
+		for(int j=startj;j < y+(int)radius;j++)
+		{
+			if(j >= (int)width)
+				break;
+
+			dx = i - x;
+			dy = j - y;
+
+			distance = dx * dx + dy  * dy;
+
+
+			percent = sqrtf((float)distance) * ((F_PI)/radius);
+			if(percent>=M_PI)
+				percent = M_PI;
+
+			
+			heights[i*width + j] = (cosf(percent)+1) * (height/2.f);
+		}
+	}
+}
+
 void render(const GTerrain* t)
 {
 	if(t->texture)
@@ -39,8 +104,8 @@ void render(const GTerrain* t)
  		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	}
 
-	float startX = -(float)t->width/2.f * t->cellX;
-	float startZ = -(float)t->length/2.f * t->cellZ;
+	float startX = -(float)t->width/2.f * t->cell;
+	float startZ = -(float)t->length/2.f * t->cell;
 	for(int i = 0;i < t->width-1;i++)
 	{
 		glBegin(GL_TRIANGLE_STRIP);
@@ -49,10 +114,10 @@ void render(const GTerrain* t)
 			if(t->texture)
 				glTexCoord2f((float)i*t->tex_size,(float)j*t->tex_size);
 
-			glVertex3f((float)i*t->cellX + startX, t->height[i * t->length + j], (float)j*t->cellZ + startZ);
+			glVertex3f((float)i*t->cell + startX, t->height[i * t->length + j], (float)j*t->cell + startZ);
 			if(t->texture)
 				glTexCoord2f((float)(i+1)*t->tex_size,(float)j*t->tex_size);
-			glVertex3f((float)(i+1)*t->cellX + startX, t->height[(i+1) * t->length + j], (float)j*t->cellZ + startZ);
+			glVertex3f((float)(i+1)*t->cell + startX, t->height[(i+1) * t->length + j], (float)j*t->cell + startZ);
 		}
 		glEnd();
 	}
