@@ -60,4 +60,23 @@ Quelques Idées:
 18.09.2011
 ===========
 
--Travail sur la deuxième texture.
+-Travail sur la deuxième texture. Réalisation que l'unwrap dans Blender n'est pas tout à fait encore maitrisé.
+
+==============
+19-23.09.2011
+==============
+
+-Discussion pour notre TM cncernat l'idée de faire un éditeur pour les cartes avec les bâtiments et ensuite que le jeux démarre avec le fichier crée dans l'éditeur. Les unités pourront être modifiées de la sorte qu'elle pouront consrtuire certains bâtiments mais pas tous.
+-Inspiration des maisons du Moyen-Age de Strasbourg pour les modélisations.
+
+===========
+25.09.2011
+===========
+
+-Analyse des arbres dans Age of Empires 3 pour comprendre comment en modéliser dans notre jeu. Ils sont mappés de la telle manière: Le tronc un cylindre un peu de travers et les feuilles des plaques mis horizontalement par rapport au tronc.
+
+===========
+26.09.2011
+===========
+
+-Modification de la texture de l'herbe pour qu'elle puisse être mise bout-à-bout avec Gimp: 1. Filtres->Mappage->Raccorder 2.Filtres->Mappage->Rendre racordable.
