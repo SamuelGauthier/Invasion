@@ -35,7 +35,7 @@ GTerrain* generateTerrain(const uint width, const uint max, const uint min)
 	// Initialiser le seed
 	srand(time((unsigned int)0));
 
-	t->cell = 1.f;
+	t->cell = 5.f;
 
 	t->width = width;
 	t->length = width;
@@ -54,8 +54,8 @@ GTerrain* generateTerrain(const uint width, const uint max, const uint min)
 		uint x = rand()%width;
 		uint y = rand()%width;
 
-		uint radius = rand() % 20 + 6;
-		uint hauteur = rand() % 10 + 1;
+		uint radius = rand() % 30 + 6;
+		uint hauteur = rand() % 50 + 1;
 
 		createMountain(map, width, x, y, (float)hauteur, (float)radius);
 	}
@@ -125,9 +125,27 @@ void render(const GTerrain* t)
 			if(t->texture)
 				glTexCoord2f((float)i*t->tex_size,(float)j*t->tex_size);
 
+			// Plaine
+			if(t->height[i*t->length+j] < 10.f)
+				glColor3f(0.f,0.7f,0.f);
+
+			else if(t->height[i*t->length+j] < 45.f)
+				glColor3f(0.4f,0.4f,0.4f);
+			else
+				glColor3f(1.f,1.f,1.f);
+
 			glVertex3f((float)i*t->cell + startX, t->height[i * t->length + j], (float)j*t->cell + startZ);
 			if(t->texture)
 				glTexCoord2f((float)(i+1)*t->tex_size,(float)j*t->tex_size);
+
+			if(t->height[(i+1)*t->length+j] < 10.f)
+				glColor3f(0.f,0.7f,0.f);
+			else if(t->height[(i+1)*t->length+j] < 45.f)
+				glColor3f(0.4f,0.4f,0.4f);
+			else
+				glColor3f(1.f,1.f,1.f);
+
+
 			glVertex3f((float)(i+1)*t->cell + startX, t->height[(i+1) * t->length + j], (float)j*t->cell + startZ);
 		}
 		glEnd();

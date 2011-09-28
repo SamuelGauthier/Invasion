@@ -28,7 +28,6 @@ void OnCreate(){
 	cam = new GFreeFlyCamera;
 
 	trn = generateTerrain(100, 10, 1);
-	setTexture(trn, "../Textures/Texture_herbe.bmp", 8.f);
 }
 
 void OnRender(){
