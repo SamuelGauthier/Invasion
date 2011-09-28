@@ -1,0 +1,74 @@
+----------------------------------
+JOURNAL DE BORD : Programmation
+----------------------------------
+
+
+===========
+04.09.2011
+===========
+
+- Première fenêtre OpenGL créée avec succès
+- Affichage de quelques formes géométriques
+
+===========
+06.09.2011
+===========
+
+- The Aslan m'a passé une heightmap en format .bmp et une maison .obj que je vais essayer d'intégrer dans le projet
+- J'ai réussi à créé un loader .BMP
+- Réussi à créer une caméra freefly
+- J'ai essayer de charger la map que The Aslan m'a passé, mais seulement une moitié et affichée
+
+===========
+07.09.2011
+===========
+
+- J'ai trouvé le problème. Mon loader .BMP ne prenait pas en compte les padding bytes
+- Affichage du terrain avec succès
+
+===========
+10.09.2011
+===========
+
+- J'ai fini le loader .obj
+- Création d'un compte sur GitHub
+- Essayer de charger l'.obj que The Aslan m'a donné, mais sans succès. La texture est mal placée.
+- Charge avec succès un modèle que je crée moi-même. Le problème vient du côté de The Aslan.
+
+===========
+17.09.2011
+===========
+
+- The Aslan m'a repassé un .obj corrigé. Le chargement se fait avec succès
+- Application d'une texture que The Aslan m'a donnée sur le terrain
+
+===========
+18.09.2011
+===========
+
+- Implémentation d'un ramasse-miettes ( garbage collector ) très basique
+
+===========
+24.09.2011
+===========
+
+- Création d'un loader de fichier targa (.tga)
+
+===========
+25.09.2011
+===========
+
+- Création d'un utilitaire d'écriture de texte à peu près fonctionnel
+
+===========
+26.09.2011
+===========
+
+- Le texte est parfaitement affiché avec les effets de transparence. Prochaine étape : la génération d'un terrain aléatoire
+- J'ai réussi à créer une première montagne par interpolation cosinus.
+
+===========
+28.09.2011
+===========
+
+- J'ai généré le terrain, mais les montagnes sont trop parfaites à mon goût, il faut que j'essaye d'interpoler les points d'une autre façon 
