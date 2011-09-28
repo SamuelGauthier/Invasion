@@ -48,7 +48,17 @@ GTerrain* generateTerrain(const uint width, const uint max, const uint min)
 	for(uint i=0;i<width*width;i++)
 		map[i] = 0.f;
 
-	createMountain(map, width, 50, 50, 10.f, 15.f);
+	
+	for(uint i=0;i<20;i++)
+	{
+		uint x = rand()%width;
+		uint y = rand()%width;
+
+		uint radius = rand() % 20 + 6;
+		uint hauteur = rand() % 10 + 1;
+
+		createMountain(map, width, x, y, (float)hauteur, (float)radius);
+	}
 
 	addRelease(releaseTerrain,(void*)t);
 
@@ -63,7 +73,7 @@ void createMountain(float* heights,const uint width,const int x,const int y,cons
 	if(startj < 0)
 		startj=0;
 
-	float percent;
+	float percent, amount;
 	int dx,dy;
 	int distance;
 
@@ -88,7 +98,8 @@ void createMountain(float* heights,const uint width,const int x,const int y,cons
 				percent = M_PI;
 
 			
-			heights[i*width + j] = (cosf(percent)+1) * (height/2.f);
+			amount = (cosf(percent)+1) * (height/2.f);
+				heights[i*width + j] += amount;
 		}
 	}
 }

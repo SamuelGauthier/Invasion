@@ -27,12 +27,8 @@ void OnTest();
 void OnCreate(){
 	cam = new GFreeFlyCamera;
 
-	f = loadFont("Test.fnt");
-	trn = generateTerrain(100, 100, 10);
-	setTexture(trn, "grass.tga", 8.f);
-
-	maison = loadOBJ("maison.obj");
-	setTexture(maison, "maison.bmp");
+	trn = generateTerrain(100, 10, 1);
+	setTexture(trn, "../Textures/Texture_herbe.bmp", 8.f);
 }
 
 void OnRender(){
