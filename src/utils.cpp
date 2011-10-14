@@ -126,3 +126,38 @@ bool isExtension(const char* filename, const char* extension)
 	return false;
 }
 
+char* getRepertory(const char* filename)
+{
+	int lastSlash = 0;
+	int cursor = 0;
+	while(filename[cursor])
+	{
+		if(filename[cursor] == '/')
+			lastSlash = cursor;
+		cursor++;
+	}
+
+	char* name = new char[lastSlash + 2];
+	strncpy(name , filename, lastSlash + 1);
+	name[lastSlash + 1] = '\0';
+
+	return name;
+}
+
+void setTimer(long sec)
+{
+	itimerval real;
+	real.it_value.tv_sec = real.it_interval.tv_sec = sec;
+	real.it_value.tv_usec = real.it_interval.tv_usec = 0;
+
+	setitimer(ITIMER_VIRTUAL, &real, NULL);
+}
+
+long getTicks()
+{
+	itimerval real;
+	getitimer(ITIMER_VIRTUAL, &real);
+	return (real.it_value.tv_sec * 1000 + real.it_value.tv_usec);
+}
+
+

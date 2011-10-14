@@ -4,175 +4,6 @@
 #include <time.h>
 #include "mesh.h"
 
-GTerrain* loadHeightMap(const char* filename,const float fScaleY,const float fScaleXZ)
-{
-	GTerrain* t = new GTerrain;
-	GImage* hmap = loadImage(filename);
-
-	t->width = hmap->width;
-	t->length = hmap->height;
-
-	t->cell = 1.f * fScaleXZ;
-
-	t->height = new float[t->width * t->length];
-	t->texture = 0;
-
-	for(int i = 0;i < t->length * t->width;i++)
-	{
-		t->height[i] =  ((float)(hmap->pixel[(int)(hmap->bpp)*i]) - 127.f) / 255.f * 10.f * fScaleY;
-	}
-
-	releaseImage(hmap);
-	addRelease(releaseTerrain,(void*)t);
-
-	return t;
-}
-
-GTerrain* generateTerrain(const uint width, const uint max, const uint min)
-{
-	GTerrain* t = new GTerrain;
-	
-	// Initialiser le seed
-	srand(time((unsigned int)0));
-
-	t->cell = 5.f;
-
-	t->width = width;
-	t->length = width;
-
-	t->height = new float[width * width];
-	t->texture = 0;
-
-	float* map = t->height;
-
-	for(uint i=0;i<width*width;i++)
-		map[i] = 0.f;
-
-	
-	for(uint i=0;i<20;i++)
-	{
-		uint x = rand()%width;
-		uint y = rand()%width;
-
-		uint radius = rand() % 30 + 6;
-		uint hauteur = rand() % 50 + 1;
-
-		createMountain(map, width, x, y, (float)hauteur, (float)radius);
-	}
-
-	addRelease(releaseTerrain,(void*)t);
-
-	return t;
-}
-
-void createMountain(float* heights,const uint width,const int x,const int y,const float height, const float radius)
-{
-	int starti = x-(int)radius, startj = y-(int)radius;
-	if(starti < 0)
-		starti=0;
-	if(startj < 0)
-		startj=0;
-
-	float percent, amount;
-	int dx,dy;
-	int distance;
-
-	for(int i=starti;i < x+(int)radius;i++)
-	{
-		if(i >= (int)width)
-			break;
-
-		for(int j=startj;j < y+(int)radius;j++)
-		{
-			if(j >= (int)width)
-				break;
-
-			dx = i - x;
-			dy = j - y;
-
-			distance = dx * dx + dy  * dy;
-
-
-			percent = sqrtf((float)distance) * ((F_PI)/radius);
-			if(percent>=M_PI)
-				percent = M_PI;
-
-			
-			amount = (cosf(percent)+1) * (height/2.f);
-				heights[i*width + j] += amount;
-		}
-	}
-}
-
-void render(const GTerrain* t)
-{
-	if(t->texture)
-	{
-		glEnable(GL_TEXTURE_2D);	
-		glBindTexture(GL_TEXTURE_2D,t->texture);
-
- 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
- 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	}
-
-	float startX = -(float)t->width/2.f * t->cell;
-	float startZ = -(float)t->length/2.f * t->cell;
-	for(int i = 0;i < t->width-1;i++)
-	{
-		glBegin(GL_TRIANGLE_STRIP);
-		for(int j = 0;j < t->length;j++)
-		{
-			if(t->texture)
-				glTexCoord2f((float)i*t->tex_size,(float)j*t->tex_size);
-
-			// Plaine
-			if(t->height[i*t->length+j] < 10.f)
-				glColor3f(0.f,0.7f,0.f);
-
-			else if(t->height[i*t->length+j] < 45.f)
-				glColor3f(0.4f,0.4f,0.4f);
-			else
-				glColor3f(1.f,1.f,1.f);
-
-			glVertex3f((float)i*t->cell + startX, t->height[i * t->length + j], (float)j*t->cell + startZ);
-			if(t->texture)
-				glTexCoord2f((float)(i+1)*t->tex_size,(float)j*t->tex_size);
-
-			if(t->height[(i+1)*t->length+j] < 10.f)
-				glColor3f(0.f,0.7f,0.f);
-			else if(t->height[(i+1)*t->length+j] < 45.f)
-				glColor3f(0.4f,0.4f,0.4f);
-			else
-				glColor3f(1.f,1.f,1.f);
-
-
-			glVertex3f((float)(i+1)*t->cell + startX, t->height[(i+1) * t->length + j], (float)j*t->cell + startZ);
-		}
-		glEnd();
-	}
-
-	if(t->texture)
-	{
-		glDisable(GL_TEXTURE_2D);
-	}
-}
-
-void setTexture(GTerrain* t, const char* filename, const float stretch)
-{
-	GImage* tex = loadImage(filename);
-	t->texture = allowGLTex(tex);
-	releaseImage(tex);
-
-	t->tex_size = 1.f/stretch;
-}
-
-void releaseTerrain(void* t)
-{
-	GTerrain* tmp = (GTerrain*)t;
-	delete[] tmp->height;
-	delete tmp;
-}
-
 GOBJModel* loadOBJ(const char* filename){
 	GOBJModel* m = new GOBJModel;
 
@@ -188,7 +19,7 @@ GOBJModel* loadOBJ(const char* filename){
 	// Tout les variables qui vont nous servir pour l'entre chargement
 	std::vector<Vec3f> vec,norm,vec3, norm3, vec4,norm4;
 	std::vector<Vec2f> tex, tex3, tex4;
-	uint num_vertices = 0, num_texcoords = 0, num_normals = 0;
+	int num_vertices = 0, num_texcoords = 0, num_normals = 0;
 	float x,y,z;
 	float u,v;
 
@@ -213,6 +44,14 @@ GOBJModel* loadOBJ(const char* filename){
 				tex.push_back(Vec2f(u,v));
 				num_texcoords++;
 			}
+
+			// normals
+			if(line[1] == 'n')
+			{
+				sscanf(line,"vn %f %f %f",&x,&y,&z);
+				norm.push_back(Vec3f(x,y,z));
+				num_normals++;
+			}
 		}
 
 		else if(line[0] == 'f')
@@ -223,19 +62,26 @@ GOBJModel* loadOBJ(const char* filename){
 			replacechar(data,'/',' ');
 
 			// créer une liste de nombre
-			uint value = 0, count = 0;
-			uint tmp[12];
+			int value = 0, count = 0;
+			int tmp[12];
 
-			while(data)
+			while(*data)
 			{
-				sscanf(data," %u",&value);
+				if(*data == ' ' || *data == '\n')
+				{
+					data++;
+					continue;
+				}
+
+				sscanf(data,"%i",&value);
 				tmp[count] = value;
 
-				data = strchr(data+1,' ');
+				while(*data >= '0' && *data <= '9'){data++;}
+
 				count++;
 			}
 
-			uint index = 0;
+			int index = 0;
 			if(count%4)
 			{
 				for(int i=0;i<3;i++)
@@ -249,7 +95,7 @@ GOBJModel* loadOBJ(const char* filename){
 					}
 
 					if(num_normals){
-						norm3.push_back(norm[tmp[index]]);
+						norm3.push_back(norm[tmp[index]-1]);
 						index++;
 					}
 				}
@@ -269,7 +115,7 @@ GOBJModel* loadOBJ(const char* filename){
 					}
 
 					if(num_normals){
-						norm4.push_back(norm[tmp[index]]);
+						norm4.push_back(norm[tmp[index]-1]);
 						index++;
 					}
 				}
@@ -284,9 +130,9 @@ GOBJModel* loadOBJ(const char* filename){
 	m->vertices3 = new Vec3f[m->num3];
 	m->vertices4 = new Vec3f[m->num4];
 
-	for(uint i=0;i<m->num3;i++)
+	for(int i=0;i<m->num3;i++)
 		m->vertices3[i] = vec3[i];
-	for(uint i=0;i<m->num4;i++)
+	for(int i=0;i<m->num4;i++)
 		m->vertices4[i] = vec4[i];
 
 	if(num_texcoords)
@@ -294,22 +140,26 @@ GOBJModel* loadOBJ(const char* filename){
 		m->texcoords3 = new Vec2f[m->num3];
 		m->texcoords4 = new Vec2f[m->num4];
 
-		for(uint i=0;i<m->num3;i++)
+		for(int i=0;i<m->num3;i++)
 			m->texcoords3[i] = tex3[i];
-		for(uint i=0;i<m->num4;i++)
+		for(int i=0;i<m->num4;i++)
 			m->texcoords4[i] = tex4[i];
 	}
+	else
+		assert(0);
 
 	if(num_normals)
 	{
 		m->normals3 = new Vec3f[m->num3];
 		m->normals4 = new Vec3f[m->num4];
 
-		for(uint i=0;i<m->num3;i++)
+		for(int i=0;i<m->num3;i++)
 			m->normals3[i] = norm3[i];
-		for(uint i=0;i<m->num4;i++)
+		for(int i=0;i<m->num4;i++)
 			m->normals4[i] = norm4[i];
 	}
+	else
+		assert(0);
 
 	fclose(input);
 	addRelease(releaseOBJ,(void*)m);
@@ -319,51 +169,35 @@ GOBJModel* loadOBJ(const char* filename){
 
 void render(const GOBJModel* m)
 {
-	bool isTex = false;
+	glEnable(GL_TEXTURE_2D);	
 
-	if(m->texture && (m->texcoords4 || m->texcoords3))
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, m->texture);
+
+	if(m->num3)
 	{
-		isTex = true;
-	}
-
-	if(isTex)
-	{
-		glEnable(GL_TEXTURE_2D);	
-		glBindTexture(GL_TEXTURE_2D, m->texture);
-
- 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
- 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glBegin(GL_TRIANGLES);
 		
-	}
-
-	glBegin(GL_TRIANGLES);
-	
-	for(uint i=0;i<m->num3;i++)
-	{
-		if(isTex)
+		for(int i=0;i<m->num3;i++)
+		{
+			glNormal3f(m->normals3[i].x, m->normals3[i].y, m->normals3[i].z); 
 			glTexCoord2f(m->texcoords3[i].x, m->texcoords3[i].y);
-	
-		glVertex3f(m->vertices3[i].x, m->vertices3[i].y, m->vertices3[i].z);
-	}
+			glVertex3f(m->vertices3[i].x, m->vertices3[i].y, m->vertices3[i].z);
+		}
 
-	glEnd();
+		glEnd();
+	}
 
 	glBegin(GL_QUADS);
 
-	for(uint i=0;i<m->num4;i++)
+	for(int i=0;i<m->num4;i++)
 	{
-		if(isTex)
-			glTexCoord2f(m->texcoords4[i].x, m->texcoords4[i].y);
-
+		glNormal3f(m->normals4[i].x, m->normals4[i].y, m->normals4[i].z); 
+		glTexCoord2f(m->texcoords4[i].x, m->texcoords4[i].y);
 		glVertex3f(m->vertices4[i].x, m->vertices4[i].y, m->vertices4[i].z);
 	}
 
 	glEnd();
-
-	if(isTex)
-	{
-		glDisable(GL_TEXTURE_2D);
-	}
 }
 
 void releaseOBJ(void* o)
@@ -382,10 +216,21 @@ void releaseOBJ(void* o)
 	if(m->normals4)
 		delete[] m->normals4;
 	
+	glDeleteTextures(1, &m->texture);
 	delete m;
 }
 
 void setTexture(GOBJModel* m, const char* filename)
 {
 	m->texture = loadTexture(filename);
+
+	glBindTexture(GL_TEXTURE_2D, m->texture);
+ 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+ 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+int fillBuffer(GStaticBuffer* sb, GOBJModel* m)
+{
+	return 0;
 }

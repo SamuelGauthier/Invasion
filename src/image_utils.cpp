@@ -109,7 +109,6 @@ GImage* loadTGA(const char* filename)
 		}
 
 	}
-	
 	delete[] beg;
 	return img;
 }

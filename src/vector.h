@@ -25,7 +25,7 @@ public:
 	void normalize();
 	float getLengthInv() const;
 
-	virtual ~Vec3f();
+	~Vec3f();
 
 	float x,y,z;
 };
@@ -34,7 +34,7 @@ class Vec2f
 {
 public:
 	Vec2f(float x=0.f, float y=0.f);
-	virtual ~Vec2f();
+	~Vec2f();
 
 	float x,y;
 };

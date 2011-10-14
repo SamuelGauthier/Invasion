@@ -7,54 +7,36 @@
 #include <GL/glut.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "garbage_collector.h"
 
-class GCamera 
+enum CAMERA_TYPE
 {
-public:
-	GCamera(const Vec3f& _pos = Vec3f(0.f,0.f,0.f));
+	unknown = 0,
+	fixed_camera,
+	freefly_camera,
+	strategy_game_camera
+};
 
-	virtual void setPos(const Vec3f& _pos);
-
-	void setSensitivity(float s);
-	void setSpeed(float s);
-
-	virtual void OnLook() const;
-
-
-	virtual ~GCamera();
-
-
+struct GCamera
+{
 	float sensitivity, speed;
 
 	Vec3f pos;
 	Vec3f forward;
 	Vec3f left;
 	Vec3f target;
-	float phi,theta;
+	float phi, theta;
 
-	virtual void setVec3fs();
+	int mode;
 };
 
-class GFreeFlyCamera : public GCamera
-{
-public:
-	GFreeFlyCamera(const Vec3f& _pos = Vec3f(0.f,0.f,0.f));
+GCamera* initCamera(const int mode,const Vec3f& pos=Vec3f(0.f,0.f,0.f),const float phi=0.f,const float theta=0.f);
+void setMode(GCamera* cam,const int mode);
+void setCamera(GCamera* cam, int x, int y);
+void setCamera(GCamera* cam, const bool* key);
+void setCamera(GCamera* cam,const Vec3f& pos,const float phi,const float theta);
+void lookCamera(const GCamera* cam);
+void setVectors(GCamera* cam);
+void releaseCamera(void* cam);
 
-	void OnMouse(int x, int y);
-	void OnKeyboard(bool* key);
-
-	virtual ~GFreeFlyCamera();
-};
-
-/*
-class GStrategyCamera 
-{
-public:
-	GStrategyCamera(const Vec3f& _pos = Vec3f(0.f,0.f,0.f));
-
-	void Mouse(int x, int y);
-	void OnKeyboard(bool* key);
-	virtual ~GStrategyCamera();
-};
-*/
 #endif

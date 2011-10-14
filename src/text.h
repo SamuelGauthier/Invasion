@@ -3,13 +3,17 @@
 
 #include <GL/glut.h>
 #include "utils.h"
+#include <stdarg.h>
 
 //--------------------------------
 // GText
 //--------------------------------
 struct GLetter{
-	float x,y;
-	float width,height;
+	int x,y;
+	int width,height;
+	int xoffset, yoffset;
+
+	int xadvance;
 };
 
 struct GFont{
@@ -17,10 +21,12 @@ struct GFont{
 
 	GLuint texture;
 	unsigned char* pixel;
+
+	int w,h;
 };
 
 GFont* loadFont(const char* descfile);
-void render(GFont* f, const char* s);
+void render(int posx, int posy, GFont* f, const char* s,...);
 void releaseFont(void* f);
 
 #endif
