@@ -157,9 +157,6 @@ void render(const GTerrain* t)
 {
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, t->VBO);
 	
-
-	glDisable(GL_LIGHTING);
-
 	glActiveTextureARB( GL_TEXTURE0_ARB);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D,t->texture[0]);
@@ -173,23 +170,6 @@ void render(const GTerrain* t)
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	glTexCoordPointer(2, GL_FLOAT, 32, BUFFER_OFFSET(24));
 
-	glActiveTextureARB( GL_TEXTURE1_ARB);
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, t->texture[1]);
-
-	glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE_ARB);
-	glTexEnvi( GL_TEXTURE_ENV, GL_SOURCE0_RGB_ARB, GL_PREVIOUS_ARB);
-	glTexEnvi( GL_TEXTURE_ENV, GL_OPERAND0_RGB_ARB, GL_SRC_COLOR);
-	glTexEnvi( GL_TEXTURE_ENV, GL_SOURCE1_RGB_ARB, GL_TEXTURE);
-	glTexEnvi( GL_TEXTURE_ENV, GL_OPERAND1_RGB_ARB, GL_SRC_COLOR);
-	glTexEnvi( GL_TEXTURE_ENV, GL_SOURCE2_RGB_ARB, GL_PRIMARY_COLOR_ARB);
-	glTexEnvi( GL_TEXTURE_ENV, GL_OPERAND2_RGB_ARB, GL_SRC_COLOR);
-	glTexEnvi( GL_TEXTURE_ENV, GL_COMBINE_RGB_ARB, GL_INTERPOLATE);
-
-	glClientActiveTextureARB(GL_TEXTURE1_ARB);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-	glTexCoordPointer(2, GL_FLOAT, 32, BUFFER_OFFSET(24));
-
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glVertexPointer(3, GL_FLOAT, 32, BUFFER_OFFSET(0));
 
@@ -200,12 +180,6 @@ void render(const GTerrain* t)
 
 	glDrawElements(GL_QUADS, t->numIndices, GL_UNSIGNED_SHORT, BUFFER_OFFSET(0));
 
-	glActiveTextureARB(GL_TEXTURE1_ARB);
-	glDisable(GL_TEXTURE_2D);
-	
-	glClientActiveTextureARB(GL_TEXTURE1_ARB);	
-	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-
 	glActiveTextureARB(GL_TEXTURE0_ARB);
 	glDisable(GL_TEXTURE_2D);
 
@@ -214,8 +188,6 @@ void render(const GTerrain* t)
 
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_VERTEX_ARRAY);
-
-	glEnable(GL_LIGHTING);
 }
 
 void setTexture(GTerrain* t, const char* filename, int stage)
@@ -267,6 +239,18 @@ Vec3f* terrainNormals(float* map, int size)
 	}
 
 	return normals;
+}
+
+float* planeTerrain(int* size, int width)
+{
+	*size = width;
+
+	float* height = new float[width * width];
+
+	for(int i=0;i<width*width;i++)
+		height[i] = 0.f;
+
+	return height;
 }
 
 void releaseTerrain(void* t)

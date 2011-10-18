@@ -9,11 +9,8 @@
 
 // Variables globales
 GCamera* cam = 0;
-GOBJModel* tree = 0;
 GTerrain* trn = 0;
 GFont* f = 0;
-GControlManager* cm = 0;
-float lightPosX = 1.f, lightPosY = 1.f, lightPosZ = 1.f, lightPosW = 0.f;
 int fps = 0.f;
 int acc = 0, img_count = 0, first_wait_count = 10, wait_count = 0;
 int before = 0;
@@ -29,6 +26,7 @@ const int width = 800, height = 600;
 void OnCreate();
 void OnRelease();
 void OnRender();
+void OnRender2D();
 void OnKeyDown(uchar, int, int);
 void OnKeyUp(uchar, int, int);
 void OnMouse(int, int, int, int);
@@ -41,23 +39,16 @@ void OnTest();
 void OnCreate(){
 	cam = initCamera(freefly_camera);
 
-	cm = initControlManager(true);
-	addSlideBar(cm, 0.f, 100, 50);
-
 	// init Font
 	f = loadFont("../Font/Test.fnt");
-
-	tree = loadOBJ("../3DModels/tree.obj");
-	setTexture(tree, "../Textures/tree_tex.tga");
 
 	// init terrain
 	trn = new GTerrain;
 	addRelease(releaseTerrain,(void*)trn);
 	setTexture(trn, "../Textures/grass.tga", 0);
-	setTexture(trn, "../Textures/rock.tga", 1);
 	trn->tex_size = 1.f/8.f;
 
-	float* height = loadHeightMap("../Maps/heightmap.tga", trn->width);
+	float* height = planeTerrain(&trn->width, 50);
 	trn->cell = 3.f;
 	trn->mntsize = 6.f;
 	fillBuffers(trn, height);
@@ -66,8 +57,6 @@ void OnCreate(){
 
 	// init light
 	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_LIGHT0);
-	glEnable(GL_NORMALIZE);
 	glEnable(GL_DEPTH_TEST);
 }
 
@@ -76,28 +65,28 @@ void OnRender(){
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	
-
 	int before = glutGet(GLUT_ELAPSED_TIME);
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 		
 	lookCamera(cam);
 	
-	// add an ambient light
-	GLfloat ambientColor[] = {0.1f,0.1f,0.1f,1.0f};
-	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientColor);
-
-	// add a spot light
-	GLfloat lightColor0[] = {1.0f,1.0f,1.0f,1.f};
-	GLfloat lightPos0[] = {lightPosX, lightPosY, lightPosZ,lightPosW};
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor0);
-	glLightfv(GL_LIGHT0, GL_POSITION, lightPos0);
-
+	glPushMatrix();
+	glColor3f(0.2f,0.7f,0.1f);
+	glTranslatef(0.f,5.f,0.f);
+	glutSolidCube(2.f);
+	glPopMatrix();
 
 	render(trn);
 
-	glDisable(GL_LIGHTING);
-	glDisable(GL_TEXTURE_2D);
+	OnRender2D();
+	glutSwapBuffers();
 
+	acc += glutGet(GLUT_ELAPSED_TIME) - before;
+	img_count++;
+}
+
+void OnRender2D()
+{
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 
@@ -108,18 +97,8 @@ void OnRender(){
 
 	if(show_fps)
 		render(10,10,f,"FPS %d",fps);
-	render(cm,f);
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
-
-	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_LIGHTING);
-
-	glutSwapBuffers();
-
-	acc += glutGet(GLUT_ELAPSED_TIME) - before;
-
-	img_count++;
 }
 
 void OnUpdate(int){
@@ -164,7 +143,7 @@ void OnUpdate(int){
 	setCamera(cam, &key_state[0]);
 
 	glutPostRedisplay();
-	glutTimerFunc(25, OnUpdate, 0);
+	glutTimerFunc(15, OnUpdate, 0);
 
 	// Calcul fps
 	first_wait_count--;
@@ -199,18 +178,14 @@ void OnMouse(int button, int state, int x, int y)
 		leftbutton = true;
 	if(button == GLUT_LEFT_BUTTON && state == GLUT_UP)
 		leftbutton = false;
-
-	setMouse(cm, x, y, leftbutton);
 }
 
 void OnMousePassive(int x, int y){
 	setCamera(cam, x, y);
-	setMouse(cm, x, y, false);
 }
 
 void OnMouseActive(int x, int y){
 	setCamera(cam, x, y);
-	setMouse(cm, x, y, leftbutton);
 }
 
 void OnResize(int w, int h){

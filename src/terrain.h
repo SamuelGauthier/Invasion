@@ -34,5 +34,6 @@ void setTexture(GTerrain* t, const char* filename, int stage);
 void render(const GTerrain* t);
 void releaseTerrain(void* t);
 void fillBuffers(GTerrain* trn, float* height);
+float* planeTerrain(int* size, int width);
 
 #endif
