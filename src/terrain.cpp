@@ -1,20 +1,36 @@
 #include "terrain.h"
 
-float* loadHeightMap(const char* filename, int& size)
+GTerrain* initTerrain()
+{
+	GTerrain* t = new GTerrain;
+
+	t->width = 0;
+	t->cell = 1.f;
+	t->mntsize = 10.f;
+
+	t->height = 0;
+	t->tex_num = 0;
+	t->tex_size = 1.f;
+
+	addRelease(releaseTerrain, (void*)t);
+	return t;
+}
+
+void loadHeightMap(GTerrain* t, const char* filename)
 {
 	GImage* hmap = loadImage(filename);
-	size = hmap->width;
+	t->width = hmap->width;
 
-	float* height = new float[size * size];
+	t->height = new float[t->width * t->width];
 
-	for(int i = 0;i < size*size;i++)
+	for(int i = 0;i < t->width*t->width;i++)
 	{
-		height[i] =  ((float)(hmap->pixel[(int)(hmap->bpp)*i]) - 127.f) / 255.f * 10.f;
+		t->height[i] =  ((float)(hmap->pixel[(int)(hmap->bpp)*i]) - 127.f) / 255.f * 10.f;
 	}
 
 	releaseImage(hmap);
-	return height;
 }
+
 /*
 GTerrain* generateTerrain(const int width, const int max, const int min)
 {
@@ -96,7 +112,7 @@ void createMountain(float* heights,const int width,const int x,const int y,const
 	}
 }
 */
-void fillBuffers(GTerrain* t, float* height)
+void fillBuffers(GTerrain* t)
 {
 	float* VertexData = new float[t->width * t->width * 8];
 
@@ -115,11 +131,11 @@ void fillBuffers(GTerrain* t, float* height)
 		for(int j=0;j<t->width;j++)
 		{
 			VertexData[(i*t->width+j)*8 + 0] = start + (float)j*t->cell;
-			VertexData[(i*t->width+j)*8 + 1] = height[i * t->width + j] * t->mntsize;
+			VertexData[(i*t->width+j)*8 + 1] = t->height[i * t->width + j] * t->mntsize;
 			VertexData[(i*t->width+j)*8 + 2] = start + (float)i*t->cell;
-			VertexData[(i*t->width+j)*8 + 3] = 1.f - ((t->mntsize * height[i * t->width + j] + (5.f * t->mntsize))/(10.f * t->mntsize));
-			VertexData[(i*t->width+j)*8 + 4] = 1.f - ((t->mntsize * height[i * t->width + j] + (5.f * t->mntsize))/(10.f*t->mntsize));
-			VertexData[(i*t->width+j)*8 + 5] = 1.f - ((t->mntsize * height[i * t->width + j] + (5.f*t->mntsize))/(10.f*t->mntsize));
+			VertexData[(i*t->width+j)*8 + 3] = 1.f - ((t->mntsize * t->height[i * t->width + j] + (5.f * t->mntsize))/(10.f * t->mntsize));
+			VertexData[(i*t->width+j)*8 + 4] = 1.f - ((t->mntsize * t->height[i * t->width + j] + (5.f * t->mntsize))/(10.f*t->mntsize));
+			VertexData[(i*t->width+j)*8 + 5] = 1.f - ((t->mntsize * t->height[i * t->width + j] + (5.f*t->mntsize))/(10.f*t->mntsize));
 
 			VertexData[(i*t->width+j)*8 + 6] = (float)i * t->tex_size;
 			VertexData[(i*t->width+j)*8 + 7] = (float)j * t->tex_size;
@@ -161,7 +177,7 @@ void render(const GTerrain* t)
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D,t->texture[0]);
 
-	glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE_ARB);
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE_ARB);
   	glTexEnvi(GL_TEXTURE_ENV, GL_SOURCE0_RGB_ARB, GL_TEXTURE);
 	glTexEnvi(GL_TEXTURE_ENV, GL_OPERAND0_RGB_ARB, GL_SRC_COLOR);
 	glTexEnvi(GL_TEXTURE_ENV, GL_COMBINE_RGB_ARB, GL_REPLACE);
@@ -197,13 +213,14 @@ void setTexture(GTerrain* t, const char* filename, int stage)
 	releaseImage(tex);
 
 	glBindTexture(GL_TEXTURE_2D, t->texture[stage]);
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
 
 	glBindTexture(GL_TEXTURE_2D, 0);
-
+	
+	t->tex_num++;
 } 
 
 Vec3f* terrainNormals(float* map, int size)
@@ -241,16 +258,14 @@ Vec3f* terrainNormals(float* map, int size)
 	return normals;
 }
 
-float* planeTerrain(int* size, int width)
+void planeTerrain(GTerrain* t, int width)
 {
-	*size = width;
+	t->width = width;
 
-	float* height = new float[width * width];
+	t->height = new float[width * width];
 
 	for(int i=0;i<width*width;i++)
-		height[i] = 0.f;
-
-	return height;
+		t->height[i] = 0.f;
 }
 
 void releaseTerrain(void* t)
@@ -258,7 +273,7 @@ void releaseTerrain(void* t)
 	GTerrain* tmp = (GTerrain*)t;
 	glDeleteBuffersARB(1, &tmp->VBO);
 	glDeleteBuffersARB(1, &tmp->IBO);
-	for(int i=0;i<3;i++)
+	for(int i=0;i<tmp->tex_num;i++)
 		glDeleteTextures(1, &tmp->texture[i]);
 	delete tmp;
 }

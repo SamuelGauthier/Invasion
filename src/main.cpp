@@ -1,3 +1,7 @@
+#define FPS 60
+#define WIDTH_WINDOW 800
+#define HEIGHT_WINDOW 600
+
 #include <GL/glut.h>
 #include <unistd.h>
 #include "utils.h"
@@ -6,21 +10,17 @@
 #include "text.h"
 #include "terrain.h"
 #include "ui.h"
+#include "console.h"
 
 // Variables globales
 GCamera* cam = 0;
+GOBJModel* traffic_cone = 0;
+GConsole* cmd = 0;
 GTerrain* trn = 0;
+
 GFont* f = 0;
-int fps = 0.f;
-int acc = 0, img_count = 0, first_wait_count = 10, wait_count = 0;
-int before = 0;
-bool show_fps = true;
-int wait_show_fps = 0;
-int delay = 0;
-bool leftbutton = false;
 
 bool key_state[256] = {false};
-const int width = 800, height = 600;
 
 // Prototypes de fonctions
 void OnCreate();
@@ -42,21 +42,22 @@ void OnCreate(){
 	// init Font
 	f = loadFont("../Font/Test.fnt");
 
-	// init terrain
-	trn = new GTerrain;
-	addRelease(releaseTerrain,(void*)trn);
-	setTexture(trn, "../Textures/grass.tga", 0);
-	trn->tex_size = 1.f/8.f;
+	// init console
+	cmd = initConsole();
 
-	float* height = planeTerrain(&trn->width, 50);
-	trn->cell = 3.f;
-	trn->mntsize = 6.f;
-	fillBuffers(trn, height);
+	// load models
+	traffic_cone = loadOBJ("../3DModels/traffic_cone_001.obj");
+	setTexture(traffic_cone, "../Textures/traffic_cone_tex.tga");
 
-	delete[] height;
+	// textures
+	trn = initTerrain();
 
-	// init light
-	glEnable(GL_TEXTURE_2D);
+	planeTerrain(trn, 2);
+	setTexture(trn, "../Textures/grass.tga",0);
+	trn->cell = 10.f;
+	fillBuffers(trn); 
+	
+	// init state
 	glEnable(GL_DEPTH_TEST);
 }
 
@@ -65,28 +66,24 @@ void OnRender(){
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	
-	int before = glutGet(GLUT_ELAPSED_TIME);
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 		
 	lookCamera(cam);
-	
+
 	glPushMatrix();
-	glColor3f(0.2f,0.7f,0.1f);
-	glTranslatef(0.f,5.f,0.f);
-	glutSolidCube(2.f);
+	glScalef(3.f,3.f,3.f);
+	glRotatef(-90.f,1.f,0.f,0.f);
+	render(traffic_cone);
 	glPopMatrix();
 
+	glEnable(GL_TEXTURE_2D);
 	render(trn);
+	glDisable(GL_TEXTURE_2D);
 
-	OnRender2D();
-	glutSwapBuffers();
+	//---------------------------------
+	// Render 2D
+	//---------------------------------
 
-	acc += glutGet(GLUT_ELAPSED_TIME) - before;
-	img_count++;
-}
-
-void OnRender2D()
-{
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 
@@ -95,10 +92,20 @@ void OnRender2D()
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	if(show_fps)
-		render(10,10,f,"FPS %d",fps);
+	OnRender2D();
+	
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
+	//---------------------------------
+	// End Render 2D
+	//---------------------------------
+
+	glutSwapBuffers();
+}
+
+void OnRender2D()
+{
+	render(cmd, f);
 }
 
 void OnUpdate(int){
@@ -125,47 +132,21 @@ void OnUpdate(int){
 	}
 
 
-	if(key_state['q'] && !delay)
-	{
-		show_fps = !show_fps;
-		delay = 10;
-	}
-	
-	if(key_state['e'] && !delay)
-	{
-		if(cam->mode == freefly_camera)
-			setMode(cam,fixed_camera);
-		else
-			setMode(cam,freefly_camera);
-		delay = 10;
-	}
-
 	setCamera(cam, &key_state[0]);
+	cam->pos.x += 0.02f;
+	setVectors(cam);
 
 	glutPostRedisplay();
-	glutTimerFunc(15, OnUpdate, 0);
-
-	// Calcul fps
-	first_wait_count--;
-	if(!first_wait_count)
-	{
-		acc = 0;
-		img_count = 0;
-		wait_count = 20;
-	}
-	
-	wait_count--;
-	if(!wait_count)
-	{
-		fps = (int)(1.f/((((float)acc)/1000.f)/(float)img_count));
-		wait_count = 10;
-	}
-
-	if(delay){delay--;}
+	glutTimerFunc(1000/FPS, OnUpdate, 0);
 }
 
 void OnKeyDown(uchar key, int, int){
 	key_state[key] = true;
+
+	if(key == 'q')
+	{
+		toggleConsole(cmd);
+	}
 }
 
 void OnKeyUp(uchar key, int, int){
@@ -174,10 +155,12 @@ void OnKeyUp(uchar key, int, int){
 
 void OnMouse(int button, int state, int x, int y)
 {	
+	/*
 	if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 		leftbutton = true;
 	if(button == GLUT_LEFT_BUTTON && state == GLUT_UP)
 		leftbutton = false;
+	*/
 }
 
 void OnMousePassive(int x, int y){
@@ -202,14 +185,14 @@ int main(int argc, char** argv){
 	glutInit(&argc,argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowPosition(-1,-1);
-	glutInitWindowSize(width,height);
+	glutInitWindowSize(WIDTH_WINDOW,HEIGHT_WINDOW);
 	glutCreateWindow("GEngine");
 
 	// Initialisation des GObjets
 	OnCreate();
 	
 	/* Initialisation d'OpenGL */
-	glClearColor(0.0,0.0,0.0,0.0);
+	glClearColor(0.f,0.f,0.1f,0.f);
 	
 	/* On passe à une taille de 1 pixel */
 	glPointSize(1.0);
@@ -222,10 +205,9 @@ int main(int argc, char** argv){
 	glutPassiveMotionFunc(OnMousePassive);
 	glutMotionFunc(OnMouseActive);
 	glutReshapeFunc(OnResize);
-	glutTimerFunc(25, OnUpdate, 0);
+	glutTimerFunc(1000/FPS, OnUpdate, 0);
 
 	/* entrée dans la boucle principale de glut */
-	setTimer(10000);
 	glutMainLoop();
 
 }

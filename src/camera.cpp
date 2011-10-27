@@ -3,7 +3,7 @@
 GCamera* initCamera(const int mode, const Vec3f& pos, const float phi, const float theta)
 {
 	GCamera* cam = new GCamera;
-	cam->sensitivity = 0.005f; cam->speed = 0.8f;
+	cam->sensitivity = 0.001f; cam->speed = 0.1f;
 
 	setCamera(cam, pos, phi, theta);
 	setMode(cam, mode);

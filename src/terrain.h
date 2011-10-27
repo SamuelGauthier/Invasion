@@ -24,16 +24,20 @@ struct GTerrain
 
 	GLuint texture[2];
 	float tex_size;
+	int tex_num;
+
+	float* height;
 };
 
-float* loadHeightMap(const char* filename, int& size);
+GTerrain* initTerrain();
+void loadHeightMap(GTerrain* t, const char* filename);
 // GTerrain* generateTerrain(const int width, const int max, const int min);
 // void createMountain(float* heights,const  int width, const int x, const int y, const float height, const float radius);
 Vec3f* terrainNormals(float* map, int size);
 void setTexture(GTerrain* t, const char* filename, int stage);
 void render(const GTerrain* t);
 void releaseTerrain(void* t);
-void fillBuffers(GTerrain* trn, float* height);
-float* planeTerrain(int* size, int width);
+void fillBuffers(GTerrain* trn);
+void planeTerrain(GTerrain* t, int width);
 
 #endif

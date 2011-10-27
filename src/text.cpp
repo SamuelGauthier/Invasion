@@ -1,4 +1,4 @@
-#define TEXT_SIZE 200.f
+#define TEXT_SIZE 100.f
 //--------------------------------------------------------
 // Utilitaire de texte texture-mapped
 //
@@ -80,7 +80,8 @@ void render(int posx, int posy, GFont* f, const char* fmt,...)
 	// Enable texture
 	glBindTexture(GL_TEXTURE_2D, f->texture);
 	glBegin(GL_QUADS);
-
+	glColor3f(1.f,1.f,1.f);
+	
 	GLetter* l;
 	while(text[index])
 	{
