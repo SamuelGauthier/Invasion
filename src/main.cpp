@@ -2,7 +2,9 @@
 #define WIDTH_WINDOW 800
 #define HEIGHT_WINDOW 600
 
-#include <GL/glut.h>
+#include <SDL/SDL.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 #include <unistd.h>
 #include "utils.h"
 #include "camera.h"
@@ -23,18 +25,11 @@ GFont* f = 0;
 bool key_state[256] = {false};
 
 // Prototypes de fonctions
-void OnCreate();
+inline void OnCreate();
 void OnRelease();
-void OnRender();
-void OnRender2D();
-void OnKeyDown(uchar, int, int);
-void OnKeyUp(uchar, int, int);
-void OnMouse(int, int, int, int);
-void OnMousePassive(int, int);
-void OnMouseActive(int, int);
-void OnUpdate(int);
-void OnResize(int w,int h);
-void OnTest();
+inline void OnRender();
+inline void OnRender2D();
+inline void OnLoop();
 
 void OnCreate(){
 	cam = initCamera(freefly_camera);
@@ -52,13 +47,16 @@ void OnCreate(){
 	// textures
 	trn = initTerrain();
 
-	planeTerrain(trn, 2);
+	planeTerrain(trn, 5);
 	setTexture(trn, "../Textures/grass.tga",0);
 	trn->cell = 10.f;
 	fillBuffers(trn); 
 	
 	// init state
 	glEnable(GL_DEPTH_TEST);
+
+	// exit
+	atexit(OnRelease);
 }
 
 void OnRender(){
@@ -80,6 +78,7 @@ void OnRender(){
 	render(trn);
 	glDisable(GL_TEXTURE_2D);
 
+	/*
 	//---------------------------------
 	// Render 2D
 	//---------------------------------
@@ -96,11 +95,13 @@ void OnRender(){
 	
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
+
+	*/
 	//---------------------------------
 	// End Render 2D
 	//---------------------------------
 
-	glutSwapBuffers();
+	SDL_GL_SwapBuffers();
 }
 
 void OnRender2D()
@@ -108,85 +109,61 @@ void OnRender2D()
 	render(cmd, f);
 }
 
-void OnUpdate(int){
+void OnLoop()
+{
+	uint fps = 1000/FPS, begin = 0;
+	SDL_Event event;
 
-	// Keyboard management
-	if(key_state[27]){
-		OnRelease();
-		exit(0);
-	}
-
-	if(key_state['f'])
-	{	
-		glPolygonMode( GL_FRONT_AND_BACK, GL_FILL);
-	}
-
-	if(key_state['g'])
+	while(1)
 	{
-		glPolygonMode( GL_FRONT_AND_BACK, GL_POINT);
+		while(SDL_PollEvent(&event))
+		{
+			switch(event.type)
+			{
+				case SDL_QUIT:
+					exit(0);
+				case SDL_KEYDOWN:
+					key_state[event.key.keysym.sym] = true;
+					break;
+				case SDL_KEYUP:
+					key_state[event.key.keysym.sym] = false;
+					break;
+				case SDL_MOUSEMOTION:
+					setCamera(cam,  event.motion.xrel, event.motion.yrel);
+					break;
+			}
+
+		}
+		if(key_state[SDLK_ESCAPE])
+		{
+			exit(0);
+		}
+
+		
+		if(SDL_GetTicks() - fps >= begin)
+		{
+			// changement input
+			setCamera(cam, key_state);
+
+
+			// Affichage
+			OnRender();
+
+			begin = SDL_GetTicks();
+		}
 	}
-
-	if(key_state['h'])
-	{
-		glPolygonMode( GL_FRONT_AND_BACK, GL_LINE);
-	}
-
-
-	setCamera(cam, &key_state[0]);
-	cam->pos.x += 0.02f;
-	setVectors(cam);
-
-	glutPostRedisplay();
-	glutTimerFunc(1000/FPS, OnUpdate, 0);
-}
-
-void OnKeyDown(uchar key, int, int){
-	key_state[key] = true;
-
-	if(key == 'q')
-	{
-		toggleConsole(cmd);
-	}
-}
-
-void OnKeyUp(uchar key, int, int){
-	key_state[key] = false;
-}
-
-void OnMouse(int button, int state, int x, int y)
-{	
-	/*
-	if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
-		leftbutton = true;
-	if(button == GLUT_LEFT_BUTTON && state == GLUT_UP)
-		leftbutton = false;
-	*/
-}
-
-void OnMousePassive(int x, int y){
-	setCamera(cam, x, y);
-}
-
-void OnMouseActive(int x, int y){
-	setCamera(cam, x, y);
-}
-
-void OnResize(int w, int h){
-	glViewport(0,0,w,h);
-
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-
-	gluPerspective(45.0, (double)w/(double)h,1.f, 500.0);
 }
 
 int main(int argc, char** argv){
-	/* initialisation de glut et création de la fenêtre */
-	glutInit(&argc,argv);
-	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGB);
-	glutInitWindowPosition(-1,-1);
-	glutInitWindowSize(WIDTH_WINDOW,HEIGHT_WINDOW);
-	glutCreateWindow("GEngine");
+	/* initialisation de la fenêtre */
+	SDL_Init(SDL_INIT_VIDEO);
+	SDL_WM_SetCaption("OpenGL test", NULL);
+	SDL_SetVideoMode(800, 600, 32, SDL_OPENGL);
+
+	// Mettre en place la vue
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(45.0, 800.0/600.0, 1.0, 200.0);
 
 	// Initialisation des GObjets
 	OnCreate();
@@ -197,23 +174,12 @@ int main(int argc, char** argv){
 	/* On passe à une taille de 1 pixel */
 	glPointSize(1.0);
 	
-	/* enregistrement des fonctions de rappel */
-	glutDisplayFunc(OnRender);
-	glutKeyboardFunc(OnKeyDown);
-	glutKeyboardUpFunc(OnKeyUp);
-	glutMouseFunc(OnMouse);
-	glutPassiveMotionFunc(OnMousePassive);
-	glutMotionFunc(OnMouseActive);
-	glutReshapeFunc(OnResize);
-	glutTimerFunc(1000/FPS, OnUpdate, 0);
-
 	/* entrée dans la boucle principale de glut */
-	glutMainLoop();
+	OnLoop();
 
 }
 
 void OnRelease(){
 	releaseAll();
+	SDL_Quit();
 }
-
-

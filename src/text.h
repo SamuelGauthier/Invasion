@@ -1,7 +1,6 @@
 #ifndef TEXT_H
 #define TEXT_H
 
-#include <GL/glut.h>
 #include "utils.h"
 #include <stdarg.h>
 

@@ -3,7 +3,7 @@
 GCamera* initCamera(const int mode, const Vec3f& pos, const float phi, const float theta)
 {
 	GCamera* cam = new GCamera;
-	cam->sensitivity = 0.001f; cam->speed = 0.1f;
+	cam->sensitivity = 0.003f; cam->speed = 0.3f;
 
 	setCamera(cam, pos, phi, theta);
 	setMode(cam, mode);
@@ -42,13 +42,12 @@ void setCamera(GCamera* cam, const Vec3f& pos, const float phi, const float thet
 }
 
 
-void setCamera(GCamera* cam, int x, int y)
+void setCamera(GCamera* cam, int xrel, int yrel)
 {
 	if(cam->mode == freefly_camera)
 	{
-		glutWarpPointer(400,300);
-		cam->phi -= (float)(x-400)* cam->sensitivity;
-		cam->theta += (float)(y-300)* cam->sensitivity;
+		cam->phi -= (float)xrel* cam->sensitivity;
+		cam->theta += (float)yrel* cam->sensitivity;
 		
 		if(cam->theta > M_PI/2.f - 0.01f)
 			cam->theta = M_PI/2.f - 0.01f;
@@ -64,13 +63,21 @@ void setCamera(GCamera* cam,const bool* key)
 	if(cam->mode == freefly_camera)
 	{
 		if(key['w'])
+		{
 			cam->pos += cam->forward*cam->speed;
+		}
 		if(key['s'])
+		{
 			cam->pos -= cam->forward*cam->speed;
+		}
 		if(key['a'])
+		{
 			cam->pos += cam->left*cam->speed;
+		}
 		if(key['d'])
+		{
 			cam->pos -= cam->left*cam->speed;
+		}
 		cam->target = cam->pos + cam->forward;
 	}
 }
@@ -87,13 +94,14 @@ void setMode(GCamera* cam,const int mode)
 
 	if(mode == freefly_camera)
 	{
-		glutSetCursor(GLUT_CURSOR_NONE);
+		SDL_ShowCursor(SDL_DISABLE);
 	}
 
 	if(mode == fixed_camera || mode == strategy_game_camera)
 	{
-		glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
+		SDL_ShowCursor(SDL_ENABLE);
 	}
 	
-	glutWarpPointer(400,300);
+	SDL_WM_GrabInput(SDL_GRAB_ON);
+	SDL_WarpMouse(400,300);
 }

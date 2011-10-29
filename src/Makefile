@@ -1,6 +1,6 @@
 CC=g++
 CFLAGS=-W -Wall -ansi -pedantic
-LDFLAGS=-lglut -lGLU
+LDFLAGS=-lSDL -lGL -lGLU
 EXEC=ex
 SRC=$(wildcard *.cpp) 
 OBJ= $(SRC:.cpp=.o)

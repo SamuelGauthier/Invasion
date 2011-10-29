@@ -2,9 +2,10 @@
 #define CAMERA_H
 
 #include "vector.h"
+#include <SDL/SDL.h>
 #include <math.h>
+#include <GL/gl.h>
 #include <GL/glu.h>
-#include <GL/glut.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "garbage_collector.h"
