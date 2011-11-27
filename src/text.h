@@ -26,6 +26,7 @@ struct GFont{
 
 GFont* loadFont(const char* descfile);
 void render(int posx, int posy, GFont* f, const char* s,...);
+void renderMono(int posx, int posy, GFont* f, const char* fmt,...);
 void releaseFont(void* f);
 
 #endif

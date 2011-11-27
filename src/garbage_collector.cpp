@@ -21,3 +21,16 @@ void releaseAll()
 	c.arglist.clear();
 }
 
+void releaseElement(void* a)
+{
+	for(unsigned int i=0;i<c.arglist.size();i++)
+	{
+		if(c.arglist[i] == a)
+		{
+			(*c.rfnlist[i])(c.arglist[i]);
+			c.arglist.erase(c.arglist.begin() + i);
+			c.rfnlist.erase(c.rfnlist.begin() + i);
+			break;
+		}
+	}
+}

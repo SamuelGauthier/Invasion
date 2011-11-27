@@ -25,93 +25,102 @@ void loadHeightMap(GTerrain* t, const char* filename)
 
 	for(int i = 0;i < t->width*t->width;i++)
 	{
-		t->height[i] =  ((float)(hmap->pixel[(int)(hmap->bpp)*i]) - 127.f) / 255.f * 10.f;
+		t->height[i] =  ((float)(hmap->pixel[(int)(hmap->bpp)*i]) - 127.f) / 255.f * 5.f;
 	}
 
 	releaseImage(hmap);
 }
 
-/*
-GTerrain* generateTerrain(const int width, const int max, const int min)
+float interpolate(float a, float b, float percent)
 {
-	GTerrain* t = new GTerrain;
+	if(percent==0.f)
+	    return a;
+	if(percent==1.f)
+	    return b;
 	
-	// Initialiser le seed
-	srand(time((unsigned int)0));
-
-	TERRAIN_CELL = 1.f;
-
-	t->width = width;
-	TERRAIN_SIZE = width;
-
-	t->height = new float[width * width];
-	t->texture = 0;
-
-	float* map = t->height;
-
-	for(int i=0;i<width*width;i++)
-		map[i] = 0.f;
-
+	float v1 = 3.f * powf(1.f-percent, 2.f) - 2.f*powf(1.f-percent, 3.f);
+	float v2 = 3.f * powf(percent, 2.f) - 2.f *powf(percent, 3.f);
 	
-	for(int i=0;i<20;i++)
-	{
-		int x = rand()%width;
-		int y = rand()%width;
-
-		int radius = rand() % 10 + 6;
-		int hauteur = rand() % (max * (int)TERRAIN_CELL) + min;
-
-		createMountain(map, width, x, y, (float)hauteur, (float)radius);
-	}
-
-	// compute normals
-	computeNormals(t);
-
-	addRelease(releaseTerrain,(void*)t);
-
-	return t;
+	return a*v1 + b*v2;
 }
-*/
-/*
-void createMountain(float* heights,const int width,const int x,const int y,const float height, const float radius)
+
+// a----b
+// |	|
+// c----d
+void linear_interpolation(GTerrain* trn, int a, int b, int c, int d)
 {
-	int starti = x-(int)radius, startj = y-(int)radius;
-	if(starti < 0)
-		starti=0;
-	if(startj < 0)
-		startj=0;
+	float v1 = trn->height[a];
+	float v2 = trn->height[b];
+	float v3 = trn->height[c];
+	float v4 = trn->height[d];
 
-	float percent, amount;
-	int dx,dy;
-	int distance;
+	int z = a / trn->width, x  = a % trn->width;
 
-	for(int i=starti;i < x+(int)radius;i++)
+	float percentx_step = 1.f/(float)((b-a));
+	float percentz_step = 1.f/(float)((c-a)/trn->width);
+
+	float percentz = 0.f;
+	for(int i = z;i < (c-a)/trn->width + z + 1;i++)
 	{
-		if(i >= (int)width)
-			break;
-
-		for(int j=startj;j < y+(int)radius;j++)
+		float percentx = 0.f;
+		for(int j = x;j < b-a + x + 1;j++)
 		{
-			if(j >= (int)width)
-				break;
+			float i1 = interpolate(v1, v2, percentx);
+			float i2 = interpolate(v3, v4, percentx);
+			trn->height[i * trn->width + j] = interpolate(i1, i2, percentz);
 
-			dx = i - x;
-			dy = j - y;
-
-			distance = dx * dx + dy  * dy;
-
-
-			percent = sqrtf((float)distance) * ((F_PI)/radius);
-			if(percent>=M_PI)
-				percent = M_PI;
-
-			
-			amount = (cosf(percent)+1) * (height/2.f);
-				heights[i*width + j] += amount;
+			percentx += percentx_step;
 		}
+		percentz += percentz_step;
 	}
 }
-*/
+
+void randomGen(GTerrain* t, int freq, int height, int chance)
+{
+	int chunk = (t->width-1)/(freq+1);
+	
+	int a = 0;
+	int start_b = 0;
+
+	if(rand() % 1000 < chance)
+		t->height[0] = (float)(rand()%height);
+	for(int i = 0;i < freq + 1;i++)
+	{
+		int b = (i+1) * chunk * t->width;
+		
+		if(i == freq)
+			b = t->width * (t->width - 1);
+
+		if(rand() % 1000 < chance)
+			t->height[b] = (float)(rand()%height);
+		
+		start_b = b;
+		for(int j = 0;j < freq + 1;j++)
+		{
+			int c = a + chunk;
+			int d = b + chunk;
+
+			if(j == freq)
+			{
+				c = a + t->width - (a % t->width) - 1;
+				d = start_b + t->width - 1;
+			}
+
+			if(i == 0 && (rand() % 1000 < chance))
+				t->height[c] = (float)(rand()%height);
+
+			if(rand() % 1000 < chance)
+				t->height[d] = (float)(rand()%height);
+		
+			linear_interpolation(t, a, c, b, d);
+
+			a = c;
+			b = d;
+		}
+		a = start_b;
+	}
+}
+
 void fillBuffers(GTerrain* t)
 {
 	float* VertexData = new float[t->width * t->width * 8];
@@ -130,13 +139,13 @@ void fillBuffers(GTerrain* t)
 	{
 		for(int j=0;j<t->width;j++)
 		{
+			float coeff = (float)(rand()%101)/100.f;
 			VertexData[(i*t->width+j)*8 + 0] = start + (float)j*t->cell;
-			VertexData[(i*t->width+j)*8 + 1] = t->height[i * t->width + j] * t->mntsize;
+			VertexData[(i*t->width+j)*8 + 1] = t->height[i*t->width + j];
 			VertexData[(i*t->width+j)*8 + 2] = start + (float)i*t->cell;
-			VertexData[(i*t->width+j)*8 + 3] = 1.f - ((t->mntsize * t->height[i * t->width + j] + (5.f * t->mntsize))/(10.f * t->mntsize));
-			VertexData[(i*t->width+j)*8 + 4] = 1.f - ((t->mntsize * t->height[i * t->width + j] + (5.f * t->mntsize))/(10.f*t->mntsize));
-			VertexData[(i*t->width+j)*8 + 5] = 1.f - ((t->mntsize * t->height[i * t->width + j] + (5.f*t->mntsize))/(10.f*t->mntsize));
-
+			VertexData[(i*t->width+j)*8 + 3] = 1.f - (t->height[i*t->width + j]/10.f);
+			VertexData[(i*t->width+j)*8 + 4] = 1.f - (t->height[i*t->width + j]/10.f);
+			VertexData[(i*t->width+j)*8 + 5] = 1.f - (t->height[i*t->width + j]/10.f);
 			VertexData[(i*t->width+j)*8 + 6] = (float)i * t->tex_size;
 			VertexData[(i*t->width+j)*8 + 7] = (float)j * t->tex_size;
 		}
@@ -151,20 +160,22 @@ void fillBuffers(GTerrain* t)
 	glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, t->IBO);
 
 	// Génére les indices
-	ushort* indices = new ushort[(t->width-1) * (t->width-1) * 4];
+	ushort* indices = new ushort[(t->width-1) * (t->width-1) * 6];
 	for(int i = 0;i < t->width-1;i++)
 	{
 		for(int j = 0;j < t->width-1;j++)
 		{
-			indices[4 * (i * (t->width - 1) + j) + 0] = (ushort)(i * t->width + j);
-			indices[4 * (i * (t->width - 1) + j) + 1] = (ushort)(i * t->width + j + 1);
-			indices[4 * (i * (t->width - 1) + j) + 2] = (ushort)(i * t->width + j + t->width + 1);
-			indices[4 * (i * (t->width - 1) + j) + 3] = (ushort)(i * t->width + j + t->width);
+			indices[6 * (i * (t->width - 1) + j) + 0] = (ushort)(i * t->width + j);
+			indices[6 * (i * (t->width - 1) + j) + 1] = (ushort)(i * t->width + j + 1);
+			indices[6 * (i * (t->width - 1) + j) + 2] = (ushort)(i * t->width + j + t->width + 1);
+			indices[6 * (i * (t->width - 1) + j) + 3] = (ushort)(i * t->width + j);
+			indices[6 * (i * (t->width - 1) + j) + 4] = (ushort)(i * t->width + j + t->width + 1);
+			indices[6 * (i * (t->width - 1) + j) + 5] = (ushort)(i * t->width + j + t->width);
 		}
 	}
 
-	glBufferDataARB(GL_ELEMENT_ARRAY_BUFFER_ARB, (t->width-1) * (t->width-1) * 4 * 2, (void*)indices, GL_STATIC_DRAW_ARB);
-	t->numIndices = (t->width-1) * (t->width-1) * 4;
+	glBufferDataARB(GL_ELEMENT_ARRAY_BUFFER_ARB, (t->width-1) * (t->width-1) * 6 * 2, (void*)indices, GL_STATIC_DRAW_ARB);
+	t->numIndices = (t->width-1) * (t->width-1) * 6;
 
 	delete[] indices;
 }
@@ -177,33 +188,54 @@ void render(const GTerrain* t)
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D,t->texture[0]);
 
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE_ARB);
-  	glTexEnvi(GL_TEXTURE_ENV, GL_SOURCE0_RGB_ARB, GL_TEXTURE);
-	glTexEnvi(GL_TEXTURE_ENV, GL_OPERAND0_RGB_ARB, GL_SRC_COLOR);
-	glTexEnvi(GL_TEXTURE_ENV, GL_COMBINE_RGB_ARB, GL_REPLACE);
-
 	glClientActiveTexture(GL_TEXTURE0_ARB);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	glTexCoordPointer(2, GL_FLOAT, 32, BUFFER_OFFSET(24));
 
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(3, GL_FLOAT, 32, BUFFER_OFFSET(0));
+	
+	glActiveTextureARB( GL_TEXTURE1_ARB);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D,t->texture[1]);
 
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE_ARB);
+	glTexEnvi(GL_TEXTURE_ENV, GL_COMBINE_RGB_ARB, GL_INTERPOLATE);
+	
+	glTexEnvi(GL_TEXTURE_ENV, GL_SOURCE0_RGB_ARB, GL_PREVIOUS);
+	glTexEnvi(GL_TEXTURE_ENV, GL_OPERAND0_RGB_ARB, GL_SRC_COLOR);
+	
+	glTexEnvi(GL_TEXTURE_ENV, GL_SOURCE1_RGB_ARB, GL_TEXTURE);
+	glTexEnvi(GL_TEXTURE_ENV, GL_OPERAND1_RGB_ARB, GL_SRC_COLOR);
+
+	glTexEnvi(GL_TEXTURE_ENV, GL_SOURCE2_RGB_ARB, GL_PRIMARY_COLOR);
+	glTexEnvi(GL_TEXTURE_ENV, GL_OPERAND2_RGB_ARB, GL_SRC_COLOR);
+	
+	glClientActiveTexture(GL_TEXTURE1_ARB);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	glTexCoordPointer(2, GL_FLOAT, 32, BUFFER_OFFSET(24));
+	
+	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
+
+	glVertexPointer(3, GL_FLOAT, 32, BUFFER_OFFSET(0));
 	glColorPointer(3, GL_FLOAT, 32, BUFFER_OFFSET(12));
 
 	glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, t->IBO);
 
-	glDrawElements(GL_QUADS, t->numIndices, GL_UNSIGNED_SHORT, BUFFER_OFFSET(0));
+	glDrawElements(GL_TRIANGLES, t->numIndices, GL_UNSIGNED_SHORT, BUFFER_OFFSET(0));
+
+	
+	glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_VERTEX_ARRAY);
+
+	
+	glActiveTextureARB(GL_TEXTURE1_ARB);
+	glDisable(GL_TEXTURE_2D);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
 	glActiveTextureARB(GL_TEXTURE0_ARB);
 	glDisable(GL_TEXTURE_2D);
-
-	glClientActiveTextureARB(GL_TEXTURE0_ARB);	
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
-	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_VERTEX_ARRAY);
 }
 
 void setTexture(GTerrain* t, const char* filename, int stage)
@@ -222,7 +254,7 @@ void setTexture(GTerrain* t, const char* filename, int stage)
 	
 	t->tex_num++;
 } 
-
+/*
 Vec3f* terrainNormals(float* map, int size)
 {
 	float cell = (float)(size & 0xF) + 1.f;
@@ -256,7 +288,7 @@ Vec3f* terrainNormals(float* map, int size)
 	}
 
 	return normals;
-}
+}*/
 
 void planeTerrain(GTerrain* t, int width)
 {

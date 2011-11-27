@@ -22,7 +22,7 @@ struct GTerrain
 	float cell;
 	float mntsize;
 
-	GLuint texture[2];
+	GLuint texture[3];
 	float tex_size;
 	int tex_num;
 
@@ -31,8 +31,7 @@ struct GTerrain
 
 GTerrain* initTerrain();
 void loadHeightMap(GTerrain* t, const char* filename);
-// GTerrain* generateTerrain(const int width, const int max, const int min);
-// void createMountain(float* heights,const  int width, const int x, const int y, const float height, const float radius);
+void randomGen(GTerrain* t, int freq, int height, int chance);
 Vec3f* terrainNormals(float* map, int size);
 void setTexture(GTerrain* t, const char* filename, int stage);
 void render(const GTerrain* t);

@@ -116,7 +116,7 @@ bool isExtension(const char* filename, const char* extension)
 		return false;
 	}
 
-	if(!strncasecmp(search,extension,3))
+	if(!strnicmp(search,extension,3))
 	{
 		delete[] buffer;
 		return true;
@@ -144,20 +144,24 @@ char* getRepertory(const char* filename)
 	return name;
 }
 
-void setTimer(long sec)
+void drawRepere()
 {
-	itimerval real;
-	real.it_value.tv_sec = real.it_interval.tv_sec = sec;
-	real.it_value.tv_usec = real.it_interval.tv_usec = 0;
+	glLineWidth(5.f);
+	glBegin(GL_LINES);
 
-	setitimer(ITIMER_VIRTUAL, &real, NULL);
+
+	glColor3f(1.f, 0.f, 0.f);
+	glVertex3f(0.f, 0.f, 0.f);
+	glVertex3f(1.f, 0.f, 0.f);
+
+	glColor3f(0.f, 1.f, 0.f);
+	glVertex3f(0.f, 0.f, 0.f);
+	glVertex3f(0.f, 1.f, 0.f);
+
+	glColor3f(0.f, 0.f, 1.f);
+	glVertex3f(0.f, 0.f, 0.f);
+	glVertex3f(0.f, 0.f, 1.f);
+
+	glEnd();
+	glLineWidth(1.f);
 }
-
-long getTicks()
-{
-	itimerval real;
-	getitimer(ITIMER_VIRTUAL, &real);
-	return (real.it_value.tv_sec * 1000 + real.it_value.tv_usec);
-}
-
-

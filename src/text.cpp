@@ -80,8 +80,7 @@ void render(int posx, int posy, GFont* f, const char* fmt,...)
 	// Enable texture
 	glBindTexture(GL_TEXTURE_2D, f->texture);
 	glBegin(GL_QUADS);
-	glColor3f(1.f,1.f,1.f);
-	
+
 	GLetter* l;
 	while(text[index])
 	{
@@ -113,6 +112,66 @@ void render(int posx, int posy, GFont* f, const char* fmt,...)
 			posx += f->desc[43].xadvance;
 		}
 
+		index++;
+	}
+
+	glEnd();
+	glDisable(GL_BLEND);
+	glDisable(GL_TEXTURE_2D);
+}
+
+void renderMono(int posx, int posy, GFont* f, const char* fmt,...)
+{
+	char text[128];
+	va_list ap;
+	
+	va_start(ap, fmt);
+	vsprintf(text, fmt,ap);
+	va_end(ap);
+
+	// Enable Alpha Blending
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_ONE, GL_ONE);
+
+	// Enable texture
+	glBindTexture(GL_TEXTURE_2D, f->texture);
+	glBegin(GL_QUADS);
+
+	// Take Reference, the capital W
+	int mono_xadvance = f->desc['W'].xadvance;
+	uchar index = 0;
+
+	GLetter* l;
+	while(text[index])
+	{
+		l = &f->desc[(int)text[index]];
+
+		if(l->width)
+		{
+			glTexCoord2f((float)l->x/(float)f->w,
+						 ((float)l->y/(float)f->h));
+			glVertex2i(posx + l->xoffset, posy + l->yoffset);
+
+			glTexCoord2f((float)(l->x + l->width)/(float)f->w, 
+						 ((float)l->y/(float)f->h));
+			glVertex2i(posx + l->width + l->xoffset, posy + l->yoffset);
+			
+			glTexCoord2f((float)(l->x + l->width)/(float)f->w, 
+						 ((float)(l->y + l->height)/(float)f->h));
+			glVertex2i(posx + l->width + l->xoffset, posy + l->height + l->yoffset);
+
+			glTexCoord2f((float)l->x/(float)f->w,
+						(((float)l->y + l->height)/(float)f->h));
+			glVertex2i(posx + l->xoffset, posy + l->height + l->yoffset);
+
+			posx += 8;
+		}
+
+		else
+		{
+			posx += f->desc[43].xadvance;
+		}
 		index++;
 	}
 

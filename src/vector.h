@@ -39,4 +39,9 @@ public:
 	float x,y;
 };
 
+struct Vec4f
+{
+	float x,y,z,w;
+};
+
 #endif

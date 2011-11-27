@@ -8,10 +8,10 @@ typedef unsigned long int ulong;
 
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 #define GL_GLEXT_PROTOTYPES
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/glx.h>
-#include <GL/glext.h>
+#define M_PI 3.14159f
+#include <windows.h>
+#include <SDL/SDL.h>
+#include <GL/glew.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,7 +19,6 @@ typedef unsigned long int ulong;
 #include <assert.h>
 #include "image_utils.h"
 #include "garbage_collector.h"
-#include <sys/time.h>
 
 float Csqrt(float);
 float Cabs(float);
@@ -39,5 +38,7 @@ GLuint loadTexture(const char* filename);
 
 void setTimer(long sec);
 long getTicks();
+
+void drawRepere();
 
 #endif

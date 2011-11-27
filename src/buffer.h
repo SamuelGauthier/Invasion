@@ -3,6 +3,7 @@
 
 #include "utils.h"
 #include "vector.h"
+#include "md2loader.h"
 
 enum
 {
@@ -44,5 +45,15 @@ void beginRender(GStaticBuffer* sb);
 void endRender();
 void render(GStaticBuffer* sb, int index);
 void releaseStaticBuffer(void* sb);
+
+struct GDynamicBuffer
+{
+	GLuint VBO;
+	GLuint IBO;
+};
+
+GDynamicBuffer* initDynamicBuffer(GMD2Model* m);
+GDynamicBuffer* initDynamicBuffer(const char* filename);
+void releaseDynamicBuffer(void* db);
 
 #endif

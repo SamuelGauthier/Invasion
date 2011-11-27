@@ -15,5 +15,6 @@ struct GGarbageCollector
 
 void addRelease(release_function fn, void* arg);
 void releaseAll();
+void releaseElement(void* a);
 
 #endif

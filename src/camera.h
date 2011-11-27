@@ -2,10 +2,8 @@
 #define CAMERA_H
 
 #include "vector.h"
-#include <SDL/SDL.h>
+#include "utils.h"
 #include <math.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "garbage_collector.h"
@@ -34,7 +32,7 @@ struct GCamera
 GCamera* initCamera(const int mode,const Vec3f& pos=Vec3f(0.f,0.f,0.f),const float phi=0.f,const float theta=0.f);
 void setMode(GCamera* cam,const int mode);
 void setCamera(GCamera* cam, int x, int y);
-void setCamera(GCamera* cam, const bool* key);
+void setCamera(GCamera* cam, const bool* key, float ElapsedTime);
 void setCamera(GCamera* cam,const Vec3f& pos,const float phi,const float theta);
 void lookCamera(const GCamera* cam);
 void setVectors(GCamera* cam);

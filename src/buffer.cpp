@@ -136,3 +136,26 @@ void releaseStaticBuffer(void* sb)
 
 	delete tmp;
 }
+
+GDynamicBuffer* initDynamicBuffer(const char* filename)
+{
+	GMD2Model* m = loadMD2(filename);
+	GDynamicBuffer* db = initDynamicBuffer(m);
+
+	releaseElement((void*)m);
+	addRelease(releaseDynamicBuffer, (void*)db);
+	return db;
+}
+
+GDynamicBuffer* initDynamicBuffer(GMD2Model* m)
+{
+	GDynamicBuffer* db = new GDynamicBuffer;
+
+	return db;
+}
+
+void releaseDynamicBuffer(void* db)
+{
+	GDynamicBuffer* tmp = (GDynamicBuffer*)db;
+	delete tmp;
+}

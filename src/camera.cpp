@@ -3,7 +3,7 @@
 GCamera* initCamera(const int mode, const Vec3f& pos, const float phi, const float theta)
 {
 	GCamera* cam = new GCamera;
-	cam->sensitivity = 0.003f; cam->speed = 0.3f;
+	cam->sensitivity = 0.003f; cam->speed = 0.1f;
 
 	setCamera(cam, pos, phi, theta);
 	setMode(cam, mode);
@@ -58,26 +58,28 @@ void setCamera(GCamera* cam, int xrel, int yrel)
 	setVectors(cam);
 }
 
-void setCamera(GCamera* cam,const bool* key)
+void setCamera(GCamera* cam,const bool* key, float ElapsedTime)
 {
 	if(cam->mode == freefly_camera)
 	{
+		
 		if(key['w'])
 		{
-			cam->pos += cam->forward*cam->speed;
+			cam->pos += cam->forward*cam->speed*ElapsedTime;
 		}
 		if(key['s'])
 		{
-			cam->pos -= cam->forward*cam->speed;
+			cam->pos -= cam->forward*cam->speed*ElapsedTime;
 		}
 		if(key['a'])
 		{
-			cam->pos += cam->left*cam->speed;
+			cam->pos += cam->left*cam->speed*ElapsedTime;
 		}
 		if(key['d'])
 		{
-			cam->pos -= cam->left*cam->speed;
+			cam->pos -= cam->left*cam->speed*ElapsedTime;
 		}
+
 		cam->target = cam->pos + cam->forward;
 	}
 }
