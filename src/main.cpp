@@ -1,6 +1,7 @@
 #define FPS 60
 #define WIDTH_WINDOW 800
 #define HEIGHT_WINDOW 600
+#define TEST 0
 
 #include <SDL/SDL.h>
 #include <GL/gl.h>
