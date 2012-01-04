@@ -152,3 +152,15 @@ Quelques Idées:
 ===========
 
 -La texture provisoire de la tour d'archer est maintenant terminé. Omission volontaire de texturer le dessous pour l'instant pour un gain de temps et que de toute façon il ne sera pas visible en vue RTS!
+
+===========
+03.01.2012
+===========
+
+-Update de tout ce que j'ai fait durant le temps ou je ne fus pas là.
+
+===========
+04.01.2012
+===========
+
+-Configuration du site: j'ai modifié le "bg-search.png" (qui est l'image de la surface de recherche du site) et et j'ai changé la couleur des champs d'entrés. Ca a pris du temps car il faut aller modifier le fichier "tdefaut.css" (ligne 124 : remplacé #ffffff [qui est le blanc] par #391212 [du rouge foncé])
