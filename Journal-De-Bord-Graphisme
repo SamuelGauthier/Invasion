@@ -164,3 +164,15 @@ Quelques Idées:
 ===========
 
 -Configuration du site: j'ai modifié le "bg-search.png" (qui est l'image de la surface de recherche du site) et et j'ai changé la couleur des champs d'entrés. Ca a pris du temps car il faut aller modifier le fichier "tdefaut.css" (ligne 124 : remplacé #ffffff [qui est le blanc] par #391212 [du rouge foncé])
+
+===========
+05.01.2012
+===========
+
+-J'ai fait du rangement dans les menus du site et j'ai crée le enu pour faire un article. C'est plus simple que d'aller toujours dans l'adminsitration du site.
+
+===========
+06.01.2012
+===========
+
+-Aujourd'hui j'ai déplacé le menu "create an article" a droite au lieu de en haut pour une question de confort. Le module complémentaire suivant à été installé: "RVS reCaptcha"  qui permet d'ajouter un captcha au formulaire de contact. Puis j'ai enlevé dans le css du template la fonstion qui mettait toujours des majuscules partout dans le texte. Le site est presque terminé il faut que je fasse encore les modifications suivantes: mettre en place le module joomfish ( qui n'est pas encore disponible pou joomla 1.7, donc j'attend), résoudre le problème de la création d'un article via un utilisateur inscrit au site et changer dans l'adresse du site le texte suivant http://www.montmartel.com/invasion/administrator par http://www.montmartel.com/invasion/xxxxxxxxxx (les "x" correspondent à un nom quelconque). J'ai aussi remarqué que j'ai fait le site entièrment en anglais. Ceci est dû à cause de l'installation de joomla qui est en anglais. Mon but sera de traduire le site dans les trois langues suivantes à l'aide de "joomfish" : Français et Allemand.
