@@ -176,3 +176,52 @@ Quelques Idées:
 ===========
 
 -Aujourd'hui j'ai déplacé le menu "create an article" a droite au lieu de en haut pour une question de confort. Le module complémentaire suivant à été installé: "RVS reCaptcha"  qui permet d'ajouter un captcha au formulaire de contact. Puis j'ai enlevé dans le css du template la fonstion qui mettait toujours des majuscules partout dans le texte. Le site est presque terminé il faut que je fasse encore les modifications suivantes: mettre en place le module joomfish ( qui n'est pas encore disponible pou joomla 1.7, donc j'attend), résoudre le problème de la création d'un article via un utilisateur inscrit au site et changer dans l'adresse du site le texte suivant http://www.montmartel.com/invasion/administrator par http://www.montmartel.com/invasion/xxxxxxxxxx (les "x" correspondent à un nom quelconque). J'ai aussi remarqué que j'ai fait le site entièrment en anglais. Ceci est dû à cause de l'installation de joomla qui est en anglais. Mon but sera de traduire le site dans les trois langues suivantes à l'aide de "joomfish" : Français et Allemand.
+
+
+===========
+07.01.2012
+===========
+
+-Mon père a crée l'adresse suivante: invasion.montmartel.com qui sera notre site web. Il n'est pas encore en ligne car il faut attendre le redémarrage des services du server.
+
+===========
+10.01.2012
+===========
+
+-Le site est en route!!! Il reste a écrire encore le contenu entier et mettre des images, régler le bug du slider.
+
+===========
+13.01.2012
+===========
+
+-J'ai enfin reçu ma tablette graphique Wacom Intuos 4L!!! Tout sera plus facile dès a présent...
+
+===========
+21.01.2012
+===========
+
+-Grosse mise à jour du site web. Le problème du slider à été résolu: celui qui a codé le script n'était pas très fort.... J'ai changé le type de défilement en type "Expo" dans le index.php ligne 58-80. J'ai mis des images qui sont libres de droit et des des screens pour notre blog.
+
+===========
+22.01.2012
+===========
+
+-En cherchant un peu sur le web j'ai trouvé comment extraire les bâtiments des fichiers .bar de age of empires 3. C'est extrêmement interessant comment sont fait bâtiments et unités.
+
+===========
+24.01.2012
+===========
+
+-J'ai trouvé un tutoriel pour les "ground textures" à l'adresse suivante: "http://www.pathofexile.com/news/2010-12-20/tile-texture-mapping". C'est impressionnant comme celà marche bien. Après lecture je me suis rendu compte qu eC'était utopique de faire les textures du sol moi-même. Je vais donc prendre des textures du site "http://www.cgtextures.com/" et les modifier à mon goût (Elle sont libres). Mais je ferais quand même les textures à la tablette et je pense que je vais prendre des photo de mon gazon pour certaines "ground textures".
+
+===========
+25.01.2012
+===========
+
+-J'ai commencé une maison avec la méthode que les modélisateurs d'age 3 ont utilisés: soit une mesh pour le toit et objet par-terre et une mesh pour les murs de la maison.
+
+===========
+26.01.2012
+===========
+
+-La maison est terminée et je vais la texturer.
