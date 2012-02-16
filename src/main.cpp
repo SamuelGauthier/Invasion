@@ -1,314 +1,99 @@
-#define FPS 60.f
-#define WIDTH_WINDOW 800
-#define HEIGHT_WINDOW 600
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+#include <SDL/SDL_image.h>
+#define GLX_GLXEXT_PROTOTYPES 1
+#include <GL/glx.h>
+#include "invMath.h"
+#include "invGeom.h"
+#include "invTex.h"
+#include "invTalk.h"
+#include "invBase.h"
 
-// Créer un objet buffer /////
-#include <windows.h>
-#include <SDL/SDL.h>
-#include <GL/glew.h>
-#include <GL/wglew.h>
-#include "utils.h"
-#include "camera.h"
-#include "objloader.h"
-#include "text.h"
-#include "terrain.h"
-#include "ui.h"
-#include "console.h"
-#include "timer.h"
-#include "md2loader.h"
+int Game::width = 0, Game::height = 0;
+Text::INV_Font* font;
+GLuint terrainTex[1];
+OBJ::Model* tree;
+MD2::Model* drfreak;
+Vec3f pos_tree;
 
-enum
+void move(float ElapsedTime)
 {
-	CMD_NONE = 0,
-	CMD_UNKNOWN,
-	CMD_EXIT,
-	CMD_NEW_TERRAIN,
-	CMD_RELEASE_VERSION,
-	CMD_GET_POS,
-	CMD_GET_VIDEOMODE
-};
+	if(Game::pSelect && Input::mouseButton & SDL_BUTTON(1))
+	{
+		Game::pSelect->selected = true;
+		printf("grand mother selected\n");
+	}
 
-// Variables globales
-GCamera* cam = 0;
-GOBJModel *tonneau = 0;
-GConsole* cmd = 0;
-GTerrain* trn = 0;
+	if(Input::mouseButton & SDL_BUTTON(3))
+	{
+		Entity* select = Game::getSelected();
+		if(select)
+		{
+			GLdouble objx, objy, objz;
+			GLint viewport[4];
+			GLdouble modelview[16], projection[16];
+			GLfloat winX, winY, winZ;
+			glGetIntegerv(GL_VIEWPORT, viewport);
+			glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
+			glGetDoublev(GL_PROJECTION_MATRIX, projection);
 
-int anim_index = 0;
+			winX = (GLfloat)Input::mousex;
+			winY = (GLfloat)(Game::height - Input::mousey);
+			glReadPixels(winX, winY, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &winZ);
 
-GTimer* t = 0;
-GFont* f = 0;
+			gluUnProject(	winX, winY, winZ,
+							modelview, projection, viewport,
+							&objx, &objy, &objz);
 
-bool key_state[256] = {false};
+			Game::goTo(select, (float)objx, 0.f, (float)objz);
+		}
+	}
+}
 
-// Prototypes de fonctions
-inline void OnCreate();
-void OnRelease();
-inline void OnRender();
-inline void OnRender2D();
-inline void OnLoop();
-inline void OnProcessCommand();
+int main(int argc, const char *argv[])
+{
+	if(!Game::init(1024, 768, false)){
+		return EXIT_FAILURE;
+	}
 
-void OnCreate(){
-	// init Camera
-	cam = initCamera(freefly_camera, Vec3f(0.f, 40.f, 0.f));
-
-	// init Timer
-	t = initTimer();
 	srand(time(NULL));
 
-	// init Font
-	f = loadFont("Test.fnt");
-
-	// init console
-	cmd = initConsole();
-
-	GCommand* cmd_new = newLineCommand(0, "new", 0);
-	GCommand* cmd_release = newRowCommand(cmd_new, "release", 0);
-	GCommand* cmd_get = newRowCommand(cmd_new, "get", 0);
-	newRowCommand(cmd_new, "exit", CMD_EXIT);
-	newRowCommand(cmd_new, "quit", CMD_EXIT);
-	newLineCommand(cmd_new, "terrain", CMD_NEW_TERRAIN);
-	
-	newLineCommand(cmd_release, "version", CMD_RELEASE_VERSION);
-
-	GCommand* cmd_get_pos = newLineCommand(cmd_get, "pos", CMD_GET_POS);
-	newRowCommand(cmd_get_pos, "videomode", CMD_GET_VIDEOMODE);
-	setCommandTree(cmd, cmd_new);
-
-	// load models
-	tonneau = loadOBJ("tonneau.obj");
-	setTexture(tonneau, "wood.tga");
-
-	// textures
-	trn = initTerrain();
-
-	planeTerrain(trn, 100);
-	randomGen(trn, 15, 5, 100);
-	setTexture(trn, "grass.tga",0);
-	setTexture(trn, "concrete.tga", 1);
-	trn->cell = 1.f;
-	trn->tex_size = 0.125f;
-	fillBuffers(trn); 
-	
-	// init state
-	glEnable(GL_DEPTH_TEST);
-
-	// Enable V-Sync
-	wglSwapIntervalEXT(1);
-
-	// exit
-	atexit(OnRelease);
-
-}
-
-void OnRender(){
-
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	
-	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-
-	lookCamera(cam);
-
-	glScalef(5.f, 5.f, 5.f);
-	drawRepere();
-
-	glColor3f(1.f, 1.f, 1.f);
-
-	/*
-	glPushMatrix();
-	glTranslatef(3.f,1.f,0.f);
-	render(tonneau);
-	glTranslatef(2.6f,0.0f,2.7f);
-	render(tonneau);
-	glTranslatef(-3.f,0.f, 2.f);
-	render(tonneau);
-	glTranslatef(-4.f,0.5f,3.f);
-	glRotatef(90.f,1.f,0.f,0.f);
-	render(tonneau);
-	glPopMatrix();
-	*/
-	
-	render(trn);
-	
-	//---------------------------------
-	// Render 2D
-	//---------------------------------
-
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-
-	glLoadIdentity();
-	glOrtho(0,800,600,0,-1,5);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-
-	OnRender2D();
-	
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-
-	//---------------------------------
-	// End Render 2D
-	//---------------------------------
-
-	SDL_GL_SwapBuffers();
-}
-
-void OnRender2D()
-{
-	render(cmd, f);
-}
-
-void OnProcessCommand()
-{
-	int id = getCommand(cmd);
-
-	if(!id)
-		return;
-
-	// On efface la ligne qui a été entré
-	clearline_console(cmd);
-
-	switch(id)
-	{
-		case CMD_NEW_TERRAIN:
-			putline_console(cmd, "new terrain created");
-			break;
-		case CMD_RELEASE_VERSION:
-			putline_console(cmd, "v0.0.1 pre-pre-alpha (18.10.2011)");
-			break;
-		case CMD_GET_POS:
-			putline_console(cmd, "pos(%f, %f, %f)", cam->pos.x, cam->pos.y, cam->pos.z);
-			break;
-		case CMD_GET_VIDEOMODE:
-			putline_console(cmd, "video mode : 800x600x32");
-			break;
-		case CMD_EXIT:
-			putline_console(cmd, "exit program");
-			exit(0);
-		case CMD_UNKNOWN:
-			putline_console(cmd, "error : unknown command");
-			break;
-		default:
-			putline_console(cmd, "error : cannot retrieve command");
+	SDL_ShowCursor(SDL_DISABLE);
+	SDL_WM_GrabInput(SDL_GRAB_ON);
+	SDL_PumpEvents();
+	SDL_WarpMouse((Uint16)Game::width/2, (Uint16)Game::height/2);
+	if(!Text::init()){
+		return EXIT_FAILURE;
 	}
+	font = Text::genTextures(Text::loadFont("/usr/share/fonts/truetype/freefont/FreeMono.ttf", 16));
 
-	putline_console(cmd, "\n> ");
-	cmd->limx = cmd->posx;
-	cmd->limy = cmd->posy;
-	cmd->cmd_id = 0;
+	Game::setTitle("InvEditor v0.0.3");
+	Game::bind(Game::INPUT_FUNCTION, (void*)Input::getInput);
+	Game::bind(Game::STOP_WHEN_FUNCTION, (void*)Game::isPressed);
+	Game::bind(Game::MOTION_FUNCTION, (void*)move);
+	Game::bindInterface(Interface::init, Interface::render, Interface::input, font);
+	Game::bindCamera(Camera::lookFPS, Camera::mouseFPS);
+	Register::add("exit", "", Game::exit, NULL);
+	Register::add("camera", "s", Camera::switchCameraView, NULL);
 
-	show_hint(cmd);
-}
+	void (*swapInterval) (int);
+	swapInterval = (void (*)(int))glXGetProcAddress((const GLubyte*)"glXSwapIntervalSGI");
+	// (*swapInterval)(1);
 
-void OnLoop()
-{
-	float ElapsedTime = 0.f;
-	SDL_Event event;
+	Terrain::tex = Tex::convertFromSDLSurface(IMG_Load("grass.jpg"));
 
-	SDL_EnableKeyRepeat(150, 30);
-	SDL_EnableUNICODE(1);
-	start(t);
-	while(1)
-	{
-		while(SDL_PollEvent(&event))
-		{
-			switch(event.type)
-			{
-				case SDL_QUIT:
-					exit(0);
-				case SDL_KEYDOWN:
-					key_state[event.key.keysym.sym] = true;
-					if(cmd->show)
-					{
-						input_console(cmd, &event);
-					}
+	Terrain::init();
+	Terrain::data = Array2D::plane(5);
+	Terrain::width = Terrain::length = 5;
+	Terrain::size = 10.f;
 
-					switch(event.key.keysym.sym)
-					{
-						case SDLK_F1:
-							toggleConsole(cmd);
-							break;
-						case SDLK_F2:
-							glPolygonMode( GL_FRONT_AND_BACK, GL_FILL);
-							break;
-						case SDLK_F3:
-							glPolygonMode( GL_FRONT_AND_BACK, GL_LINE);
-							break;
-					}
-					break;
-				case SDL_KEYUP:
-					key_state[event.key.keysym.sym] = false;
-					break;
-				case SDL_MOUSEMOTION:
-					if(!cmd->show)
-					{
-						setCamera(cam,  event.motion.xrel, event.motion.yrel);
-					}
-					break;
-			} 
+	drfreak = MD2::load("drfreak.md2");
+	drfreak->tex = Tex::convertFromSDLSurface(IMG_Load("drfreak.tga"));
+	Entity* e = Game::addMesh((void*)drfreak, MD2::render, MD2::setAnimation, Vec3f(0.f, 1.3f, 0.f), Vec3f(0.05f, 0.05f, 0.05f), 0.f, 0.f, 90.f);
+	Game::mainLoop(); 
 
-		}
-
-		if(key_state[SDLK_ESCAPE])
-		{
-			exit(0);
-		}
-
-		ElapsedTime = (float)lap(t);
-		if(ElapsedTime >= (1000.f/FPS))
-		{
-			// changement input
-			if(!cmd->show)
-			{
-				setCamera(cam, key_state, ElapsedTime);
-			}
-			else
-				OnProcessCommand();
-			
-			start(t);
-			// Affichage
-			OnRender();
-
-		}
-	}
-}
-
-int main(int argc, char** argv){
-	
-
-	/* initialisation de la fenêtre */
-	SDL_Init(SDL_INIT_VIDEO);
-	SDL_WM_SetCaption("Terrain Generator", NULL);
-	SDL_SetVideoMode(800, 600, 32, SDL_OPENGL);
-
-	// Mettre en place la vue
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluPerspective(70.0, 800.0/600.0, 1.0, 1000000.0);
-
-	glewInit();
-	// Initialisation des GObjets
-	OnCreate();
-	
-	/* Initialisation d'OpenGL */
-	glClearColor(0.f,0.f,0.1f,0.f);
-	
-	/* On passe à une taille de 1 pixel */
-	glPointSize(1.0);
-	
-	/* entrée dans la boucle principale de glut */
-	OnLoop();
-
-	return EXIT_SUCCESS;
-}
-
-void OnRelease(){
-	releaseAll();
-
-	SDL_WM_GrabInput(SDL_GRAB_OFF);
-	SDL_ShowCursor(SDL_ENABLE);
-	SDL_Quit();
+	glDeleteTextures(1, &Terrain::tex);
+	GarbageCollector::release_all();
+	return 0;
 }

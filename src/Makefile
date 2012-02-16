@@ -1,27 +1,7 @@
-CC=g++
-CFLAGS=-W -Wall -ansi -pedantic
-LDFLAGS=-lSDL -lGL -lGLU
-EXEC=ex
-SRC=$(wildcard *.cpp) 
-OBJ= $(SRC:.cpp=.o)
+all: ex
 
-all: $(EXEC)
-
-ex: $(OBJ)
-	$(CC) -o $@ $^ $(LDFLAGS)
-
-bug: $(OBJ)
-	$(CC) -g -o $@ $^ $(LDFLAGS)
-
-main.o: main.cpp
-
-%.o: %.cpp %.h
-	$(CC) -o $@ -c $< $(CFLAGS)
-
-.PHONY: clean mrproper
+ex: invBase.cpp invBase.h main.cpp invTex.cpp invTex.h invTalk.cpp invTalk.h invMath.cpp invMath.h invGeom.h invGeom.cpp
+	g++ main.cpp invBase.cpp invGeom.cpp invTalk.cpp invTex.cpp invMath.cpp -o ex -lSDL -lSDLmain -lSDL_ttf -lSDL_image -lGL -lGLU
 
 clean:
-	rm *.o
-
-mrproper: clean
-	rm $(EXEC)
+	rm *.o ex
