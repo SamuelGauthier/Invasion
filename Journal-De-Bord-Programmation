@@ -90,3 +90,46 @@ JOURNAL DE BORD : Programmation
 ===========
 
 - J'ai codé une console version alpha.
+
+===========
+20.11.2011
+===========
+
+- La console est fonctionnelle
+
+===========
+05.01.2012
+===========
+
+- Grand trou car j'ai décidé de réécrire tout le code car ça devenait ingérable. Le code est maintenant est plus
+  "modulaire". En gros, il y a cinq modules:
+
+      - Base : le fourre-tout mais le plus important. C'est le module qui s'occupe d'intéragir avec le gestionnaire de
+               fenêtre et la libraire graphique ( OpenGL dans le cas présent ).
+      - Geom : Tout ce qui est relatif au chargement des modèles 3d et leur manipulation
+      - Math : Boîtes à outils de fonctions mathématiques. Pour l'instant vecteurs, quaternions et orientation de la 
+               caméra.
+      - Talk : Module qui s'occupe de l'interaction entre l'utilisateur et l'éditeur invEditor et également des données
+               envoyés par les différents périphériques ( souris, clavier ).
+      - Tex  : Pour l'instant ce module fournit quelques fonctions pour le chargement et la manipulation des textures. Il
+               offre également les fonctions pour afficher du texte.
+  C'était dur mais ça valait la peine. La programmation est beaucoup plus efficace quand le code est organisé logiquement.
+
+===========
+20.01.2012
+===========
+
+- Programmation d'un petit test pour afficher des ombres grâce à la méthode du static lightmapping mais c'est horrible.
+  Les ombres ressemblent à des gros pixels. Pour l'instant on va se contenter sans les ombres
+
+===========
+28.01.2012
+===========
+
+- Mis en place d'un système de picking grâce au color matching
+
+===========
+16.02.2012
+===========
+
+- Maitenant on peut contrôler les personnages grâce à la souris.
