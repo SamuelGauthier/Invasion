@@ -380,7 +380,7 @@ float** Array2D::random(const int length, const int max, const int min)
 			array[i][j] = (float)((rand()%max) + min);
 	}
 
-	linear_interpolation(array, length, 5);
+	linear_interpolation(array, length, 3);
 
 	return array;
 }

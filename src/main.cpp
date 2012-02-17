@@ -13,7 +13,7 @@
 int Game::width = 0, Game::height = 0;
 Text::INV_Font* font;
 GLuint terrainTex[1];
-OBJ::Model* tree;
+IMF::Model* house;
 MD2::Model* drfreak;
 Vec3f pos_tree;
 
@@ -28,7 +28,7 @@ void move(float ElapsedTime)
 	if(Input::mouseButton & SDL_BUTTON(3))
 	{
 		Entity* select = Game::getSelected();
-		if(select)
+		if(select && select->type & Entity::mobile)
 		{
 			GLdouble objx, objy, objz;
 			GLint viewport[4];
@@ -56,6 +56,12 @@ int main(int argc, const char *argv[])
 	if(!Game::init(1024, 768, false)){
 		return EXIT_FAILURE;
 	}
+	
+	GLfloat ambientColor[] = {0.5f, 0.5f, 0.5f};
+	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientColor);
+	glEnable(GL_LIGHT0);
+	glEnable(GL_SMOOTH);
+	glEnable(GL_LIGHTING);
 
 	srand(time(NULL));
 
@@ -81,18 +87,19 @@ int main(int argc, const char *argv[])
 	swapInterval = (void (*)(int))glXGetProcAddress((const GLubyte*)"glXSwapIntervalSGI");
 	// (*swapInterval)(1);
 
-	Terrain::tex = Tex::convertFromSDLSurface(IMG_Load("grass.jpg"));
+	Terrain::tex = Tex::convertFromSDLSurface(IMG_Load("paves.jpg"));
 
 	Terrain::init();
-	Terrain::data = Array2D::plane(5);
-	Terrain::width = Terrain::length = 5;
+	Terrain::data = Array2D::plane(2);
+	Terrain::width = Terrain::length = 2;
 	Terrain::size = 10.f;
 
+	house = IMF::load("../3DModels/Objs/maison_age1.imf");
 	drfreak = MD2::load("drfreak.md2");
 	drfreak->tex = Tex::convertFromSDLSurface(IMG_Load("drfreak.tga"));
-	Entity* e = Game::addMesh((void*)drfreak, MD2::render, MD2::setAnimation, Vec3f(0.f, 1.3f, 0.f), Vec3f(0.05f, 0.05f, 0.05f), 0.f, 0.f, 90.f);
+	Game::addMesh((void*)house, IMF::render, NULL, Entity::transparent_textures, Vec3f(0.f, 0.1f, 0.f), Vec3f(1.f, 1.f, 1.f), 0.f, 0.f, 0.f);
+	house->tex = Tex::convertFromSDLSurface(IMG_Load("../Textures/maison_age1.png"));
 	Game::mainLoop(); 
-
 	glDeleteTextures(1, &Terrain::tex);
 	GarbageCollector::release_all();
 	return 0;

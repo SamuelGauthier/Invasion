@@ -54,6 +54,13 @@ struct Entity
 		walking,
 	};
 
+	enum ENTITY_TYPE
+	{
+		animation = (1<<0),
+		mobile = (1<<1),
+		transparent_textures = (1<<2)
+	};
+
 	void* mesh;
 	void (*render_function)(void*, float);
 	void (*set_animation)(void*, int);
@@ -65,6 +72,7 @@ struct Entity
 	bool selected;
 	bool oriented;
 	int state;
+	int type;
 
 	Entity* pNext;
 };
@@ -160,7 +168,7 @@ namespace Game
 
 	void bindInterface(init_function it, write_function wt, input_function ip, Text::INV_Font* font);
 	void bindCamera(void_function lookCam, tick_function inputCam);
-	Entity* addMesh(void* mesh, void (*render_function)(void*, float), void (*set_animation)(void*, int), Vec3f trans, Vec3f scale, float angleX, float angleY, float angleZ);
+	Entity* addMesh(void* mesh, void (*render_function)(void*, float), void (*set_animation)(void*, int), int type, Vec3f trans, Vec3f scale, float angleX, float angleY, float angleZ);
 	void goTo(Entity* e, float x, float y, float z);
 	Entity* getSelected();
 } /* Game */

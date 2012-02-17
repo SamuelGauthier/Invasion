@@ -22,25 +22,24 @@ namespace Terrain
 	void destroy(void*);
 } /* Terrain */
 
-namespace OBJ
+namespace IMF
 {
+	struct Triangle
+	{
+		Vec3f v[3];
+		Vec3f n[3];
+		Vec2f t[3];
+	};
+
 	struct Model
 	{
-		Vec3f* vertices;
-		Vec3f* normals;
-		Vec2f* texcoords;
-		float* data;
-
-		int numVerts, numNorms, numTexCoords, numIndices;
-		GLuint texs[8];
-		int group[8];
-		int numTex;
-
-		Box* boundingBox;
+		unsigned int numTri;
+		Triangle* t;
+		GLuint tex;
 	};
 	
 	Model* load(const char* filename);
-	void render(Model* m);
+	void render(void* m, float);
 	void deinit(void* tmp);
 } /* OBJ */
 

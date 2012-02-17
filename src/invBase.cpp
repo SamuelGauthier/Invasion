@@ -56,7 +56,13 @@ void Game::mainLoop()
 				(*inputCamera)(ElapsedTime);
 			(*lookCamera)();
 			glPushMatrix();
-			
+
+			static GLfloat lightcolor[] = {0.8f, 0.5f, 0.f};
+			static GLfloat lightpos[] = {10.f, 10.f, -1.f};
+			glLightfv(GL_LIGHT0, GL_DIFFUSE, lightcolor);
+			glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
+
+
 			glEnable(GL_TEXTURE_2D);
 			glBindTexture(GL_TEXTURE_2D, Terrain::tex);
 			Terrain::render();
@@ -71,54 +77,68 @@ void Game::mainLoop()
 			while(pCopy)
 			{
 				// déplacer l'entité TODO améliorer le processus de déplacement
-				float deltaX = pCopy->dest.x - pCopy->trans.x;
-				float deltaZ = -(pCopy->dest.z - pCopy->trans.z);
-				float length = sqrtf(deltaX * deltaX + deltaZ * deltaZ);
-				if(pCopy->state == Entity::walking && !deltaX && !deltaZ)
+				if(pCopy->type & Entity::mobile)
 				{
-					(*pCopy->set_animation)(pCopy->mesh, 0);
-					pCopy->state = Entity::stand;
-				}
-
-				if(pCopy->state == Entity::walking)
-				{
-					if(!pCopy->oriented)
+					float deltaX = pCopy->dest.x - pCopy->trans.x;
+					float deltaZ = -(pCopy->dest.z - pCopy->trans.z);
+					float length = sqrtf(deltaX * deltaX + deltaZ * deltaZ);
+					if(pCopy->state == Entity::walking && !deltaX && !deltaZ)
 					{
-						float angle = acosf(deltaX / length) * 180/F_PI;
-						if(deltaZ < 0.f)
-							angle=-angle;
-						pCopy->rot.eulerAngle(pCopy->angleX, -angle, pCopy->angleZ);
-						pCopy->oriented = true;
+						(*pCopy->set_animation)(pCopy->mesh, 0);
+						pCopy->state = Entity::stand;
 					}
 
-					else
+					if(pCopy->state == Entity::walking)
 					{
-						float forwardX = deltaX/length * 0.05f;	
-						float forwardZ = deltaZ/length * 0.05f;	
-						if(length >= 0.05f)
+						if(!pCopy->oriented)
 						{
-							pCopy->trans.x += forwardX;
-							pCopy->trans.z -= forwardZ;
+							float angle = acosf(deltaX / length) * 180/F_PI;
+							if(deltaZ < 0.f)
+								angle=-angle;
+							pCopy->rot.eulerAngle(pCopy->angleX, -angle, pCopy->angleZ);
+							pCopy->oriented = true;
 						}
+
 						else
 						{
-							pCopy->trans.x = pCopy->dest.x;
-							pCopy->trans.z = pCopy->dest.z;
+							float forwardX = deltaX/length * 0.05f;	
+							float forwardZ = deltaZ/length * 0.05f;	
+							if(length >= 0.05f)
+							{
+								pCopy->trans.x += forwardX;
+								pCopy->trans.z -= forwardZ;
+							}
+							else
+							{
+								pCopy->trans.x = pCopy->dest.x;
+								pCopy->trans.z = pCopy->dest.z;
+							}
 						}
 					}
 				}
 
+			
 				pCopy->rot.getMatrix(m);
 
 				glPushMatrix();
 				glTranslatef(pCopy->trans.x, pCopy->trans.y, pCopy->trans.z);
 				glMultMatrixf(m);
 				glScalef(pCopy->scale.x, pCopy->scale.y, pCopy->scale.z);
+				if(pCopy->type & Entity::transparent_textures)
+				{
+					glEnable(GL_BLEND);
+					glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+				}
+
 				(*pCopy->render_function)(pCopy->mesh, ElapsedTime);
+
+				if(pCopy->type & Entity::transparent_textures)
+					glDisable(GL_BLEND);
 				glPopMatrix();
 
 				pCopy = pCopy->pNext;
 			}
+
 			//---------- 2D Rendering -------------- 
 			glMatrixMode(GL_PROJECTION);
 			glPushMatrix();
@@ -201,7 +221,7 @@ void Game::bindCamera(void_function lookCam, tick_function inputCam)
 	inputCamera = inputCam;
 }
 
-Entity* Game::addMesh(void* mesh, void (*render_function)(void*, float), void (*set_animation)(void*, int), Vec3f trans, Vec3f scale, float angleX, float angleY, float angleZ)
+Entity* Game::addMesh(void* mesh, void (*render_function)(void*, float), void (*set_animation)(void*, int), int type, Vec3f trans, Vec3f scale, float angleX, float angleY, float angleZ)
 {
 	Entity* e = new Entity;
 	e->mesh = mesh;
@@ -218,6 +238,7 @@ Entity* Game::addMesh(void* mesh, void (*render_function)(void*, float), void (*
 	e->selected = false;
 	e->oriented = true;
 	e->state = Entity::stand;
+	e->type = type;
 
 	e->pNext = pEntityList;
 	pEntityList = e;

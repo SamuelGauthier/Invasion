@@ -67,10 +67,10 @@ void Terrain::render()
 		
 		for(int j=0;j<length;j++)
 		{
-			glMultiTexCoord2fARB(GL_TEXTURE0_ARB, (float)i/2.f, (float)j/2.f);
+			glMultiTexCoord2fARB(GL_TEXTURE0_ARB, (float)i/0.2f, (float)j/0.2f);
 			glMultiTexCoord2fARB(GL_TEXTURE1_ARB, (float)i/(float)(width-1), (float)j/(float)(length-1));
 			glVertex3f(x, data[i][j], z);
-			glMultiTexCoord2fARB(GL_TEXTURE0_ARB, (float)(i+1)/2.f, (float)j/2.f);
+			glMultiTexCoord2fARB(GL_TEXTURE0_ARB, (float)(i+1)/0.2f, (float)j/0.2f);
 			glMultiTexCoord2fARB(GL_TEXTURE1_ARB, (float)(i+1)/(float)(width-1), (float)j/(float)(length-1));
 			glVertex3f(x + size, data[i+1][j], z);
 
@@ -83,191 +83,47 @@ void Terrain::render()
 }
 
 //------------------------------------------------
-// OBJ
+// IMF
 //------------------------------------------------
-OBJ::Model* OBJ::load(const char* filename)
+IMF::Model* IMF::load(const char* filename)
 {
 	Model* m = new Model;
-	FILE* input = fopen(filename, "r");
-	if(!input){
-		printf("ERROR: could not find %s\n", filename);
-		return NULL;
-	}
-	
-	// First pass
-	char line[64];
-	char* ptr;
-	m->numVerts = m->numNorms = m->numTexCoords = m->numIndices = 0;
-	m->numTex = 0;
-	while(fgets(line, 64, input))
-	{
-		if(line[0] == 'v' && line[1] == ' ')
-			m->numVerts++;
-		else if(line[0] == 'v' && line[1] == 't')
-			m->numTexCoords++;
-		else if(line[0] == 'v' && line[1] == 'n')
-			m->numNorms++;
-		else if(line[0] == 'f')
-			m->numIndices+=3;
-		else if(line[0] == 'm')
-		{
-			char buffer[64];
-			sscanf(line, "mtllib %s", buffer);
-			FILE* material = fopen(buffer, "r");
-			if(!material)
-				return NULL;
-			while(fgets(line, 64, material))
-			{
-				if(line[0] == 'm')
-				{
-					sscanf(line, "map_Kd %s", buffer);
-					SDL_Surface* img = IMG_Load(buffer);
-					m->texs[m->numTex]= Tex::convertFromSDLSurface(img);
-					SDL_FreeSurface(img);
-					m->numTex++;
-				}
-			}
-			fclose(material);
-		}
-	}
-	
-	// Second pass
-	m->vertices = new Vec3f[m->numVerts];
-	m->normals = new Vec3f[m->numNorms];
-	m->texcoords = new Vec2f[m->numTexCoords];
-
-	rewind(input);
-	
-	int iVerts = 0, iNorms = 0, iTexCoords = 0, iIndices = 0, iGroups = 0;
-	float x,y,z;
-	const int size = m->numIndices * ( 3 + 3 + 2 );
-	float* data = new float[size];
-	while(fgets(line, 64, input))
-	{
-		if(line[0] == 'v' && line[1] == ' ')
-		{
-			sscanf(line, "v %f %f %f", &x, &y, &z);
-			m->vertices[iVerts].x = x; m->vertices[iVerts].y = y; m->vertices[iVerts].z = z;
-			iVerts++;
-		}
-		
-		else if(line[0] == 'v' && line[1] == 'n')
-		{
-			sscanf(line, "vn %f %f %f", &x, &y, &z);
-			m->normals[iNorms].x = x; m->normals[iNorms].y = y; m->normals[iNorms].z = z;
-			iNorms++;
-		}
-		
-		else if(line[0] == 'v' && line[1] == 't')
-		{
-			sscanf(line, "vt %f %f", &x, &y);
-			m->texcoords[iTexCoords].x = x; m->texcoords[iTexCoords].y = y;
-			iTexCoords++;
-		}
-
-		else if(line[0] == 'f')
-		{
-			static int a[9];
-			sscanf(line, "f %d/%d/%d %d/%d/%d %d/%d/%d", &a[0], &a[1], &a[2], &a[3], &a[4], &a[5], &a[6], &a[7], &a[8]); 
-			for(int i=0;i<3;i++)
-			{
-				data[iIndices] = m->vertices[a[3*i]-1].x;data[iIndices+1] = m->vertices[a[3*i]-1].y;data[iIndices+2] = m->vertices[a[3*i]-1].z;
-				data[iIndices+3] = m->texcoords[a[3*i+1]-1].x; data[iIndices+4] = m->texcoords[a[3*i+1]-1].y;
-				data[iIndices+5] = m->normals[a[3*i+2]-1].x;data[iIndices+6] = m->normals[a[3*i+2]-1].y;data[iIndices+7] = m->normals[a[3*i+2]-1].z;
-				iIndices+=8;
-			}
-		}
-
-		else if(line[0] == 'u')
-		{
-			if(!iGroups)
-				m->group[0] = iIndices/24;
-			else
-				m->group[iGroups] = iIndices/24;
-			iGroups++;
-		}
-	}
-	fclose(input);
-	m->group[iGroups] = iIndices/24;
-
-	m->data = data;
-	delete[] m->vertices;
-	delete[] m->normals;
-	delete[] m->texcoords;
-
-	m->boundingBox = new Box;
-	m->boundingBox->x = 3.f; m->boundingBox->y = 18.f; m->boundingBox->z = 3.f;
-
+	FILE* f = fopen(filename, "rb");
+	assert(f);
+	fread((void*)&m->numTri, 4, 1, f);
+	m->t = new Triangle[m->numTri];
+	fread((void*)&m->t[0], sizeof(Triangle), m->numTri, f);
+	fclose(f);
 	GarbageCollector::add(deinit, (void*)m);
 	return m;
 }
 
-void OBJ::render(Model* m)
-{
-	for(int i=1;i>=0;i--)
-	{
-		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, m->texs[i]);
-		if(i == 0)
-		{
-			glEnable(GL_BLEND);
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		}
-		
-		for(int j=m->group[i];j<m->group[i+1];j++)
-		{
-			glBegin(GL_TRIANGLES);
-
-			glTexCoord2fv(m->data + 3 + 3 * j * 8);
-			glVertex3fv(m->data + 3 * j * 8);
-
-			glTexCoord2fv(m->data + 3 + 3 * j * 8 + 8);
-			glVertex3fv(m->data + 3 * j * 8 + 8);
-
-			glTexCoord2fv(m->data + 3 + 3 * j * 8 + 16);
-			glVertex3fv(m->data + 3 * j * 8 + 16);
-
-			glEnd();
-		}
-
-		if(!i)
-		{
-			glDisable(GL_BLEND);
-		}
-
-		glDisable(GL_TEXTURE_2D);
-
-		/*
-		glEnableClientState(GL_VERTEX_ARRAY);
-		glVertexPointer(3, GL_FLOAT, 32, (GLvoid*)(m->data));
-		
-		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, m->texs[i]);
-		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-		glTexCoordPointer(3, GL_FLOAT, 32, (GLvoid*)(m->data + 3));
-
-		glEnableClientState(GL_NORMAL_ARRAY);
-		glNormalPointer(GL_FLOAT, 32, (GLvoid*)(m->data + 5));
-
-		glDrawArrays(GL_TRIANGLES, m->group[i], m->group[i+1]);
-
-		glDisableClientState(GL_VERTEX_ARRAY);
-		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-		glDisable(GL_TEXTURE_2D);
-		glDisableClientState(GL_NORMAL_ARRAY);
-		*/
-	}
-}
-
-void OBJ::deinit(void* tmp)
+void IMF::render(void* tmp, float)
 {
 	Model* m = (Model*)tmp;
-	glDeleteTextures(m->numTex, m->texs);
-	delete[] m->data;
-	delete[] m->boundingBox;
-	delete m;
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, m->tex);
+	glBegin(GL_TRIANGLES);
+	for(int i=0;i<m->numTri;i++)
+	{
+		for(int j=0;j<3;j++)
+		{
+			glTexCoord2f(m->t[i].t[j].x, 1.f - m->t[i].t[j].y);
+			glNormal3f(m->t[i].n[j].x, m->t[i].n[j].y, m->t[i].n[j].z);
+			glVertex3f(m->t[i].v[j].x, m->t[i].v[j].y, m->t[i].v[j].z);
+		}
+	}
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
 }
 
+void IMF::deinit(void* tmp)
+{
+	Model* m = (Model*)tmp;
+
+	delete[] m->t;
+	delete m;
+}
 //------------------------------------------------
 // MD2
 //------------------------------------------------
