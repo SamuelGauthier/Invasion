@@ -12,6 +12,7 @@ int Terrain::width = 0, Terrain::length = 0;
 float Terrain::size = 1.f;
 float** Terrain::data = NULL;
 GLuint Terrain::tex = 0;
+float Terrain::tex_size = 0.f;
 
 void Terrain::init()
 {
@@ -58,7 +59,7 @@ GLuint Terrain::generateLightmap()
 
 void Terrain::render()
 {
-	glColor3f(1.f, 1.f, 1.f);
+	glColor3f(1.0f, 1.0f, 1.0f);
 	float x = (-(float)(Terrain::width-1)/2.f)*size;
 	for(int i=0;i<width-1;i++)
 	{
@@ -67,10 +68,10 @@ void Terrain::render()
 		
 		for(int j=0;j<length;j++)
 		{
-			glMultiTexCoord2fARB(GL_TEXTURE0_ARB, (float)i/0.2f, (float)j/0.2f);
+			glMultiTexCoord2fARB(GL_TEXTURE0_ARB, (float)i*Terrain::tex_size, (float)j*Terrain::tex_size);
 			glMultiTexCoord2fARB(GL_TEXTURE1_ARB, (float)i/(float)(width-1), (float)j/(float)(length-1));
 			glVertex3f(x, data[i][j], z);
-			glMultiTexCoord2fARB(GL_TEXTURE0_ARB, (float)(i+1)/0.2f, (float)j/0.2f);
+			glMultiTexCoord2fARB(GL_TEXTURE0_ARB, (float)(i+1)*Terrain::tex_size, (float)j*Terrain::tex_size);
 			glMultiTexCoord2fARB(GL_TEXTURE1_ARB, (float)(i+1)/(float)(width-1), (float)j/(float)(length-1));
 			glVertex3f(x + size, data[i+1][j], z);
 
@@ -89,7 +90,8 @@ IMF::Model* IMF::load(const char* filename)
 {
 	Model* m = new Model;
 	FILE* f = fopen(filename, "rb");
-	assert(f);
+	if(!f)
+		return NULL;
 	fread((void*)&m->numTri, 4, 1, f);
 	m->t = new Triangle[m->numTri];
 	fread((void*)&m->t[0], sizeof(Triangle), m->numTri, f);
@@ -101,8 +103,12 @@ IMF::Model* IMF::load(const char* filename)
 void IMF::render(void* tmp, float)
 {
 	Model* m = (Model*)tmp;
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, m->tex);
+	if(Game::texture)
+	{
+		glEnable(GL_LIGHTING);
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, m->tex);
+	}
 	glBegin(GL_TRIANGLES);
 	for(int i=0;i<m->numTri;i++)
 	{
@@ -114,7 +120,11 @@ void IMF::render(void* tmp, float)
 		}
 	}
 	glEnd();
-	glDisable(GL_TEXTURE_2D);
+	if(Game::texture)
+	{
+		glDisable(GL_TEXTURE_2D);
+		glDisable(GL_LIGHTING);
+	}
 }
 
 void IMF::deinit(void* tmp)

@@ -2,7 +2,8 @@
 #define INVTALK_H
 #define CONSOLE_H
 #define CONSOLE_H
-#define CONSOLE_X 30
+#define CONSOLE_COMMAND_X 80
+#define CONSOLE_X 40
 #define CONSOLE_Y 10
 #define TEXT_SIZE 24
 #define TEXT_DELAY 300
@@ -54,7 +55,7 @@ namespace Interface
 		int curx, cury;
 		int posx, posy;
 		int cursorx;
-		char buffer[CONSOLE_X*CONSOLE_Y];
+		char buffer[CONSOLE_X*(CONSOLE_Y-1) + CONSOLE_COMMAND_X];
 
 		int color[CONSOLE_Y];
 		int delay;
@@ -76,6 +77,57 @@ namespace Interface
 } /* Interface */
 
 //------------------------------------------------
+// GUI
+//------------------------------------------------
+namespace GUI 
+{
+	typedef void (*event_function)(void);
+	enum CONTROL_TYPE
+	{
+		WINDOW = 0,
+		BUTTON,
+		PANEL,
+		LIST,
+		TEXTBOX,
+		LABEL,
+	};
+
+	struct Control
+	{
+		char* text;
+		int value;
+		bool clickable;
+		int x,y;
+		int w,h;
+		int type;
+		
+		event_function onclick;
+		Control* pChild[16];
+		int numChild;
+	};
+
+	extern Control* window;
+	extern bool focusedGUI;
+	static Control* selected = NULL;
+
+	void init();
+	Control* newControl(Control* parent, int x, int y, int w, int h);
+	Control* addButton(Control* parent, const char* text, int x, int y, event_function onclick, int w = 80, int h = 20);
+	Control* addPanel(Control* parent, int x, int y, int w, int h);
+	Control* addList(Control* parent, char* list, int x, int y, int w = 80, int h = 20);
+	Control* addTextBox(Control* parent, const char* text, int x, int y, int w = 120, int h = 20);
+	Control* addLabel(Control* parent, const char* text, int x, int y, int w = 80, int h = 20);
+	void render(Control* c, Text::INV_Font* font, int level);
+	void interact(Control* c);
+	void parentTo(Control* parent, Control* child);
+	void unparentOf(Control* parent, Control* child);
+	bool focused(Control* c);
+	char* selectedList(Control* list, char** newline);
+	void removeList(Control* list, char* name);
+
+	void deinit(void*);
+} /* GUI */
+//------------------------------------------------
 // Input
 //------------------------------------------------
 namespace Input 
@@ -86,6 +138,7 @@ namespace Input
 	extern Uint16 keychar;
 	extern bool quit;
 	extern int mousex, mousey;
+	extern Uint8 mouseButtonStates;
 	void getInput();
 } /* Input */
 #endif

@@ -16,31 +16,27 @@ namespace GarbageCollector
 		void* arg;
 		GCEntry* pNext;
 	};
-	static GCEntry* pHead = NULL;
+	extern GCEntry* pHead;
 	
 	void init();
 	void add(release_function func, void* arg);
-	inline void release_all()
-	{
-		GCEntry* tmp;
-		while(pHead)
-		{
-			tmp = pHead;
-			pHead = pHead->pNext;
-			
-			(*tmp->func)(tmp->arg);
-			delete tmp;
-		}
-	}
+	void release_all();
 } /* GarbageCollector */
 
 //------------------------------------------------
-// Property
+// Instance
 //------------------------------------------------
-struct Property
+struct Instance
 {
-	Vec3f* pos;
-	Property* pNext;
+	Vec3f pos;
+	Qua4f rot;
+	Vec3f dir;
+	Vec3f dest;
+	Uint8 id;
+	int state;
+	bool oriented;
+
+	Instance* pNext;
 };
 
 //------------------------------------------------
@@ -58,33 +54,29 @@ struct Entity
 	{
 		animation = (1<<0),
 		mobile = (1<<1),
-		transparent_textures = (1<<2)
+		transparent_textures = (1<<2),
+		complete_transparent = (1<<3)
 	};
 
 	void* mesh;
 	void (*render_function)(void*, float);
 	void (*set_animation)(void*, int);
-	Vec3f trans, scale, dest;
+	Vec3f trans, scale;
 	Qua4f rot;
-	float angleX, angleY, angleZ;
-	Property* pProList;
-	Uint8 id;
-	bool selected;
-	bool oriented;
-	int state;
+	Vec3f dir;
+	Instance* pProList;
 	int type;
 
 	Entity* pNext;
 };
 
 //------------------------------------------------
-// Scenery
+// Picking
 //------------------------------------------------
-namespace Scenery 
+namespace Picking
 {
-	static float angle = 0.f;
-	void drawCube(float x, float y, float z);
-} /* Scenery */
+	void point(Entity* list, Entity* e, Instance* i);
+};
 
 //------------------------------------------------
 // Game
@@ -102,26 +94,11 @@ namespace Game
 	extern int width;
 	extern int height;
 	extern int fps;
-	extern Entity* pSelect;
-	static Entity* pEntityList = NULL;
+	extern Entity* pESelect;
+	extern Instance* pISelect;
+	extern Entity* pEntityList;
 	static Text::INV_Font* fontInter = NULL;
-	static Uint8 id_head = 1;
-
-	typedef bool (*event_function)();
-	static event_function stopwhen;
-	typedef void (*tick_function)(float timeElapsed);
-	static tick_function tick;
-	typedef void (*input_function)(void);
-	static input_function input;
-	typedef void (*init_function)(void);
-	static init_function initInter = 0;
-	typedef void (*write_function)(Text::INV_Font*);
-	static write_function renderInter;
-	static input_function inputInter;
-	typedef void (*void_function)(void);
-	static void_function lookCamera;
-	static tick_function inputCamera;
-	static tick_function motion;
+	static Uint8 id_head = 100;
 
 	inline bool init(int w=640, int h=480, bool fullscreen = false, int frame_per_second = 60, int bpp=32)
 	{
@@ -146,10 +123,10 @@ namespace Game
 		height = h;
 		fps = frame_per_second;
 	
-		glClearColor(0.f, 0.f, 0.0f, 1.f);
+		glClearColor(0.15f, 0.15f, 0.15f, 1.f);
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(45.0, (GLdouble)width/(GLdouble)height, 1.0, 100000.0);
+		gluPerspective(75.0, (GLdouble)width/(GLdouble)height, 0.1, 100000.0);
 		glEnable(GL_DEPTH_TEST);
 
 		return true;
@@ -168,9 +145,31 @@ namespace Game
 
 	void bindInterface(init_function it, write_function wt, input_function ip, Text::INV_Font* font);
 	void bindCamera(void_function lookCam, tick_function inputCam);
-	Entity* addMesh(void* mesh, void (*render_function)(void*, float), void (*set_animation)(void*, int), int type, Vec3f trans, Vec3f scale, float angleX, float angleY, float angleZ);
-	void goTo(Entity* e, float x, float y, float z);
-	Entity* getSelected();
+	Entity* addMesh(void* mesh, void (*render_function)(void*, float), void (*set_animation)(void*, int), int type, Vec3f trans, Vec3f scale, Vec3f dir);
+	void goTo(Instance* i, float x, float y, float z);
+	void createInstance(Entity* e, Vec3f pos, Vec3f dir);
+	void new_entity(char* arg[], void*);
 } /* Game */
+
+//------------------------------------------------
+// Model Manager
+//------------------------------------------------
+namespace ModelManager 
+{
+	struct ModelProp 
+	{
+		char name[16];
+		ModelProp* pNext;
+	}; /* ModelProp */
+	
+	extern ModelProp* pModelList;
+	void load();
+	void write(FILE* base, ModelProp* mp);
+	char* getList();
+	ModelProp* read(FILE* base);
+	void unload(void*);
+	ModelProp* search(char* name);
+	void remove(char* name);
+} /* ModelManager */
 
 #endif

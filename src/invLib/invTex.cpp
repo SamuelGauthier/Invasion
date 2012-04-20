@@ -43,7 +43,6 @@ GLuint Tex::convertFromSDLSurface(SDL_Surface* surf)
 
 	glDisable(GL_TEXTURE_2D);
 	return tex;
-
 }
 
 //------------------------------------------------

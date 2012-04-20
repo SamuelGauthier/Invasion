@@ -245,7 +245,7 @@ void Qua4f::getMatrix(float* m)
 //------------------------------------------------
 // Camera
 //------------------------------------------------
-Vec3f Camera::pos = Vec3f(0.f, 0.f, 0.f), Camera::dir = Vec3f(0.f, 0.f, 0.f);
+Vec3f Camera::pos = Vec3f(0.f, 4.f, 5.f), Camera::dir = Vec3f(0.0f, 1.f, 0.f);
 float Camera::updown = 0.f, Camera::leftright;
 
 void Camera::lookFPS()
@@ -290,7 +290,7 @@ void Camera::mouseFPS(float ElapsedTime)
 
 void Camera::lookRTS()
 {
-	gluLookAt(	pos.x, pos.y, pos.z + 5.f,
+	gluLookAt(	pos.x, pos.y, pos.z + 3.f,
     			pos.x, 0.f, pos.z,
     			0.f, 1.f, 0.f);
 
@@ -308,6 +308,25 @@ void Camera::mouseRTS(float ElapsedTime)
 		pos.z += ElapsedTime * 0.01f;
 }
 
+void Camera::lookFixed()
+{
+	gluLookAt( pos.x + 1.f, pos.y, pos.z,
+			   dir.x + 1.f, dir.y, dir.z,
+			   0.f, 1.f, 0.f);
+}
+
+void Camera::mouseFixed(float ElapsedTime)
+{
+	if(Input::key['w'])
+		pos.y += 0.01f * ElapsedTime;
+	if(Input::key['s'])
+		pos.y -= 0.01f * ElapsedTime;
+	if(Input::key['a'])
+		Game::pEntityList->pProList->dir.x -= 2.f;
+	if(Input::key['d'])
+		Game::pEntityList->pProList->dir.x += 2.f;
+}
+
 void Camera::switchCameraView(char* args[], void* data) /* FIXME args const */
 {
 	if(!strcasecmp(args[0], "fps"))
@@ -322,8 +341,7 @@ void Camera::switchCameraView(char* args[], void* data) /* FIXME args const */
 
 	else if(!strcasecmp(args[0], "rts"))
 	{
-		pos = Vec3f(0.f, 10.f, 0.f);
-		dir = Vec3f(0.f, -sqrtf(1/3.f) * 2.f, -sqrtf(1/3.f));
+		pos = Vec3f(0.f, 5.f, 0.f);
 
 		SDL_ShowCursor(SDL_ENABLE);
 		SDL_WarpMouse((Uint16)Game::width/2, (Uint16)Game::height/2);

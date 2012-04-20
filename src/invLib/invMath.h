@@ -73,6 +73,8 @@ namespace Camera
 	void mouseFPS(float ElapsedTime);
 	void lookRTS();
 	void mouseRTS(float ElapsedTime);
+	void lookFixed();
+	void mouseFixed(float);
 	void switchCameraView(char* args[], void* data);
 } /* Camera */
 

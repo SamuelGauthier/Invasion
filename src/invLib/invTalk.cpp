@@ -208,7 +208,7 @@ void Interface::putChar(char c, const bool command)
 
 	if(command)
 	{
-		if(cons->cursorx < CONSOLE_X-1)
+		if(cons->cursorx < CONSOLE_COMMAND_X-2)
 		{
 			buffer[cons->cursorx + CONSOLE_X * (CONSOLE_Y-1)] = c;
 			cons->cursorx++;
@@ -240,7 +240,6 @@ void Interface::print(const char* str)
 	while(*str)
 		putChar(*str++, false);
 	putChar('\n', false);
-
 }
 
 void Interface::clear(char**, void* data)
@@ -277,7 +276,7 @@ void Interface::scrollUp()
 
 void Interface::newCommand()
 {
-	for(int i=0;i<CONSOLE_X;i++)
+	for(int i=0;i<CONSOLE_COMMAND_X;i++)
 		cons->buffer[CONSOLE_X * (CONSOLE_Y-1) + i] ='\0';
 
 	cons->buffer[CONSOLE_X * (CONSOLE_Y-1)] = '$';
@@ -287,8 +286,7 @@ void Interface::newCommand()
 
 void Interface::render(Text::INV_Font* font)
 {
-	int x=0, y=730;
-
+	int x = 0, y = Game::height - 20;
 	if(cons->cury)
 	{
 		if(!cons->delay)
@@ -308,8 +306,8 @@ void Interface::render(Text::INV_Font* font)
 		glColor4f(1.f,1.f,1.f,0.3f);
 		glBegin(GL_QUADS);
 		glVertex3i(x, y, -1);
-		glVertex3i(x + CONSOLE_X * 15,  y, -1);
-		glVertex3i(x + CONSOLE_X * 15, y + font->h, -1);
+		glVertex3i(x + CONSOLE_COMMAND_X * font->w,  y, -1);
+		glVertex3i(x + CONSOLE_COMMAND_X * font->w, y + font->h, -1);
 		glVertex3i(x, y + font->h, -1);
 		glEnd();
 		glDisable(GL_BLEND);
@@ -334,8 +332,8 @@ void Interface::render(Text::INV_Font* font)
 			glBegin(GL_QUADS);
 
 			glVertex3i(x, y, -1);
-			glVertex3i(x + CONSOLE_X * 15,  y, -1);
-			glVertex3i(x + CONSOLE_X * 15, y + font->h, -1);
+			glVertex3i(x + CONSOLE_X * font->w,  y, -1);
+			glVertex3i(x + CONSOLE_X * font->w, y + font->h, -1);
 			glVertex3i(x, y + font->h, -1);
 
 			glEnd();
@@ -356,11 +354,280 @@ void Interface::deinit(void* tmp)
 }
 
 //------------------------------------------------
+// GUI
+//------------------------------------------------
+GUI::Control* GUI::window = NULL;
+bool GUI::focusedGUI = false;
+
+GUI::Control* GUI::newControl(Control* parent, int x, int y, int w, int h)
+{
+	Control* c = new Control;
+	c->text = NULL;
+	c->value = 0;
+	c->clickable = false;
+	if(parent){
+		c->x = parent->x + x; c->y = parent->y + y;
+	}
+	else{
+		c->x = x; c->y = y;
+	}
+	c->w = w; c->h = h;
+	c->type = WINDOW;
+
+	c->onclick = NULL;
+	c->numChild = 0;
+
+	if(parent)
+		parent->pChild[parent->numChild++] = c;
+	return c;
+}
+
+GUI::Control* GUI::addButton(Control* parent, const char* text, int x, int y, event_function onclick, int w, int h)
+{
+	Control* c = newControl(parent, x,y,w,h);
+	c->text = new char[strlen(text) + 1];
+	strncpy(c->text, text, strlen(text));
+	c->text[strlen(text)] = '\0';
+	c->clickable = true;
+	c->onclick = onclick;
+	c->type = BUTTON;
+	return c;
+}
+
+GUI::Control* GUI::addPanel(Control* parent, int x, int y, int w, int h)
+{
+	Control* c = newControl(parent, x, y, w, h);
+	c->type = PANEL;
+	return c;
+}
+
+GUI::Control* GUI::addList(Control* parent, char* text, int x, int y, int w, int h)
+{
+	Control* c = newControl(parent, x, y, w, h);
+	c->text = new char[strlen(text) + 1];
+	strncpy(c->text, text, strlen(text));
+	c->text[strlen(text)] = '\0';
+	c->clickable = true;
+	c->type = LIST;
+	return c;
+}
+
+GUI::Control* GUI::addTextBox(Control* parent, const char* text, int x, int y, int w, int h)
+{
+	Control* c = newControl(parent, x, y, w, h);
+	c->text = new char[12];
+	strncpy(c->text, text, strlen(text));
+	c->text[strlen(text)] = '\0';
+	c->clickable = true;
+	c->type = TEXTBOX;
+	return c;
+}
+
+GUI::Control* GUI::addLabel(Control* parent, const char* text, int x, int y, int w, int h)
+{
+	Control* c = newControl(parent, x, y, w, h);
+	c->text = new char[strlen(text) + 1];
+	strncpy(c->text, text, strlen(text));
+	c->text[strlen(text)] = '\0';
+	c->type = LABEL;
+	return c;
+}
+
+void GUI::init()
+{
+	window = new Control;
+	window->x = 0;
+	window->y = 0;
+	window->w = Game::width;
+	window->h = Game::height;
+	window->onclick = NULL;
+	window->clickable = false;
+	window->type = WINDOW;
+	window->numChild = 0;
+	window->text = NULL;
+	GarbageCollector::add(deinit, window);
+}
+
+void GUI::parentTo(Control* parent, Control* child)
+{
+	unparentOf(parent, child);
+	parent->pChild[parent->numChild++] = child;	
+	child->x += parent->x; child->y += parent->y;
+}
+
+void GUI::unparentOf(Control* parent, Control* child)
+{
+	for(int i=0;i<parent->numChild;i++)
+	{
+		if(parent->pChild[i] == child)
+		{
+			for(int j=i;j<parent->numChild-1;j++)
+				parent->pChild[j] = parent->pChild[j+1];
+			parent->pChild[--parent->numChild] = NULL;
+			child->x -= parent->x; child->y -= parent->y;
+			break;
+		}
+	}
+}
+
+void GUI::deinit(void* tmp)
+{
+	Control* c = (Control*)tmp;
+	for(int i=0;i<c->numChild;i++)
+	{
+		deinit((void*)c->pChild[i]);
+	}
+
+	if(c->text)
+		delete[] c->text;
+	delete c;
+}
+
+char* GUI::selectedList(Control* c, char** newline)
+{
+	int index = 0;
+	char* str = c->text, *tmp = 0;
+	while(index < c->value)
+	{
+		tmp = strchr(str, '\n') + 1;
+		if(*tmp == '\0'){
+			c->value = index;
+			break;
+		}
+
+		str = tmp;
+		index++;
+	}
+	*newline = strchr(str, '\n');
+	**newline = '\0';
+
+	return str;
+}
+
+void GUI::render(Control* c, Text::INV_Font* font, int level)
+{
+	switch(c->type)
+	{
+		case BUTTON:
+		case TEXTBOX:
+			if(c->type == BUTTON)
+				glColor3ub(-level * 20, -level * 20, -level * 20);
+			else if(c->type == TEXTBOX)
+				glColor3ub(0, 0, 0);
+			glBegin(GL_QUADS);
+			glVertex3i(c->x, c->y, level);
+			glVertex3i(c->x + c->w, c->y, level);
+			glVertex3i(c->x + c->w, c->y + c->h, level);
+			glVertex3i(c->x, c->y + c->h, level);
+			glEnd();
+		case LABEL:
+			glColor3f(1.f, 1.f, 1.f);
+			Text::renderText(c->text, c->x + 8, c->y + 2, font);
+			break;
+		case PANEL:
+			glColor3ub(-level * 20, -level * 20, -level * 20);
+			glBegin(GL_QUADS);
+			glVertex3i(c->x, c->y, level);
+			glVertex3i(c->x + c->w, c->y, level);
+			glVertex3i(c->x + c->w, c->y + c->h, level);
+			glVertex3i(c->x, c->y + c->h, level);
+			glEnd();
+			break;
+		case LIST:
+			glColor3ub(0, 0, 0);
+			glBegin(GL_QUADS);
+			glVertex3i(c->x, c->y, level);
+			glVertex3i(c->x + c->w, c->y, level);
+			glVertex3i(c->x + c->w, c->y + c->h, level);
+			glVertex3i(c->x, c->y + c->h, level);
+			glEnd();
+			if(*c->text)
+			{
+				char* newline;
+				char* str = selectedList(c, &newline);
+				glColor3f(1.f, 1.f, 1.f);
+				Text::renderText(str, c->x + 8, c->y + 2, font);
+				*newline = '\n';
+			}
+			break;
+	}
+
+	for(int i=0;i<c->numChild;i++)
+		render(c->pChild[i], font, level+1);
+}
+
+void GUI::interact(Control* c)
+{
+	if(focusedGUI)
+	{
+		if((Input::mouseButton & SDL_BUTTON(1)) && 
+			(Input::mouseButtonStates & 1))
+		{
+			selected = NULL;
+			if(c->clickable &&
+			   c->x <= Input::mousex && c->x + c->w >= Input::mousex &&
+			   c->y <= Input::mousey && c->y + c->h >= Input::mousey)
+			{
+				selected = c;
+				if(c->onclick)
+					(*c->onclick)();
+			}
+			else
+			{
+				for(int i=0;i<c->numChild && !selected;i++)
+					interact(c->pChild[i]);
+			}
+		}
+
+		else if(selected && Input::keychar)
+		{
+			if(selected->type == LIST)
+			{
+				if(Input::keychar == SDLK_DOWN)
+					selected->value++;
+				else if(Input::keychar == SDLK_UP && selected->value)
+					selected->value--;
+			}
+
+			else if(selected->type == TEXTBOX)
+			{
+				int length = strlen(selected->text);
+				if(Input::keychar < 128 && Input::keychar >= 32 && length < 12)
+				{
+					selected->text[length] = Input::keychar;
+					selected->text[length+1] = '\0';
+				}
+
+				else if(Input::keychar == 8 && length)
+				{
+					selected->text[length-1] = '\0';
+				}
+			}
+		}
+	}
+}
+
+bool GUI::focused(Control* parent)
+{
+	focusedGUI = false;
+	for(int i=0;i<parent->numChild;i++)
+	{
+		Control* c = parent->pChild[i];
+		if(c->x <= Input::mousex && c->x + c->w >= Input::mousex &&
+		   c->y <= Input::mousey && c->y + c->h >= Input::mousey)
+		{
+			focusedGUI = true;
+			break;
+		}
+	}
+}
+//------------------------------------------------
 // Input
 //------------------------------------------------
 SDL_Event Input::event;
 bool Input::key[256] = {false};
 Uint8 Input::mouseButton = 0;
+Uint8 Input::mouseButtonStates;
 Uint16 Input::keychar = 0;
 bool Input::quit = false;
 int Input::mousex = 0, Input::mousey;
@@ -368,6 +635,7 @@ int Input::mousex = 0, Input::mousey;
 void Input::getInput()
 {
 	keychar = 0;
+	mouseButtonStates = 0;
 	while(SDL_PollEvent(&event))
 	{
 		switch(event.type)
@@ -387,8 +655,10 @@ void Input::getInput()
 				if(event.key.keysym.unicode < 256)
 					key[event.key.keysym.sym] = false;
 				break;
+			case SDL_MOUSEBUTTONDOWN:
+				mouseButtonStates |= 1;
+				break;
 		}
 	}
-
 	mouseButton = SDL_GetMouseState(&mousex, &mousey);
 }

@@ -15,6 +15,7 @@ namespace Terrain
 	extern float** data;
 	extern float size;
 	extern GLuint tex;
+	extern float tex_size;
 
 	void init();
 	void render();
@@ -126,4 +127,5 @@ namespace MD2
 	void setAnimation(void* m, int);
 	void deinit(void*);
 } /* MD2 */
+
 #endif

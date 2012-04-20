@@ -4,30 +4,22 @@
 #include <SDL/SDL_image.h>
 #define GLX_GLXEXT_PROTOTYPES 1
 #include <GL/glx.h>
-#include "invMath.h"
-#include "invGeom.h"
-#include "invTex.h"
-#include "invTalk.h"
-#include "invBase.h"
+#include "../invLib/invMath.h"
+#include "../invLib/invGeom.h"
+#include "../invLib/invTex.h"
+#include "../invLib/invTalk.h"
+#include "../invLib/invBase.h"
 
-int Game::width = 0, Game::height = 0;
 Text::INV_Font* font;
 GLuint terrainTex[1];
-IMF::Model* house;
-MD2::Model* drfreak;
+IMF::Model* stickman, *maison;
 Vec3f pos_tree;
 
 void move(float ElapsedTime)
 {
-	if(Game::pSelect && Input::mouseButton & SDL_BUTTON(1))
-	{
-		Game::pSelect->selected = true;
-		printf("grand mother selected\n");
-	}
-
 	if(Input::mouseButton & SDL_BUTTON(3))
 	{
-		Entity* select = Game::getSelected();
+		Entity* select = Game::pESelect;
 		if(select && select->type & Entity::mobile)
 		{
 			GLdouble objx, objy, objz;
@@ -45,8 +37,10 @@ void move(float ElapsedTime)
 			gluUnProject(	winX, winY, winZ,
 							modelview, projection, viewport,
 							&objx, &objy, &objz);
-
-			Game::goTo(select, (float)objx, 0.f, (float)objz);
+			Game::goTo(Game::pISelect, (float)objx, 0.f, (float)objz);
+			static char buffer[32];
+			sprintf(buffer, "entity going to %f %f\0", objx, objz);
+			Interface::print(buffer);
 		}
 	}
 }
@@ -57,29 +51,27 @@ int main(int argc, const char *argv[])
 		return EXIT_FAILURE;
 	}
 	
-	GLfloat ambientColor[] = {0.5f, 0.5f, 0.5f};
+	GLfloat ambientColor[] = {0.2f, 0.2f, 0.2f};
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientColor);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_SMOOTH);
-	glEnable(GL_LIGHTING);
 
 	srand(time(NULL));
 
-	SDL_ShowCursor(SDL_DISABLE);
 	SDL_WM_GrabInput(SDL_GRAB_ON);
 	SDL_PumpEvents();
 	SDL_WarpMouse((Uint16)Game::width/2, (Uint16)Game::height/2);
 	if(!Text::init()){
 		return EXIT_FAILURE;
 	}
-	font = Text::genTextures(Text::loadFont("/usr/share/fonts/truetype/freefont/FreeMono.ttf", 16));
+	font = Text::genTextures(Text::loadFont("/usr/share/fonts/truetype/freefont/FreeMono.ttf", 14));
 
-	Game::setTitle("InvEditor v0.0.3");
+	Game::setTitle("Invasion v0.0.3");
 	Game::bind(Game::INPUT_FUNCTION, (void*)Input::getInput);
 	Game::bind(Game::STOP_WHEN_FUNCTION, (void*)Game::isPressed);
 	Game::bind(Game::MOTION_FUNCTION, (void*)move);
 	Game::bindInterface(Interface::init, Interface::render, Interface::input, font);
-	Game::bindCamera(Camera::lookFPS, Camera::mouseFPS);
+	Game::bindCamera(Camera::lookRTS, Camera::mouseRTS);
 	Register::add("exit", "", Game::exit, NULL);
 	Register::add("camera", "s", Camera::switchCameraView, NULL);
 
@@ -87,18 +79,24 @@ int main(int argc, const char *argv[])
 	swapInterval = (void (*)(int))glXGetProcAddress((const GLubyte*)"glXSwapIntervalSGI");
 	// (*swapInterval)(1);
 
-	Terrain::tex = Tex::convertFromSDLSurface(IMG_Load("paves.jpg"));
+	Terrain::tex = Tex::convertFromSDLSurface(IMG_Load("../../Textures/Path.png"));
 
 	Terrain::init();
-	Terrain::data = Array2D::plane(2);
-	Terrain::width = Terrain::length = 2;
+	Terrain::data = Array2D::plane(3);
+	Terrain::width = Terrain::length = 3;
 	Terrain::size = 10.f;
+	Terrain::tex_size = 10.f;
 
-	house = IMF::load("../3DModels/Objs/maison_age1.imf");
-	drfreak = MD2::load("drfreak.md2");
-	drfreak->tex = Tex::convertFromSDLSurface(IMG_Load("drfreak.tga"));
-	Game::addMesh((void*)house, IMF::render, NULL, Entity::transparent_textures, Vec3f(0.f, 0.1f, 0.f), Vec3f(1.f, 1.f, 1.f), 0.f, 0.f, 0.f);
-	house->tex = Tex::convertFromSDLSurface(IMG_Load("../Textures/maison_age1.png"));
+	stickman = IMF::load("../../3DModels/Objs/stickman.imf");
+	maison = IMF::load("../../3DModels/Objs/maison_age1.imf");
+	Entity* stickman_e = Game::addMesh((void*)stickman, IMF::render, NULL, Entity::mobile|Entity::complete_transparent, Vec3f(0.f, 0.25f, 0.f), Vec3f(0.3f, 0.3f, 0.3f), Vec3f(0.f, 0.f, 0.f));
+	Entity* maison_e = Game::addMesh((void*)maison, IMF::render, NULL, Entity::transparent_textures, Vec3f(0.f, 0.0001f, 0.f), Vec3f(0.5f, 0.5f, 0.5f), Vec3f(0.f, 0.f, 0.f));
+	Game::createInstance(maison_e, Vec3f(-1.f, 0.f, -2.f), Vec3f(135.f, 0.f, 0.f));
+	Game::createInstance(maison_e, Vec3f(1.f, 0.f, 3.f), Vec3f(135.f, 0.f, 0.f));
+	Game::createInstance(maison_e, Vec3f(3.f, 0.f, 0.f), Vec3f(250.f, 0.f, 0.f));
+	Game::createInstance(stickman_e, Vec3f(0.f, 0.f, 0.f), Vec3f(0.f, 0.f, 0.f));
+	maison->tex = Tex::convertFromSDLSurface(IMG_Load("../../Textures/maison_age1.png"));
+	stickman->tex = Tex::convertFromSDLSurface(IMG_Load("../../Textures/stickman.png"));
 	Game::mainLoop(); 
 	glDeleteTextures(1, &Terrain::tex);
 	GarbageCollector::release_all();
