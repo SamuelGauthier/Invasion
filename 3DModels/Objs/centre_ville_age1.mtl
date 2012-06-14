@@ -1,4 +1,4 @@
-# Blender MTL File: 'centre_ville.blend'
+# Blender MTL File: 'centre_ville_age1.blend'
 # Material Count: 1
 newmtl _centre_ville.png
 Ns 0
@@ -7,6 +7,6 @@ Kd 0.8 0.8 0.8
 Ks 0.8 0.8 0.8
 d 1
 illum 2
-map_Kd C:\Samuel\GIT\Invasion\3DModels\Textures\centre_ville.png
+map_Kd D:\Samuel\GitHub\Invasion\Textures\centre_ville.png
 
 
