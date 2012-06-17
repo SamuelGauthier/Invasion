@@ -133,3 +133,11 @@ JOURNAL DE BORD : Programmation
 ===========
 
 - Maitenant on peut contrôler les personnages grâce à la souris.
+
+===========
+17.06.2012
+===========
+
+- Après beaucoup de tests d'aller-retour, et d'essai, je pense que j'ai enfin quelque chose qui tient la route. Pour me 
+  faciliter la programmation, j'ai implémenté le scripting lua dans le projet. J'aurais dû faire ça bien avant, mais bon 
+  maintenant c'est fait.
