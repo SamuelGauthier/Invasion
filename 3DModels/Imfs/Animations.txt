@@ -1,0 +1,27 @@
+----------------
+Barbarian
+----------------
+
+Idle1: 		1-60
+Idle2: 		61-90
+Attack1:	91-110
+Attack2:	111-140
+Death1:		141-160
+Death2:		161-175
+
+----------------
+Villager-female
+----------------
+
+Idle1: 		
+Idle2: 		
+Attack1:	
+Attack2:	
+Death1:		
+Death2:		
+Gather1:	
+Gather2:		
+Gatherchamp:
+GoldStoneFoodReturn:	
+Gather2return:	
+Build:		
