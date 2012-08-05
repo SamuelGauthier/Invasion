@@ -425,7 +425,7 @@ Quelques Idées:
 05.07.2012
 ===========
 
--J'ai animé le spain pour qu'il tombe quand il n'a plus de ressources. Difficulté dans l'attribution de la mesh au bone.
+-J'ai animé le sapin pour qu'il tombe quand il n'a plus de ressources. Difficulté dans l'attribution de la mesh au bone.
 -La texturation de la tour d'archer est terminée et j'ai pu la convertir.
 
 ===========
@@ -470,4 +470,10 @@ Quelques Idées:
 4.08.2012 (6h)
 ===========
 
--Texturation de l'archer de la mine de pierre et de la mine d'or. J'ai commencé a créer des icones ingame en pixelart mais je ne sais pas si ça sera bien joli ou pas...
+-Texturation de l'archer de la mine de pierre et de la mine d'or. J'ai commencé a créer des icônes ingame en pixelart mais je ne sais pas si ça sera bien joli ou pas...
+
+===========
+5.08.2012 (6h)
+===========
+
+-Création du reste des icônes et réaliastion de curseurs avec le programme CursorWorkshop.
