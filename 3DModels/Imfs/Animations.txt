@@ -2,26 +2,37 @@
 Barbarian
 ----------------
 
-Idle1: 		1-60
-Idle2: 		61-90
+Idle1: 			1-60
+Idle2: 			61-90
 Attack1:		91-110
 Attack2:		111-140
-Death1:		141-160
-Death2:		161-175
+Death1:			141-160
+Death2:			161-175
 
 ----------------
 Villager-female
 ----------------
 
+Idle1: 			1-20
+Idle2: 			21-30
+Walk:			31-42
+Attack1:		43-57
+Death1:			58-70
+Death2:			71-80
+GatherGoldStone:	81-91
+GatherWood:		92-102
+GatherFood:		103-122
+Woodreturn:		123-133
+GoldStoneFoodReturn:	134-144
+Build:			-------
+
+----------------
+Archer
+----------------
+
 Idle1: 		
 Idle2: 		
-Attack1:	
-Attack2:	
-Death1:		
-Death2:		
-Gather1:	
-Gather2:		
-Gather3:
-GoldStoneFoodReturn:	
-Gather2return:	
-Build:		
+Attack1:		
+Attack2:		
+Death1:			
+Death2:			
