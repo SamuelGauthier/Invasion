@@ -46,7 +46,7 @@ Quelques Idées:
 15.09.2011
 ===========
 
--Création d'un autre utilisateur Windows sans accent aigu.
+-Création d'un autre utilisateur Windows sans accent aigu. Accent aigu qui pose problème à Windows.
 
 ===========
 17.09.2011
@@ -505,4 +505,22 @@ Quelques Idées:
 10.08.2012 (2h)
 ===========
 
--Texturation de la forge terminée, création d'un flèche et texturation de cell-ci.
+-Texturation de la forge terminée, création d'un flèche et texturation de celle-ci.
+
+===========
+11.08.2012 (5h)
+===========
+
+-Petite update de la maison: j'ai vu qu'il lui manquait la cheminée. J'ai ajouté la tour à catapulte.
+
+===========
+13.08.2012 (2h)
+===========
+
+-Update de la tour à catapulte: je l'ai animé. Update de l'archer et du barbare: l'archer tirait les flèches pas dans le sens de la marche et la massue du barbare traversait sa jambe.
+
+===========
+16.08.2012 (4h)
+===========
+
+-Correction d'un bug du barbare qui consistait que le fichier faisait appel à deux texture, ce qui initialement à été voulu, et merge des deux mesh et animations. J'ai perdu au cours de cet opération l'animation de la massue du barbare que j'ai du refaire. J'ai splitté la tour à catapulte en deux pour avoir la catapulte et la tour, ce qui est plus pratique pour le codeur. J'ai fini d'animer la catapulte de la tour. Et j'ai texturé la tour plus la catatpulte.
