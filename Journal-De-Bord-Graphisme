@@ -524,3 +524,15 @@ Quelques Idées:
 ===========
 
 -Correction d'un bug du barbare qui consistait que le fichier faisait appel à deux texture, ce qui initialement à été voulu, et merge des deux mesh et animations. J'ai perdu au cours de cet opération l'animation de la massue du barbare que j'ai du refaire. J'ai splitté la tour à catapulte en deux pour avoir la catapulte et la tour, ce qui est plus pratique pour le codeur. J'ai fini d'animer la catapulte de la tour. Et j'ai texturé la tour plus la catatpulte.
+
+===========
+18.08.2012 (4h)
+===========
+
+-Création d'un lancier à partir de l'archer. Correction de la villageoise et ajout de la dernière animation: celle de la construction.
+
+===========
+19.08.2012 (6h)
+===========
+
+-Update du lancier depuis la modélisation en passant par l'animation jusqu'à la texturation. J'ai définitivement fini la villageoise car il lui manquait le reste de la texture et elle souffrait du bug d'avoir plusieures textures séparées.
