@@ -4,8 +4,9 @@ Barbarian
 
 Idle1: 			1-60
 Idle2: 			61-90
-Attack1:			91-110
-Attack2:			111-140
+Walk:			91-110
+Attack1:		111-129
+Attack2:		130-140
 Death1:			141-160
 Death2:			161-175
 
@@ -16,10 +17,10 @@ Villager-female
 Idle1: 			1-20
 Idle2: 			21-30
 Walk:			31-42
-Attack1:			43-57
+Attack1:		43-57
 Death1:			58-70
 Death2:			71-80
-GatherGoldStone:		81-91
+GatherGoldStone:	81-91
 GatherWood:		92-102
 GatherFood:		103-122
 Woodreturn:		123-133
@@ -32,8 +33,8 @@ Archer
 
 Idle1: 			1-50
 Walk: 			51-61
-Attack1:			62-82
-Attack2:			83-95
+Attack1:		62-82
+Attack2:		83-95
 Death1:			96-110
 Death2:			111-119
 
@@ -42,10 +43,22 @@ Catpulte
 ----------------
 
 Turn:			1-10
-Attack0°:			11-40
+Attack0°:		11-40
 Attack15°:		41-70
 Attack30°:		71-100
 Attack45°:		101-130
 Attack60°:		131-160
 Attack75°:		161-190
 Attack90°:		191-220
+
+----------------
+Piquier
+----------------
+
+Idle1: 			1-25
+Idle2: 			26-56
+Walk:			57-75
+Attack1:		76-85
+Attack2:		86-92
+Death1:			93-105
+Death2:			106-115
