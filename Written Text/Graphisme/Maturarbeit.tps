@@ -24,15 +24,15 @@ Class=CLatexEdit
 Document=Maturarbeit.tex
 
 [Frame0_Row0]
-cyCur=673
+cyCur=391
 cyMin=10
 
 [Frame0_Col0]
-cxCur=1054
+cxCur=931
 cxMin=10
 
 [Frame0_View0,0]
-Cursor.row=39
-Cursor.column=1322
-TopSubLine=33
+Cursor.row=98
+Cursor.column=73
+TopSubLine=122
 

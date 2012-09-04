@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2012.7.23)  3 SEP 2012 21:31
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2012.7.23)  4 SEP 2012 22:03
 entering extended mode
 **D:/Samuel/GitHub/Invasion/Written*Text/Graphisme/Maturarbeit.tex
 ("D:/Samuel/GitHub/Invasion/Written Text/Graphisme/Maturarbeit.tex"
@@ -418,13 +418,36 @@ File: blenderlogo.png Graphic file (type png)
  <use blenderlogo.png>
 Package pdftex.def Info: blenderlogo.png used on input line 53.
 (pdftex.def)             Requested size: 199.16928pt x 55.41978pt.
- [5 <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/blenderlogo.png (PNG copy
-)>]
-[6
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 59.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 59.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 59.
 
-]
+("C:\Programme\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+<audi.png, id=147, 803.0pt x 501.875pt>
+File: audi.png Graphic file (type png)
+ <use audi.png>
+Package pdftex.def Info: audi.png used on input line 65.
+(pdftex.def)             Requested size: 200.74951pt x 125.46843pt.
+
+<watch.jpg, id=148, 803.0pt x 568.1225pt>
+File: watch.jpg Graphic file (type jpg)
+ <use watch.jpg>
+Package pdftex.def Info: watch.jpg used on input line 73.
+(pdftex.def)             Requested size: 200.74951pt x 142.03027pt.
+
+Underfull \vbox (badness 5133) has occurred while \output is active []
+
+ [5 <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/blenderlogo.png (PNG copy
+)> <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/audi.png> <D:/Samuel/GitHu
+b/Invasion/Written Text/Graphisme/watch.jpg>] [6]
 Kapitel 4.
-[7] [8
+[7
+
+] [8
 
 ]
 Kapitel 5.
@@ -435,43 +458,42 @@ Kapitel 5.
 ] [12
 
 ]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 74.
- ("C:\Programme\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
-File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 76.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 100.
+ [13]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 100.
 
-[13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 76.
- ("D:\Samuel\GitHub\Invasion\Written Text\Graphisme\Maturarbeit.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 76.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 76.
+("D:\Samuel\GitHub\Invasion\Written Text\Graphisme\Maturarbeit.aux")
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 100.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 100.
 Package rerunfilecheck Info: File `Maturarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: 0A7B9F6DD742C65C5D021F7231830CA2;904.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 76.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 100.
  ) 
 Here is how much of TeX's memory you used:
- 6065 strings out of 493921
- 87562 string characters out of 3148826
- 179651 words of memory out of 3000000
- 9269 multiletter control sequences out of 15000+200000
- 12401 words of font info for 26 fonts, out of 3000000 for 9000
+ 6109 strings out of 493921
+ 88067 string characters out of 3148826
+ 179757 words of memory out of 3000000
+ 9295 multiletter control sequences out of 15000+200000
+ 16835 words of font info for 36 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,5n,28p,2459b,404s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,9n,28p,2459b,404s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Programme/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t1.enc}<C:/Program
 me/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx1000.pfb><C:/Programme/MiKTeX 2.9
 /fonts/type1/public/cm-super/sfbx1440.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/
 public/cm-super/sfbx2074.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-sup
-er/sfbx2488.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm0900.p
-fb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1000.pfb><C:/Progra
-mme/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1440.pfb><C:/Programme/MiKTeX 2.
-9/fonts/type1/public/cm-super/sfrm2488.pfb><C:/Programme/MiKTeX 2.9/fonts/type1
-/public/cm-super/sfsl1000.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-su
-per/sfti0900.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sftt1000.
-pfb>
-Output written on Maturarbeit.pdf (19 pages, 244727 bytes).
+er/sfbx2488.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm0600.p
+fb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm0700.pfb><C:/Progra
+mme/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm0800.pfb><C:/Programme/MiKTeX 2.
+9/fonts/type1/public/cm-super/sfrm0900.pfb><C:/Programme/MiKTeX 2.9/fonts/type1
+/public/cm-super/sfrm1000.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-su
+per/sfrm1440.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm2488.
+pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sfsl1000.pfb><C:/Progr
+amme/MiKTeX 2.9/fonts/type1/public/cm-super/sfti0900.pfb><C:/Programme/MiKTeX 2
+.9/fonts/type1/public/cm-super/sftt0800.pfb><C:/Programme/MiKTeX 2.9/fonts/type
+1/public/cm-super/sftt1000.pfb>
+Output written on Maturarbeit.pdf (19 pages, 2133788 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
- 35 named destinations out of 1000 (max. 500000)
- 147 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 268 PDF objects out of 1000 (max. 8388607)
+ 40 named destinations out of 1000 (max. 500000)
+ 157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

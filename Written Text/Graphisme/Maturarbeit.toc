@@ -4,9 +4,9 @@
 \contentsline {chapter}{\numberline {2}Das Spiel}{3}{chapter.2}
 \contentsline {chapter}{\numberline {3}Blender}{5}{chapter.3}
 \contentsline {section}{\numberline {3.1}Installation}{5}{section.3.1}
-\contentsline {section}{\numberline {3.2}Mainmenu}{5}{section.3.2}
-\contentsline {section}{\numberline {3.3}Objekte, meshs und co}{5}{section.3.3}
-\contentsline {section}{\numberline {3.4}Animationen}{5}{section.3.4}
+\contentsline {section}{\numberline {3.2}Mainmenu}{6}{section.3.2}
+\contentsline {section}{\numberline {3.3}Objekte, meshs und co}{6}{section.3.3}
+\contentsline {section}{\numberline {3.4}Animationen}{6}{section.3.4}
 \contentsline {chapter}{\numberline {4}Textures}{7}{chapter.4}
 \contentsline {section}{\numberline {4.1}Zeichnen mit einer Tablet}{7}{section.4.1}
 \contentsline {section}{\numberline {4.2}Gimp}{7}{section.4.2}
