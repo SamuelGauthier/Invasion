@@ -554,3 +554,9 @@ Quelques Idées:
 ===========
 
 -J'ai continué l'écrit. J'écris actuellement la parite "Blender".
+
+===========
+06.09.2012 (6h)
+===========
+
+-J'ai résolus le bug de la baliste, il fallait cocher la case "preserve volume" dans le menu des Objects Modifiers ce qui fait que les vertex ne se déforment plus quand je tourne les bones. J'ai texturé la baliste. J'ai corrigé la dernière unité qui avait le "bug" d'avoir plusieures textures séparées et j'ai fait de l'herbe et commencé un peuplier.
