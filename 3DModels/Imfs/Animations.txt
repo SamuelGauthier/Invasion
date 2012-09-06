@@ -62,3 +62,16 @@ Attack1:		76-85
 Attack2:		86-92
 Death1:			93-105
 Death2:			106-115
+
+----------------
+Baliste
+----------------
+
+Turn:			1-10
+Attack0°:		11-32
+Attack15°:		33-54
+Attack30°:		55-76
+Attack45°:		76-98
+Attack60°:		99-120
+Attack75°:		121-142
+Attack90°:		143-164
