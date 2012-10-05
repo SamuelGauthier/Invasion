@@ -2,17 +2,75 @@
 \contentsline {chapter}{Vorwort}{i}{chapter*.2}
 \contentsline {chapter}{\numberline {1}Einf\"uhrung}{1}{chapter.1}
 \contentsline {chapter}{\numberline {2}Das Spiel}{3}{chapter.2}
-\contentsline {chapter}{\numberline {3}Blender}{5}{chapter.3}
-\contentsline {section}{\numberline {3.1}Installation}{5}{section.3.1}
-\contentsline {section}{\numberline {3.2}Mainmenu}{9}{section.3.2}
-\contentsline {section}{\numberline {3.3}Objekte, meshs und co}{9}{section.3.3}
-\contentsline {section}{\numberline {3.4}Animationen}{9}{section.3.4}
-\contentsline {chapter}{\numberline {4}Textures}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}Zeichnen mit einer Tablet}{11}{section.4.1}
-\contentsline {section}{\numberline {4.2}Gimp}{11}{section.4.2}
-\contentsline {section}{\numberline {4.3}Photoshop}{11}{section.4.3}
-\contentsline {chapter}{\numberline {5}Website}{13}{chapter.5}
-\contentsline {section}{\numberline {5.1}Joomla Installation}{13}{section.5.1}
-\contentsline {section}{\numberline {5.2}Modifizierung des Layout}{13}{section.5.2}
-\contentsline {chapter}{Nachwort}{15}{chapter*.3}
-\contentsline {chapter}{Quellen}{17}{chapter*.4}
+\contentsline {section}{\numberline {2.1}Geschichte}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Gameplay}{3}{section.2.2}
+\contentsline {subsubsection}{Ingame Interface}{4}{section*.3}
+\contentsline {subsubsection}{Legende}{4}{section*.4}
+\contentsline {section}{\numberline {2.3}Einheiten}{5}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Geb\"aude}{5}{subsection.2.3.1}
+\contentsline {subsubsection}{Dorfzentrum}{5}{section*.5}
+\contentsline {subsubsection}{Kaserne}{5}{section*.6}
+\contentsline {subsubsection}{Bogensh\"utzerei}{5}{section*.7}
+\contentsline {subsubsection}{Haus}{5}{section*.8}
+\contentsline {subsubsection}{Schmiede}{5}{section*.9}
+\contentsline {subsubsection}{\"Uberwachungs Turm}{5}{section*.10}
+\contentsline {subsubsection}{Bogensch\"utzen Turm}{5}{section*.11}
+\contentsline {subsubsection}{Katapulten Turm}{6}{section*.12}
+\contentsline {subsubsection}{Ballisten Turm}{6}{section*.13}
+\contentsline {subsubsection}{Kanonen Turm}{6}{section*.14}
+\contentsline {subsubsection}{Gold und Stein Lagerhaus}{6}{section*.15}
+\contentsline {subsubsection}{Holz Lagerhaus}{6}{section*.16}
+\contentsline {subsection}{\numberline {2.3.2}Einheiten}{6}{subsection.2.3.2}
+\contentsline {subsubsection}{Soldat}{6}{section*.17}
+\contentsline {subsubsection}{Bogensch\"utzen}{6}{section*.18}
+\contentsline {subsubsection}{Pikenier}{6}{section*.19}
+\contentsline {subsubsection}{B\"auerin}{6}{section*.20}
+\contentsline {subsection}{\numberline {2.3.3}Natur}{6}{subsection.2.3.3}
+\contentsline {subsubsection}{Tanne 1}{6}{section*.21}
+\contentsline {subsubsection}{Tanne 2}{6}{section*.22}
+\contentsline {subsubsection}{Baum 1}{7}{section*.23}
+\contentsline {subsubsection}{Baum 2}{7}{section*.24}
+\contentsline {subsubsection}{Papel 1}{7}{section*.25}
+\contentsline {subsubsection}{Papel 2}{7}{section*.26}
+\contentsline {subsubsection}{Gras}{7}{section*.27}
+\contentsline {subsection}{\numberline {2.3.4}Feindeinheiten}{7}{subsection.2.3.4}
+\contentsline {subsubsection}{Barbar}{7}{section*.28}
+\contentsline {subsubsection}{Bogensch\"utzen}{7}{section*.29}
+\contentsline {subsubsection}{Pikenier}{7}{section*.30}
+\contentsline {subsubsection}{Balliste}{7}{section*.31}
+\contentsline {subsubsection}{Katapult}{7}{section*.32}
+\contentsline {section}{\numberline {2.4}Verbesserungen}{8}{section.2.4}
+\contentsline {subsubsection}{Verbesserungen im Dorfzentrum}{8}{section*.33}
+\contentsline {subsubsection}{Verbesserungen in der Kaserne}{8}{section*.34}
+\contentsline {subsubsection}{Verbesserungen in der Bogensch\"utzerei}{8}{section*.35}
+\contentsline {subsubsection}{Verbesserungen in der Schmiede}{8}{section*.36}
+\contentsline {subsubsection}{Verbesserungen im Holzlager}{8}{section*.37}
+\contentsline {subsubsection}{Verbesserungen im Gold-, Stein Lager}{8}{section*.38}
+\contentsline {subsubsection}{Verb.7}{8}{section*.39}
+\contentsline {subsubsection}{Verb.8}{9}{section*.40}
+\contentsline {subsubsection}{Verb.9}{9}{section*.41}
+\contentsline {subsubsection}{Verb.10}{9}{section*.42}
+\contentsline {section}{\numberline {2.5}Technologie Baum}{9}{section.2.5}
+\contentsline {section}{\numberline {2.6}Evolution des Spiels}{10}{section.2.6}
+\contentsline {section}{\numberline {2.7}Musik und Ger\"ausche}{13}{section.2.7}
+\contentsline {subsubsection}{Liste der Musiktitel}{13}{section*.43}
+\contentsline {subsubsection}{Liste der Ger\"ausche}{13}{section*.44}
+\contentsline {chapter}{\numberline {3}Blender}{15}{chapter.3}
+\contentsline {section}{\numberline {3.1}Installation}{15}{section.3.1}
+\contentsline {section}{\numberline {3.2}Mainmenu}{19}{section.3.2}
+\contentsline {section}{\numberline {3.3}Objekte, meshs und co}{19}{section.3.3}
+\contentsline {section}{\numberline {3.4}Animationen}{19}{section.3.4}
+\contentsline {chapter}{\numberline {4}Textures}{21}{chapter.4}
+\contentsline {section}{\numberline {4.1}Zeichnen mit einer Tablet}{21}{section.4.1}
+\contentsline {section}{\numberline {4.2}Gimp}{21}{section.4.2}
+\contentsline {section}{\numberline {4.3}Photoshop}{22}{section.4.3}
+\contentsline {chapter}{\numberline {5}Website}{23}{chapter.5}
+\contentsline {section}{\numberline {5.1}Joomla Installation}{23}{section.5.1}
+\contentsline {section}{\numberline {5.2}\"Anderung des Lay-outs}{23}{section.5.2}
+\contentsline {chapter}{\numberline {6}Github}{25}{chapter.6}
+\contentsline {section}{\numberline {6.1}Installation}{25}{section.6.1}
+\contentsline {section}{\numberline {6.2}Umgang mit Gihub und kleine Details}{25}{section.6.2}
+\contentsline {chapter}{\numberline {7}Kapitel 7}{27}{chapter.7}
+\contentsline {chapter}{Nachwort}{29}{chapter*.45}
+\contentsline {chapter}{Quellen}{31}{chapter*.46}
+\contentsline {subsubsection}{ Aus dem Internet:}{31}{section*.47}
