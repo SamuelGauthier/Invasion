@@ -74,6 +74,8 @@ Wir haben mit unserer Maturarbeit schon anfangs Sekunda angefangen und haben bem
 
 Warum haben wir unsere Maturarbeit am Slgb gemacht? Weil Herr Volgesanger uns die Freiheit gab, irgendein Spiel zu machen. Er hat Julien auch nicht gezwungen in einer bestimmten Programmierung Sprache zu programmieren. Und diese Freiheit haben wir sehr angenehm gefunden.
 
+Ich habe auf diesem Projekt mehr oder weniger 600 Stunden gearbeitet verteilt auf mehr als 100 Tage...
+
 \chapter{Das Spiel}
 \begin{wrapfigure}[10]{l}{7cm}
 \includegraphics[width=7cm]{logo.png}
@@ -167,7 +169,7 @@ Gras ist eigentlich nur um schön zu machen da. Man kann Grass also nicht benützt
 \subsection{Feindeinheiten}
 Die Feindeinheiten werde desto stärker je länger sie am Spiel spielen.
 \subsubsection{Barbar}
-Basis Einheit der Barbaren, er kann denkt nur an die Schlacht und Blut. Er ist sehr effizient gegen allen Typen von Einheiten. Halten Sie sich weg von ihm!
+Basis Einheit der Barbaren, er denkt nur an die Schlacht und Blut. Er ist sehr effizient gegen allen Typen von Einheiten.
 \subsubsection{Bogenschützen}
 Zweite Einheit der Barbaren, der Bogenschützen. Er kann dank seiner gossen Reichweite Ihre Truppen angreifen. Mit einem normalen trainierten Soldaten sollten Sie gegen ihn keine Probleme haben.
 \subsubsection{Pikenier}
@@ -211,14 +213,22 @@ So wie die Balliste haben die Barbaren irgendwie die Pläne des Baus der Katapult
 -Verb.2:\newline
 -Verb.3:\newline
 -Verb.4:\newline
-\subsubsection{Verb.7}
+\subsubsection{Verbesserungen in der Kirche}
 Verb.7
-\subsubsection{Verb.8}
+\subsubsection{Verbesserungen in der Windmühle}
 Verb.8
-\subsubsection{Verb.9}
+\subsubsection{Verbesserungen im Bogenschüzenturm}
 Verb.9
-\subsubsection{Verb.10}
+\subsubsection{Verbesserungen im Armbrustschützenturm}
 Verb.10
+\subsubsection{Verbesserungen im Beobachtungsturm}
+Verb.11
+\subsubsection{Verbesserungen im Katapultenturm}
+Verb.12
+\subsubsection{Verbesserungen im Balistenturm}
+Verb.13
+\subsubsection{Verbesserungen im Kanonenturm}
+Verb.13
 
 \section{Technologie Baum}
 \begin{figure}[H]
@@ -323,6 +333,8 @@ Hier sind auch noch einige Beispiels-Bilder:
 \end{minipage}
 \end{figure}
 
+Ich möchte hier nicht ein Tutorial über Blender schreiben, weil es ersten genug Tutorials auf dem Internet gibt und zweitens es ein ganze andere Maturarbeit sei kann. Ich werde aber die Wichtigsten Schritten für einen Anfänger schreiben wie die Installation und das Mainmenu erklärken und natürlich wie ich meine Einheiten modelisiert und wie ich sie Animiert habe.
+
 \section{Installation}
 Ich werde hier Ihnen die einfache Installation Blenders zeigen. Zuerst gehen Sie unter \url{http://www.blender.org/download/get-blender/} laden entweder die 64bits oder 32bits Version herunter. Sie müssen überprüfen ob sie einen x64 oder x86 Computer haben. Rechtklick auf "`Arbeitsplatz"', "`Eigenschaften"' 
 und unter dem "`Allgemein"' Tab müsste unter "`System"' entweder Microsoft Windows <Version> x64 Edition dann müssen Sie die 64bits Version Blenders herunterladen oder es steht nur einfach Microsoft Windows <Version> (<Version> gilt für die differenten Versionen Windows). Einmal das Sie Blender heruntergeladen haben führen Sie die Datei aus. Dann kommt ein erstes Menü: drücken Sie auf "`Next"' dann auf "`I Agree"', wieder auf "`Next"' und schliesslich auf "`Install"'. So, jetzt sollten Sie auf dem Desktop eine Icon die Blender heisst haben. Hier noch eine bildnerische Anleitung:
@@ -384,7 +396,7 @@ und unter dem "`Allgemein"' Tab müsste unter "`System"' entweder Microsoft Windo
 \end{figure}
 
 \section{Mainmenu}
-Doppelkicken Sie auf die "`Blender"' Icon somit eröffnet es das Programm. Sie sollten dann auf einer solchen Oberfläche gelangen.
+Doppelkicken Sie auf die "`Blender"' Icon somit eröffnet es das Programm. Sie sollten dann auf einer solchen Oberfläche gelangen. Ganz oben links befindet sich der Outliner. Er ermöglichet Ihnen die Objekten, Kameras, Lichter zu anzeigen oder zu einblenden. Unter diesem Menü gibt es das Properties Menü indem Sie alle Eingenschaften des ausgewählten Objektes (ob Lichtquelle, Kamera usw.) einstellen können. Ganz unten ist das Timeline Menu und dient für die Animationen. Das grüne Stäbchen zeigt wo sich das Objekt in der Zeit befindet (Hier ist es 1 = Erste Frame; die Zeit ist in Frames gerechnet also 1 Sekunde gleich 24 Frames). Das letzte Menü ist die 3D ansicht des Objektes. Das linke Menü gehört zum 3D Menü und kann per Taste T ausblendet werden. Es gibt auch ein linkes Menü in der 3D Anzicht das per Taste N einblendet werden kann.
 
 \begin{figure}[H]
 \begin{center}
@@ -394,27 +406,89 @@ Doppelkicken Sie auf die "`Blender"' Icon somit eröffnet es das Programm. Sie so
 \end{center}
 \end{figure}
 
-\section{Objekte, meshs und co}
+Das kleine Fenster in der Mitte wird sich schliessen sobald Sie irgendwo drücken. Im kleinen Fenster können Sie die kürzlich geöffnete Dateien sehen (1) und die Version Blenders (2).
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.65]{belndersplash.png}
+\caption{Das kleine Menü}
+\label{Das kleine Menü}
+\end{center}
+\end{figure}
+
+In Blender gehen alle\footnote{Die grosse Mehrheit} Befehle per Tastenkürzel. Man muss die wichtigsten lernen aber es wird mit der Zeit kommen. Je mehr mann mit einer Anwendung arbeitet desto besser kennt mann die Tastenkürzel. Ein villeicht anderer abstossender Punkt für die Blender Beginner ist das Blender komplett auf Englisch ist. Unter der Abteilung Tastenkürzel finden Sie die Tastenkürzel die ich gebracht habe und die die Basis Tastenkürzel sind.
+
+\section{Einheite modelisieren}
+
 \section{Animationen}
+\section{Tastenkürzel}
+
+
+
+\textbf{}
+
 \chapter{Textures}
 
-Die Erste Testtextur habe ich mit der Maus gemacht. Es war sehr hässlich und ich habe schnell gemerkt, dass ohne einen Tablet es nicht gehen würde. Ich habe also ein Tablet gekauft: die Intuos 4L von Wacom. Sie ist einfach fantastisch. Ich hatte nicht genug Geld um ein Tablet mit integriertem Display zu kaufen. Julien hat mir den Tablet direkt von Japan gebracht wo es weniger kostet, weil dort der Hauptsitzt von Wacom ist.
+\begin{wrapfigure}[11]{o}{6cm}
+\includegraphics[width=6cm]{wacom-intuos4l.png}
+\caption{Intuos 4L}
+\label{Intuos 4L}
+\end{wrapfigure}
 
-Alle Texturen von den Gebäuden habe ich selber gezeichnet. Was den Boden und die Baumstämme betrifft habe ich Bilder (mit einer freie Lizenz) aus dem Internet\footnote{Von www.cgtextures.com} genommen und geändert.
-\section{Zeichnen mit einer Tablet}
-Die Installation einen Wacom Tablet ist sehr einfach. Man muss den Tablet an den Computer stecken und die Drivers von der Wacom Website installieren. Manche Leute werden mit dem Zeichnen Probleme haben, weil sie nicht aufs Blatt schauen müssen sondern auf den Bildschirm was ungewöhnlich ist. Bei mir hatte ich diese Problem nicht, erstaunlicherweise. Ich habe den Hintergrund des Mainmenus komplette mit dem Tablet gemacht.
+Die Erste Testtextur habe ich mit der Maus gemacht. Es war sehr hässlich und ich habe schnell gemerkt, dass ohne ein Tablet es nicht gehen würde. Ich habe also ein Tablet gekauft: das Intuos 4L von Wacom. Es ist einfach fantastisch. Das Tablet hat mir Julien direkt von Japan gebracht wo es weniger kostet, weil dort es den Hauptsitzt von Wacom ist.
+
+Alle Texturen von den Gebäuden habe ich selber gezeichnet. Was den Boden und die Baumstämme betrifft habe ich Bilder (mit einer freie Lizenz) aus dem Internet\footnote{Von www.cgtextures.com} genommen und geändert. Den Hintergrund des Mainmenüs habe ich auch selber gezeichnet.
+
+\section{Zeichnen mit einem Tablet}
+
+Die Installation eines Wacom Tablets ist sehr einfach. Man muss das Tablet an den Computer stecken und die Drivers von der Wacom Website installieren. Manche Leute werden die ersten Maale mit dem Zeichnen Probleme haben, weil sie nicht aufs Tablet schauen müssen sondern auf den Bildschirm, was ungewöhnlich ist. Ich litt erstaunlicherweise nicht so sehr unter diesem Problem. Was sehr partiksch mit einem Tablet ist, ist dass man die Zeichnung ändern kann ohne dass es etwas macht. Auf dem Papier müsste man Blatt wechseln was hier mit einem Tablett nicht den Fall ist.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.2]{erste_zeichnung.png}
+\caption{Erste Zeichnung mit meinem Tablet}
+\label{Erste Zeichnung mit meinem Tablet}
+\end{center}
+\end{figure}
+
 \section{Gimp}
+
 Ich habe am meisten mit Gimp gearbeitet. Es ist ein sehr wertvolles Programm: es ist nämlich gratis. Die aktuelle Version ist die 2.8.x. Wenn Sie unter Windows arbeiten empfehle ich Ihnen die Version 2.6 zu installieren, weil es zu viele Bugs in der neuen Windows Version gibt. Die Entwickler haben sogar auf dem Internet an Programmierer für Windows gefragt, weil eben die Windows Version zu viele Bugs hat. 
 
 Die Installation ist eine normale einfache Installation. Wenn Sie das Programm zum ersten Mal eröffnen werden Sie auf ein rechteckiges Menü kommen. Es wird ein bisschen dauern bis das Gimp geladen ist, weil es das erste Mal ist. Naher kommen Sie auf ein solches Menu:
 
-(Bild Gimp)
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.35]{gimp_screen.png}
+\caption{Gimp Menü}
+\label{Gimp Menü}
+\end{center}
+\end{figure}
 
-Die zwei Fenster können nach Geschmack bewegt werden.
+\begin{wrapfigure}[20]{i}{5cm}
+\includegraphics[width=5cm]{gimp_werkzeugkasten.png}
+\caption{Werkzeugkasten}
+\label{Werkzeugkasten}
+\end{wrapfigure}
 
-Ich habe für die Texturierung der Einheiten und Gebäude das Uv Bild Blender genommen und eine neue Ebene gemacht. Diese Ebene wird hinter der Uv Ebene platziert umso zu sehen wo die Rändern der differenten Teile des Gebäudes oder Einheit sind. Naher erhören Sie die Transparenz der Uv Ebene, um nicht durch ihrer Gräulicher Faber falsche Farbe auf der anderen Ebene zu zeichnen. So habe ich alle Texturen gezeichnet. Ich habe mit dem Pinsel und der Brush gewechselt. Ich habe auch mit der Härte und Weiche des Tablets gespielt, um manche Farbe zu bekommen.
+Die zwei Fenster können nach Geschmack bewegt werden sind aber villeicht nicht so bei Ihnen gestellt, weil ich porbiert habe, für mich, die beste Ergonimie zu erhalten.
+Das erste Fenster ist der Werkzeugkasten mit allen differenten Pinseln. Das zweite Fenster beinhaltet die Farbpalette, die Einstellungen der Werkzeuge, die Brushes usw.
 
-Für die Bäume habe ich eine Baumstamm Textur heruntergeladen\footnote{alle von CGtexture.com} die Kontraste geändert und eine Fläche herausgeschnitten. Für die Blätter habe ich die Spezielle Brusch "Tatatatt" genannt genommen und mit deren gezeichnet. Danach habe ich die Kontraste gewechselt um je eine grünere oder eine braunere Farbe zu haben.
+Ich habe für die Texturierung der Einheiten und Gebäude das Uv Bild Blender genommen und eine neue Ebene gemacht. Diese Ebene wird hinter der Uv Ebene platziert umso zu sehen wo die Rändern der differenten Teile des Gebäudes oder Einheit sind. Naher habe die Transparenz der Uv Ebene erhört, um nicht durch ihrer Gräulicher Faber falsche Farbe auf der anderen Ebene zu zeichnen.(siehe Abb ~\ref{Bogenschützen Textur mit der Bogenschützen Uv} So habe ich alle Texturen gezeichnet. Ich habe mit dem Pinsel und der Brush gewechselt. Ich habe auch mit der Härte und Weiche des Tablets gespielt, um manche Farbe zu bekommen.
+
+Die von mir meist genutzen Werkzeuge sind der Pinsel, Stift, Radierer, die Sprühpistole. Der Stift habe ich für lange gerade Linien gebraucht (holz des hauses) und mit der Maus benutzt. Der Pinsel hat mir für Details, Struckturen der Gebäude (Die Holzbrettern, die Steine)gedient. Und die Sprühpistole habe ich für dünklerungs Effekte gebraucht.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.65]{gimp_texturien.png}
+\caption{Bogenschützen Textur mit der Bogenschützen Uv}
+\label{Bogenschützen Textur mit der Bogenschützen Uv}
+\end{center}
+\end{figure}
+
+Um schöne Farben zu erhalten und schöne Texturen im allgemein, habe ich viel Zeit gebraucht. Die erste Textur (die Textur des Hauses) das ich mit dem Tablet gezeichnet habe, nahm mir über 6 Stunden insgesamt. Zuerst hatte ich mühe eine schöne Farbe für das Dach des Hauses zu erhalten. Ein anderes Problem war wie ich die Mauren eines Mittelalterisches Hauses zeichnen sollte. Ich habe mich von Fachwerkäusern inspirienen lassen. Die Sekunda Reise verbrachten wir in Strassburg wo es auch viele Fachwerkhäuser gibt.
+
+Für die Bäume habe ich mehrere Baumstamm Texturen heruntergeladen\footnote{alle von CGtexture.com}, die Kontraste geändert und eine Fläche herausgeschnitten. Für die Blätter habe ich die Spezielle Brusch "`Vine"` (eine Brush die Weinblätter zeichnet) genannt genommen und mit deren gezeichnet. Danach habe ich die Kontraste gewechselt um je eine grünere oder eine braunere Farbe zu haben. Am Anfang
 \section{Photoshop}
 Zum Gegenteil von Gimp ist Photoshop ein Programm das Geld kostet. Wenn Sie auf dem Internet nach Photoshop Tutorials suchen haben meistens die Benutzer die CSxx Extended Version. Und wenn Sie die Photoshop Elements oder CSxx Version haben, können Sie meistens nicht alle Tutorials folgen weil die Extended Version andere Menus und Tools hat. Das finde ich an Photoshop schade. Ich habe die CS6 Extended Testversion installiert um dieses Programm zu brauchen. Die Installation dauert etwas länger als bei Gimp, weil Adobe Ihnen ihres eigene Programm für den Download installieren lässt und nur nachher können sie Photoshop herunterladen.
 \begin{figure}[H]
@@ -424,21 +498,102 @@ Zum Gegenteil von Gimp ist Photoshop ein Programm das Geld kostet. Wenn Sie auf 
 \label{Photoshop Menü}
 \end{center}
 \end{figure}
+
+\begin{wrapfigure}[20]{i}{3.5cm}
+\includegraphics[width=3.5cm]{icon.png}
+\caption{Icon}
+\label{Icon}
+\end{wrapfigure}
+
+Ich habe Photoshop nur für das Spielicon und die Menüknöpfe gebraucht. Die Spiel Icon habe ich selber gemacht. Für die Icon zu machen habe ich ein Tutorial gelesen. Dieses Tutorial zeigt nicht wie ein Icon zu machen sondern die differenten Effekte wie die Stoffnähte und der Stoff Aspekt. Hier der Link: \url{http://pshero.com/photoshop-tutorials/text-effects/text-in-stitches} Für den Menüknopf im Spiel habe ich die gleiche Methode gebraucht.
+
+Für die Anderen Menüknöpfe habe ich ein anderes Tutorial gelesen: \url{http://www.photoshopstar.com/web-design/war-game-style-navigation/} Für das Spiel habe ich sie Grösser gemacht.
+
+Ich habe probiert mit Photoshop den hintergrund für das Mainmenu zu machen, habe aber auf Gimp gewechselt weil Photoshop auf meinem alten Computer zu langasm ist.
+
 \chapter{Website}
 \section{Joomla Installation}
-\section{Änderung des Lay-outs}
+\section{Änderung des Layouts}
 \chapter{Github}
+
+\begin{wrapfigure}[13]{0}{7cm}
+\includegraphics[width=7cm]{githublogo.png}
+\caption{Github Logo}
+\label{Github Logo}
+\end{wrapfigure}
+
+Github ist eine Codehosting Dienst der das Versionverwaltungs-Sytem Git benutzt. Es ermöglicht dem Benutzer die differenten Versionen eines Projekt zu sehen und er kann jederzeit wieder zu einer ältern Version kommen.
+
+Github stellt auch merhere wichtige Dienste neben dem Codhosting zu: ein "Issue" Verwaltung, eine Wiki Seite für das Projekt, mehrere Graphiken der Aktivitäten, der Anzahl der hinzugefugten und entfernten Dateien usw.
+
+Der Benutzer muss ein Client herunterladen und installieren (Linux, MAC und Windows sind unterstützt) die "Repository" von der Website mit dem Client auf dem PC klonen dann kann er arbeiten.
+
+Das Git Sytem funktionniert folgendermassen: für jede Änderung die der Benutzer macht muss er es kommentieren. Für den Moment ist es noch alles lokal. Dann wenn er seine Repository synct (ein sogenanntes "git push"), werden seine Dateien geuploadet und auf der Repositorywebsite wird sein Commit erscheinen mit allen modifikationen die er gemacht hat.
+
+Da wir die Funktion der differenten Ästen nicht gebraucht haben werde ich es hier nicht erklären. Eine komplette Anleitung wie die Äste funktionnieren finden Sie unter \url{http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.65]{git_local-remote.png}
+\caption{Github Shema}
+\label{Github Shema}
+\end{center}
+\end{figure}
+
+Wir haben dieses System gebraucht wegen zwei Kriterien: Github ist einfach genial und somit konnte Herr Vogelsanger immer wüssen was wir gemacht haben, wie oft wir am Projekt gearbeitet haben.
+
 \section{Installation}
-\section{Umgang mit Gihub und kleine Details}
-\chapter{Kapitel 7}
+
+Die installation Githubs war für mich sehr anstregend. Mein Vater half mir zum glück, sonst wäre ich noch lange daran gewesen. Das Problem war ich hatte einen Benutzer mit einem Akzent. Das hat Github gar nicht gern und macht viele Fehler. Das ganze habe ich per Console machen müssen. Jetzt haben sie den Client komplett gewechselt und man braucht nur das programm zu installieren auf seiner Repositorysite "Clone in Windows" drücken und es ist schon gemacht, man kann arbeiten.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.4]{git_oldscreen.png}
+\caption{Alter Github Client}
+\label{Alter Github Client}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.3]{git_newscreen.png}
+\caption{Neuer Github Client}
+\label{Neurer Github Client}
+\end{center}
+\end{figure}
+
+Sie erkennen hier villeicht den Metro style von windows 8. Da Windows 8 am 26 October herauskommt haben die Entwickler des Clients direkt den neuen Styl angewendet
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.4]{git_webrepository.png}
+\caption{Unsere Repository auf dem Webt}
+\label{Unsere Repository auf dem Web}
+\end{center}
+\end{figure}
+
+
+\chapter{Die CD}
+
+Das Spiel ist auch unter \url{http://invasion.montmartel.com/index.php/downloadsmenu} herhaltbar.
+\newline Viel spass beim spielen!
 
 \backmatter
 
 \chapter{Nachwort}
+
+Für die Zukunft unseres Projektes dachten wir andere Personen zu rekrutieren um diese Projekt zu weiterfahren. Geplant sind neue Zivilisationen, mehrere Einheiten, ein Multiplayermodus und vieles mehr.
+
+Mit diesem Projekt habe ich gesehen das es schwiri
+
+Diese schriftliche maturarbeit wurde komplett mit Latex geschrieben. Die folgenden Packages wurden genutzt: graphicx, wrapfig, hyperreffloat.
 \chapter{Quellen}
 Alle Bilder ausser den folgenden kommen von mir.
 \subsubsection{ Aus dem Internet:}
 Abb ~\ref{Blender Logo}: \url{http://download.blender.org/institute/logos/blenderlogo.png}
 \newline Abb ~\ref{Another R8 by Filip Sadlon}: \url{http://www.blender.org/typo3temp/pics/7052dc1cb7.jpg}
 \newline Abb ~\ref{3D Watch by Olivier Amrein}: \url{http://www.blender.org/typo3temp/pics/287897db88.jpg}
+\newline Abb ~\ref{Github Logo}: \url{http://upload.wikimedia.org/wikipedia/commons/b/b3/GitHub.svg}
+\newline Abb ~\ref{Github Shema}: \url{http://thkoch2001.github.com/whygitisbetter/images/local-remote.png}
+\newline Abb ~\ref{Alter Github Client}: \url{nathanj.github.com/gitguide/images/04.png}
 \end{document}
