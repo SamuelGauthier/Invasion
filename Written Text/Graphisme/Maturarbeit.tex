@@ -32,8 +32,8 @@ pdfsubject={Windows XP} %sous Acrobat.
 \includegraphics[width=.75\textwidth]{logo.png}
 
 \Huge{Designing eines Computerspiels\\ \vspace{300pt}}
-\Large{Samuel Gauthier\\Maturarbeit 2012\\}
-\small{\textit{Betreuer:} Thomas Vogelsanger\\}
+\Large{Samuel Gauthier\\}
+\small{Maturajahrgang 2013\\Seeland Gymnasium Biel\\Klasse 13V\\ \textit{Betreuung:} Thomas Vogelsanger\\}
 \end{titlepage}
 \tableofcontents
 
@@ -333,6 +333,8 @@ Hier sind auch noch einige Beispiels-Bilder:
 \end{minipage}
 \end{figure}
 
+Ich habe etwa zwei Monate gebraucht um die Basis Blenders zu lernen
+
 Ich möchte hier nicht ein Tutorial über Blender schreiben, weil es ersten genug Tutorials auf dem Internet gibt und zweitens es ein ganze andere Maturarbeit sei kann. Ich werde aber die Wichtigsten Schritten für einen Anfänger schreiben wie die Installation und das Mainmenu erklärken und natürlich wie ich meine Einheiten modelisiert und wie ich sie Animiert habe.
 
 \section{Installation}
@@ -416,17 +418,258 @@ Das kleine Fenster in der Mitte wird sich schliessen sobald Sie irgendwo drücken
 \end{center}
 \end{figure}
 
-In Blender gehen alle\footnote{Die grosse Mehrheit} Befehle per Tastenkürzel. Man muss die wichtigsten lernen aber es wird mit der Zeit kommen. Je mehr mann mit einer Anwendung arbeitet desto besser kennt mann die Tastenkürzel. Ein villeicht anderer abstossender Punkt für die Blender Beginner ist das Blender komplett auf Englisch ist. Unter der Abteilung Tastenkürzel finden Sie die Tastenkürzel die ich gebracht habe und die die Basis Tastenkürzel sind.
+In Blender gehen alle\footnote{Die grosse Mehrheit} Befehle per Tastenkürzel. Man muss die wichtigsten lernen aber es wird mit der Zeit kommen. Je mehr mann mit einer Anwendung arbeitet desto besser kennt mann die Tastenkürzel. Ein villeicht anderer abstossender Punkt für die Blender Beginner ist das Blender komplett auf Englisch ist. Unter der Abteilung ~\ref{sec:Tastenkürzel}  finden Sie die Tastenkürzel die ich gebraucht habe und die die Basis Tastenkürzel sind.
 
-\section{Einheite modelisieren}
+Bei mir hat es lange gedauert bis dass ich die Tastenkürzel auswendig gewusst habe. Ich hatte immer ein offenest Webbrowser Fenster mit allen Tastenkürzel. Da ich eine Gaming Tastatur habe konnte ich 18 Tasten (es sind additionale Tasten) mit den Blender Tastenkürzel programmieren. So ging es noch viel schneller und ich hatte nach einer langer Modellierungsphase keine Handschmerzen mehr.
+
+\section{Einheiten modelisieren}
+
+Um die Einheiten zu modellisieren habe ich meistens Punkt-per-Punkt gearbeitet um nicht unerwüschte Flächen zu erhalten die nur die Texturierung länger gemacht hätten. (z.B es gibt keine Flächen unter den Gebäuden usw.)
+
+Was ich zuerst gemacht habe ist dass ich mich von einer vielfallt von Bildern inspiriern lassen habe. Das folgende Bild ist eines der wichtigsten Positionen zeigt. In der Modelisation heissen diese Bilder "`Blueprints"`. Mit diesem Bild und dem nächsten habe ich meine erste Einheit modelisiert (Ein Bogenschüzen).
+
+
+
+\begin{figure}[H]
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[scale=0.3]{Male2.png}
+\caption{Blender Human Blueprint}
+\label{Blender Human Blueprint}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[scale=0.3]{archer1.png}
+\caption{Bogenschüzen}
+\label{Bogenschüzen}
+\end{center}
+\end{minipage}
+\end{figure}
+
+\subsection{Gebäude}
+
+Bei den Gebäuden habe ich zuerst nach Bilder von mittelalterlichen Häusern gesucht. Ich kannte ein franzosische Projekt indem das Ziel war ein Schloss mit den damaligen Werkzeuge und Techniken zu bauen. Die Abeiter hatten eine "`Motte"`\footnote{Burg}erstellt. Ich habe diese Motte als Basis für das Dorfzentrum genommen (Abb ~\ref{Motte}). Um das haus zu machen habe ich Abb~\ref{Chaumière} und noch andere genommen. Füur Gebäude wie die Bogenschüzerei habe ich mich von Age of Empires 2 inspiriert. Die Türme sind eine geänderte Form der Motte. 
+
+\begin{figure}[H]
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[scale=1]{chaume.png}
+\caption{Chaumière}
+\label{Chaumière}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[scale=0.4]{centreville.png}
+\caption{Motte}
+\label{Motte}
+\end{center}
+\end{minipage}
+\end{figure}
+
+Um ein Gebäude zu modellisieren habe ich die grund Punkte  für die Mauern des Gebäude zuerst erstellt. Diese Punkten extrudiert und so waren die Mauren enstanden. Ich habe dann das Dach addiert und die letzte Ettape war die kleine details wie die Fässe, Bäumchen hinzufügen.
+
+\begin{figure}[H]
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[scale=0.45]{blender_schmiede_grund.png}
+\caption{Schmiede mit dem Grund}
+\label{Schmiede mit dem Grund}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[scale=0.65]{blender_schmiede_dach.png}
+\caption{Schmiede mit dem Dach}
+\label{Schmiede mit dem Dach}
+\end{center}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[scale=0.5]{blender_schmiede_final1.png}
+\caption{Schmiede mit den Details}
+\label{Schmiede mit den Details}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[scale=0.65]{blender_schmiede_final2.png}
+\caption{Texturierte Schmiede}
+\label{Texturierte Schmiede}
+\end{center}
+\end{minipage}
+\end{figure}
+
+Mein einziger Wunsch als ich angefange habe mit dem Modellisieren war zu wissen wie Profesionnelle es machten. Ich habe auf dem Internet nachgesucht und bin auf einer Website gestossen die erklärte wie man aus den komprimierten Dateien Age of Empires Einheiten extrahiren konnte. So habe ich ein Tool herunterladen das dieses macht und einige Gebäude extrahiert. Mit einer anderen Software (Granny Viewer) konnte ich die 3D Objekte Anschauen und noch mit einem andern Tool sie in .obj exportieren. Beim analysieren von solchen 3D Objekten habe ich bemerkt, das, um Pünkte zu sparren, hatten die Modelisierer mehrere Meshes gemacht. So zum Beispiel Für ein haus hatten Sie das Dach, die Mauren und die Details getrennt. So habe ich dann auch meine Gebäude strukturiert aber ich habe nur eine Mesh behalten, weil wenn es in Blender mehrere Meshs gibt, gibt es dann automatisch mehrere Texture und für Julien war es gar nicht praktisch.
+
+
+
+\subsection{Einheiten}
+
+Um die Einheiten zu modeliiseren habe ich die zwei oben gezeigeten Blider genommen (Abb ~\ref{Blender Human Blueprint} und Abb~\ref{Bogenschüzen}). Von da aus habe ich eine Körper Seite modelisiert und dann die Andere. Dann habe ich den Bogen, das Schwert, den Helm und den Köcher mit den Pfeilen modeliert. Von dem Bogenschütze aus habe ich alle andere Einheiten gemacht. Ich konnte so schneller arbeiten, weil ich nicht immer alle Einheiten neu modellieren musste.
+
+\begin{figure}[H]
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[scale=0.35]{archer.png}
+\caption{Bogenschütze}
+\label{Bogenschütze}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[scale=0.65]{lancier.png}
+\caption{Lanzenreiter}
+\label{Lanzenreiter}
+\end{center}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[scale=0.5]{barbarian.png}
+\caption{Barbare}
+\label{Barbare}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[scale=0.65]{villager.png}
+\caption{Dorfbewohnerin}
+\label{Dorfbewohnerin}
+\end{center}
+\end{minipage}
+\end{figure}
 
 \section{Animationen}
+
+In Blender funktionniert das Animationen System mit Knöchen und IPO Curves\footnote{Die Koordinaten der Knöchen werden per IPO  gespeichert.}. Man erstellt ein Skelett und bindet es mit dem Objekt. Dann folgt die längste Ettappe: die Einheit zu anmieren.
+Die Animationen sind in differenten Teile geschnitten:
+
+\begin{description}
+\item [Idle 1:] Wenn die Einheit nichts macht
+\item [Idle 2] Andere Animation wenn die Einheit nichts macht
+\item [Walk:] Animation des Laufs
+\item [Attack 1:] Animation für den Angriff
+\item [Attack 2:] Zweite Animation für den Angriff (nur für die Infanterie
+\item [Death 1:] Animation des Todes der Einheit
+\item [Death 2:] Zweite Animation des Todes der Einheit
+\item [Gather Gold Stone:] Animation für das Einsammeln von Stein und Gold (nur bei der Dorfbewohnerin)
+\item [Gather Wood:] Animation für das Einsammeln von Holz (nur bei der Dorfbewohnerin)
+\item [Gather Food:] Animation für das Einsammeln von Nahrung (nur bei der Dorfbewohnerin)
+\item [Wood return:] Animation für das Einsammeln von Holz wenn die Dorfbewohnerin zum Dorfzentrum geht um ihre Güter zu ablasten (nur bei der Dorfbewohnerin)
+\item [Gold Stone Food Return:] Animation für das Einsammeln von Gold, Stein, Nahrung wenn die Dorfbewohnerin zum Dorfzentrum geht um ihre Güter zu ablasten  (nur bei der Dorfbewohnerin)
+\item [Build:] Animation für den Bau der Gebäude (nur bei der Dorfbewohnerin)
+\item [Turn:] Animation des Drehens (nur bei der Katapulte und Baliste)
+\item [Attack 0°:] Verschiedene Winkeln des Angriffs (nur bei der Katapulte und Baliste )
+\item [Attack 15°:] Verschiedene Winkeln des Angriffs (nur bei der Katapulte und Baliste )
+\item [Attack 30°:] Verschiedene Winkeln des Angriffs (nur bei der Katapulte und Baliste )
+\item [Attack 45°:] Verschiedene Winkeln des Angriffs (nur bei der Katapulte und Baliste )
+\item [Attack 60°:] Verschiedene Winkeln des Angriffs (nur bei der Katapulte und Baliste )
+\item [Attack 75°:] Verschiedene Winkeln des Angriffs (nur bei der Katapulte und Baliste )
+\item [Attack 90°:] Verschiedene Winkeln des Angriffs (nur bei der Katapulte und Baliste )
+\end{description}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.75]{iposchl.png}
+\caption{Typische Anzicht des Animationsmenü mit den IPO Curves}
+\label{Typische Anzicht des Animationsmenü mit den IPO Curves}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.5]{knoche.png}
+\caption{Ein Knochen}
+\label{Ein Knochen}
+\end{center}
+\end{figure}
+
 \section{Tastenkürzel}
+\label{sec:Tastenkürzel}
 
+\subsubsection{Ansicht}
+\begin{itemize}
+\item \fbox{1} Front Perspektive
+\item \fbox{Strg+1} Hinter Perspektive
+\item \fbox{3} Rechte Perspektive
+\item \fbox{Strg+3} Linke Perspektive
+\item \fbox{7} Obere Perspektive
+\item \fbox{Strg+7} Untere Perspektive
+\item \fbox{5} Orthographische Ansicht/ Perspektivische Ansicht
+\item \fbox{0} Kamera Ansicht
+\item \fbox{Gedrücktes Mausrad} Drehung um einem Ansichtspunkt
+\item \fbox{Shift +Gedrücktes Mausrad} Ansichts Punkt wechseln
+\item \fbox{Strg+Mausrad bewegen} Rechts / Links scrollen
+\item \fbox{Shift+Mausrad bewegen} Auf / Ab scrollen
+\item \fbox{Mausrad bewegen} Aus / Hin zoomen
+\item \fbox{Shift+C} Zentriert die Ansicht und den Cursor
+\item \fbox{Z} Gefüllte / Durchsichtige Ansicht
+\item \fbox{Linksklick} Cursor bewegen
+\item \fbox{T} Rechtes Menü ein/ausblenden
+\item \fbox{N}  Linkes Menü ein/ausblenden
+\end{itemize}
 
+\subsubsection{Auswahl}
+\begin{itemize}
+\item \fbox{A} Alles / nichts auswählen
+\item \fbox{B} Viereckige Auswahl
+\item \fbox{C} Runde Auswahl
+\item \fbox{Ctrl+Linksklick} Freie Auswahl
+\item \fbox{Shift+A} neues Objekt hinzufgen
+\item \fbox{Shift+Rechtsklick} Mehrer Objekte / Punkte auswählen
+\end{itemize}
 
-\textbf{}
+\subsubsection{Modelsation}
+\begin{itemize}
+\item \fbox{Tab} Objekt / Edit Modus
+\item \fbox{G} Verschieben
+\item \fbox{S} Vergrössern / verkleinern
+\item \fbox{R} Rotieren
+\item \fbox{Shift+D} Objekt / Punkt duplizieren
+\item \fbox{Delete} Löschen
+\end{itemize}
 
+\textbf{Folgende Tastenkürzel sind nur im Objekt Modus gültig:}
+
+\begin{itemize}
+\item \fbox{Strg+J} Objekte zusammenschliessen
+\item \fbox{Strg+P} Set Parent
+\item \fbox{Alt+P} Clear Parent
+\end{itemize}
+
+\textbf{Folgende Tastenkürzel sind nur im Edit Modus gültig:}
+
+\begin{itemize}
+\item \fbox{E} Ausgewählte Punkte extrudieren
+\item \fbox{F} Punkte verbinden / Punkte in Fläche verwandeln
+\item \fbox{W} Öffnet spezial Menü
+\item \fbox{Strg+R} Loopcut machen (einmal diese Tastenkombination gemacht können Sie mit dem Mausrad die Zahl der Cuts ändern)
+\item \fbox{P} Auswahl von dem Objekt separieren
+\end{itemize}
+
+\subsubsection{Animation}
+\begin{itemize}
+\item \fbox{I} Ein IPO schlüssel speichern
+\item \fbox{Alt+A} Animation starten
+\end{itemize}
+
+\subsubsection{Andere}
+\begin{itemize}
+\item \fbox{Strg+Z} Action abbrechen
+\end{itemize}
 \chapter{Textures}
 
 \begin{wrapfigure}[11]{o}{6cm}
@@ -522,25 +765,25 @@ Ich habe probiert mit Photoshop den hintergrund für das Mainmenu zu machen, habe
 \label{Github Logo}
 \end{wrapfigure}
 
-Github ist eine Codehosting Dienst der das Versionverwaltungs-Sytem Git benutzt. Es ermöglicht dem Benutzer die differenten Versionen eines Projekt zu sehen und er kann jederzeit wieder zu einer ältern Version kommen.
+Github ist eine Codehosting Dienst der das Versionverwaltungs-Sytem Git benutzt. Er ermöglicht dem Benutzer die differenten Versionen eines Projekt zu sehen und er kann jederzeit wieder zu einer ältern Version kommen.
 
-Github stellt auch merhere wichtige Dienste neben dem Codhosting zu: ein "Issue" Verwaltung, eine Wiki Seite für das Projekt, mehrere Graphiken der Aktivitäten, der Anzahl der hinzugefugten und entfernten Dateien usw.
+Github stellt auch merhere wichtige Dienste neben dem Codhosting zu: ein "`Issue"` Verwaltung, eine Wiki Seite für das Projekt, mehrere Graphiken der Aktivitäten, der Anzahl der hinzugefugten und entfernten Dateien usw.
 
 Der Benutzer muss ein Client herunterladen und installieren (Linux, MAC und Windows sind unterstützt) die "Repository" von der Website mit dem Client auf dem PC klonen dann kann er arbeiten.
 
-Das Git Sytem funktionniert folgendermassen: für jede Änderung die der Benutzer macht muss er es kommentieren. Für den Moment ist es noch alles lokal. Dann wenn er seine Repository synct (ein sogenanntes "git push"), werden seine Dateien geuploadet und auf der Repositorywebsite wird sein Commit erscheinen mit allen modifikationen die er gemacht hat.
+Das Git Sytem funktionniert folgendermassen: für jede Änderung die der Benutzer macht muss er sie kommentieren. Wenn er si kommentiert ist es noch lokal. Dann wenn er seine Repository synct (ein sogenanntes "git push"), werden seine Dateien mit den Comits geuploadet und auf der Repositorywebsite wirden allen modifikationen die er gemacht hat erscheinen.
 
 Da wir die Funktion der differenten Ästen nicht gebraucht haben werde ich es hier nicht erklären. Eine komplette Anleitung wie die Äste funktionnieren finden Sie unter \url{http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging}
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.65]{git_local-remote.png}
+\includegraphics[scale=0.7]{git_local-remote.png}
 \caption{Github Shema}
 \label{Github Shema}
 \end{center}
 \end{figure}
 
-Wir haben dieses System gebraucht wegen zwei Kriterien: Github ist einfach genial und somit konnte Herr Vogelsanger immer wüssen was wir gemacht haben, wie oft wir am Projekt gearbeitet haben.
+Wir haben dieses System wegen zwei Kriterien gebraucht: Github ist einfach das effizienste Programm für Projekte und somit konnte Herr Vogelsanger immer wüssen was wir gemacht haben, wie oft wir am Projekt gearbeitet haben.
 
 \section{Installation}
 
@@ -562,7 +805,7 @@ Die installation Githubs war für mich sehr anstregend. Mein Vater half mir zum g
 \end{center}
 \end{figure}
 
-Sie erkennen hier villeicht den Metro style von windows 8. Da Windows 8 am 26 October herauskommt haben die Entwickler des Clients direkt den neuen Styl angewendet
+Sie erkennen hier villeicht den Metro style von windows 8. Da Windows 8 am 26 October herauskommt haben die Entwickler des Clients direkt den neuen Styl angewendet. Ich finde den neuen Client sieht besser aus.
 
 \begin{figure}[H]
 \begin{center}
@@ -572,6 +815,7 @@ Sie erkennen hier villeicht den Metro style von windows 8. Da Windows 8 am 26 Oc
 \end{center}
 \end{figure}
 
+Ich habe mit dem von Gihub angeboter Dienst "Issues" gearbeitet. Es half mir eine Taskliste zu machen mit allen Sachen sie ich noch mache musste. Normalerweise ist es eher für die Bugs ausgedacht worden.
 
 \chapter{Die CD}
 
@@ -584,9 +828,9 @@ Das Spiel ist auch unter \url{http://invasion.montmartel.com/index.php/downloads
 
 Für die Zukunft unseres Projektes dachten wir andere Personen zu rekrutieren um diese Projekt zu weiterfahren. Geplant sind neue Zivilisationen, mehrere Einheiten, ein Multiplayermodus und vieles mehr.
 
-Mit diesem Projekt habe ich gesehen das es schwiri
+Mit diesem Projekt habe ich gesehen das es schwirig war in den Zeiten zu bleiben, obwohl wir schon früher angefangen haben.
 
-Diese schriftliche maturarbeit wurde komplett mit Latex geschrieben. Die folgenden Packages wurden genutzt: graphicx, wrapfig, hyperreffloat.
+Diese schriftliche maturarbeit wurde komplett mit \LaTeX{} geschrieben. Die folgenden Packages wurden genutzt: graphicx, wrapfig, hyperreffloat.
 \chapter{Quellen}
 Alle Bilder ausser den folgenden kommen von mir.
 \subsubsection{ Aus dem Internet:}
@@ -596,4 +840,8 @@ Abb ~\ref{Blender Logo}: \url{http://download.blender.org/institute/logos/blende
 \newline Abb ~\ref{Github Logo}: \url{http://upload.wikimedia.org/wikipedia/commons/b/b3/GitHub.svg}
 \newline Abb ~\ref{Github Shema}: \url{http://thkoch2001.github.com/whygitisbetter/images/local-remote.png}
 \newline Abb ~\ref{Alter Github Client}: \url{nathanj.github.com/gitguide/images/04.png}
+\newline Abb ~\ref{}: \url{http://www.sankuru-direct.net/chaume.jpg}
+\newline Abb ~\ref{}: \url{http://mw2.google.com/mw-panoramio/photos/medium/58133943.jpg}
+\newline Abb ~\ref{Blender Human Blueprint}\url{http://www.the-blueprints.com/blueprints-depot-restricted/humans/humans/male_2-03343.jpg}
+\newline Abb ~\ref{}\url{http://www.larousse.fr/encyclopedie/data/images/1002785-Archer_fran%C3%A7ais.jpg}
 \end{document}
