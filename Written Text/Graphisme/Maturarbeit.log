@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2012.7.23)  12 OCT 2012 18:40
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2012.7.23)  13 OCT 2012 23:35
 entering extended mode
 **D:/Samuel/GitHub/Invasion/Written*Text/Graphisme/Maturarbeit.tex
 ("D:/Samuel/GitHub/Invasion/Written Text/Graphisme/Maturarbeit.tex"
@@ -15,8 +15,8 @@ an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
 ("C:\Programme\MiKTeX 2.9\tex\latex\base\book.cls"
 Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Programme\MiKTeX 2.9\tex\latex\base\bk10.clo"
-File: bk10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+("C:\Programme\MiKTeX 2.9\tex\latex\base\bk12.clo"
+File: bk12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@chapter=\count80
@@ -55,16 +55,16 @@ Package: babel 2008/07/08 v3.8m The Babel package
 ("C:\Programme\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
 File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
 )
-("C:\Programme\MiKTeX 2.9\tex\generic\babel\germanb.ldf"
-Language: germanb 2008/06/01 v2.6m German support from the babel system
+("C:\Programme\MiKTeX 2.9\tex\generic\babel\ngermanb.ldf"
+Language: ngermanb 2008/07/06 v2.6n new German support from the babel system
 
 ("C:\Programme\MiKTeX 2.9\tex\generic\babel\babel.def"
 File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count88
 \U@D=\dimen103
 )
-\l@austrian = a dialect from \language\l@german 
-Package babel Info: Making " an active character on input line 102.
+\l@naustrian = a dialect from \language\l@ngerman 
+Package babel Info: Making " an active character on input line 92.
 ))
 ("C:\Programme\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
@@ -311,23 +311,23 @@ LaTeX Font Info:    ... okay on input line 28.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: twoside 
-* h-part:(L,W,R)=(56.9055pt, 500.484pt, 56.9055pt)
+* h-part:(L,W,R)=(71.13188pt, 472.03123pt, 71.13188pt)
 * v-part:(T,H,B)=(56.9055pt, 652.70622pt, 85.35826pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=500.484pt
+* \textwidth=472.03123pt
 * \textheight=652.70622pt
-* \oddsidemargin=-15.36449pt
-* \evensidemargin=-15.36449pt
-* \topmargin=-45.43198pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-47.23828pt
 * \headheight=12.0pt
-* \headsep=18.06749pt
-* \topskip=10.0pt
-* \footskip=25.29494pt
-* \marginparwidth=125.0pt
+* \headsep=19.8738pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=98.0pt
 * \marginparsep=7.0pt
 * \columnsep=10.0pt
-* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -364,11 +364,11 @@ LaTeX Info: Redefining \nameref on input line 28.
 ("D:\Samuel\GitHub\Invasion\Written Text\Graphisme\Maturarbeit.out")
 \@outlinefile=\write3
 
-<logo.png, id=139, 628.3475pt x 297.11pt>
+<logo.png, id=143, 628.3475pt x 297.11pt>
 File: logo.png Graphic file (type png)
  <use logo.png>
 Package pdftex.def Info: logo.png used on input line 32.
-(pdftex.def)             Requested size: 375.36299pt x 177.4876pt.
+(pdftex.def)             Requested size: 354.02342pt x 167.39597pt.
  [1
 
 
@@ -378,19 +378,19 @@ fig/pdftex.map} <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/logo.png>] [2
 ]
 ("D:\Samuel\GitHub\Invasion\Written Text\Graphisme\Maturarbeit.toc"
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 5.
+(Font)              <12> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 5.
-)
+(Font)              <8> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 5.
+ [3])
 \tf@toc=\write4
- [3]
-[4
 
-]
+[4]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 43.
+(Font)              <7> on input line 43.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 43.
+(Font)              <5> on input line 43.
 
 Underfull \hbox (badness 10000) in paragraph at lines 43--48
 
@@ -398,11 +398,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--48
 
 [1
 
+
 ] [2
 
 ]
 Kapitel 1.
-<twscreen.png, id=215, 1024.82875pt x 763.85374pt>
+<twscreen.png, id=220, 1024.82875pt x 763.85374pt>
 File: twscreen.png Graphic file (type png)
  <use twscreen.png>
 Package pdftex.def Info: twscreen.png used on input line 56.
@@ -421,7 +422,7 @@ has been already used, duplicate ignored
                                                   \fi \fi 
 l.63 
       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/twscreen.png>]
-<age2.png, id=226, 1284.8pt x 1027.84pt>
+<age2.png, id=229, 1284.8pt x 1027.84pt>
 File: age2.png Graphic file (type png)
  <use age2.png>
 Package pdftex.def Info: age2.png used on input line 66.
@@ -430,847 +431,879 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.79 \chapter
-             {Das Spiel} [2pdfTeX warning (ext4): destination with the same ide
-ntifier (name{figure.1.2}) has been already used, duplicate ignored
+l.74 
+      [2pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.1.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
+l.74 
+      <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/age2.png>]pdfTeX warnin
+g (ext4): destination with the same identifier (name{page.3}) has been already 
+used, duplicate ignored
+<to be read again> 
+                   \relax 
 l.79 \chapter
-             {Das Spiel} <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/age2
-.png>]
+             {Das Spiel} [3]pdfTeX warning (ext4): destination with the same id
+entifier (name{page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.79 \chapter
+             {Das Spiel} [4
+
+]
 Kapitel 2.
 File: logo.png Graphic file (type png)
 <use logo.png>
 Package pdftex.def Info: logo.png used on input line 81.
 (pdftex.def)             Requested size: 199.16928pt x 94.17496pt.
-pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.92 
-      [3
 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1}) 
-has been already used, duplicate ignored
+Underfull \vbox (badness 4492) has occurred while \output is active []
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.92 
-     ] <imgprovisoire_ingame.png, id=246, 611.28375pt x 651.43375pt>
-File: imgprovisoire_ingame.png Graphic file (type png)
-
-<use imgprovisoire_ingame.png>
-Package pdftex.def Info: imgprovisoire_ingame.png used on input line 99.
-(pdftex.def)             Requested size: 397.32973pt x 423.42691pt.
-pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.112 
-       [4pdfTeX warning (ext4): destination with the same identifier (name{figu
-re.2.2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.112 
-       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/imgprovisoire_ingame.p
-ng>] <imgprovisoire_caserne.png, id=254, 611.28375pt x 651.43375pt>
-File: imgprovisoire_caserne.png Graphic file (type png)
-
-<use imgprovisoire_caserne.png>
-Package pdftex.def Info: imgprovisoire_caserne.png used on input line 122.
-(pdftex.def)             Requested size: 56.9055pt x 60.6344pt.
- [5 <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/imgprovisoire_caserne.png
->] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 183--187
-
- []
-
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 188--192
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 193--197
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 198--206
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 207--211
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 212--216
-
- []
-
-[8] <techtree.png, id=313, 1494.58376pt x 1154.3125pt>
-File: techtree.png Graphic file (type png)
- <use techtree.png>
-Package pdftex.def Info: techtree.png used on input line 236.
-(pdftex.def)             Requested size: 523.11215pt x 404.01543pt.
-
-Overfull \hbox (22.62816pt too wide) in paragraph at lines 236--237
- [] 
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9]
-<maison01.png, id=325, 1284.8pt x 1027.84pt>
-File: maison01.png Graphic file (type png)
- <use maison01.png>
-Package pdftex.def Info: maison01.png used on input line 247.
-(pdftex.def)             Requested size: 449.68674pt x 359.74939pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [10pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
-3}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.252 
-       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/techtree.png (PNG copy
-)>] <maison_age1.png, id=331, 250.536pt x 165.2574pt>
-File: maison_age1.png Graphic file (type png)
- <use maison_age1.png>
-Package pdftex.def Info: maison_age1.png used on input line 257.
-(pdftex.def)             Requested size: 250.53537pt x 165.25697pt.
-
-<maison_age1_2.png, id=332, 451.6875pt x 316.18124pt>
-File: maison_age1_2.png Graphic file (type png)
- <use maison_age1_2.png>
-Package pdftex.def Info: maison_age1_2.png used on input line 267.
-(pdftex.def)             Requested size: 451.68639pt x 316.18047pt.
-
-[11pdfTeX warning (ext4): destination with the same identifier (name{figure.2.4
+ [5pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.271 \end{figure}
-                  pdfTeX warning (ext4): destination with the same identifier (
-name{figure.2.5}) has been already used, duplicate ignored
+l.92 
+     ] <imgprovisoire_ingame.png, id=255, 611.28375pt x 651.43375pt>
+File: imgprovisoire_ingame.png Graphic file (type png)
+
+<use imgprovisoire_ingame.png>
+Package pdftex.def Info: imgprovisoire_ingame.png used on input line 106.
+(pdftex.def)             Requested size: 397.32973pt x 423.42691pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7pdfTeX warning (ext4): destination with the same identifier (name{figure.2.2
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.271 \end{figure}
-                   <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/maison01.p
-ng (PNG copy)> <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/maison_age1.pn
-g>] <sapin.png, id=340, 955.57pt x 533.995pt>
+l.119 \subsubsection
+                    {Kaserne} <D:/Samuel/GitHub/Invasion/Written Text/Graphisme
+/imgprovisoire_ingame.png>]
+<imgprovisoire_caserne.png, id=271, 611.28375pt x 651.43375pt>
+File: imgprovisoire_caserne.png Graphic file (type png)
+
+<use imgprovisoire_caserne.png>
+Package pdftex.def Info: imgprovisoire_caserne.png used on input line 121.
+(pdftex.def)             Requested size: 56.9055pt x 60.6344pt.
+ [8 <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/imgprovisoire_caserne.png
+>] [9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 182--186
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--191
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--196
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--205
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 206--210
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 211--215
+
+ []
+
+[12] <techtree.png, id=337, 1494.58376pt x 1154.3125pt>
+File: techtree.png Graphic file (type png)
+ <use techtree.png>
+Package pdftex.def Info: techtree.png used on input line 235.
+(pdftex.def)             Requested size: 523.11215pt x 404.01543pt.
+
+Overfull \hbox (51.08092pt too wide) in paragraph at lines 235--236
+ [] 
+ []
+
+<maison01.png, id=338, 1284.8pt x 1027.84pt>
+File: maison01.png Graphic file (type png)
+ <use maison01.png>
+Package pdftex.def Info: maison01.png used on input line 246.
+(pdftex.def)             Requested size: 256.95544pt x 205.56436pt.
+ [13pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
+3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.250 \end{figure}
+                   <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/techtree.p
+ng (PNG copy)>] <maison_age1.png, id=347, 250.536pt x 165.2574pt>
+File: maison_age1.png Graphic file (type png)
+
+<use maison_age1.png>
+Package pdftex.def Info: maison_age1.png used on input line 256.
+(pdftex.def)             Requested size: 250.53537pt x 165.25697pt.
+ <maison_age1_2.png, id=348, 451.6875pt x 316.18124pt>
+File: maison_age1_2.png Graphic file (type png)
+
+<use maison_age1_2.png>
+Package pdftex.def Info: maison_age1_2.png used on input line 266.
+(pdftex.def)             Requested size: 451.68639pt x 316.18047pt.
+
+Underfull \vbox (badness 2384) has occurred while \output is active []
+
+ [14pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
+4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.271 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+2.5}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.271 
+       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/maison01.png (PNG copy
+)> <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/maison_age1.png>]
+<sapin.png, id=356, 955.57pt x 533.995pt>
 File: sapin.png Graphic file (type png)
  <use sapin.png>
-Package pdftex.def Info: sapin.png used on input line 275.
+Package pdftex.def Info: sapin.png used on input line 274.
 (pdftex.def)             Requested size: 334.45451pt x 186.90105pt.
 
-<sapinupdate.png, id=341, 171.64125pt x 318.18875pt>
+<sapinupdate.png, id=357, 171.64125pt x 318.18875pt>
 File: sapinupdate.png Graphic file (type png)
  <use sapinupdate.png>
-Package pdftex.def Info: sapinupdate.png used on input line 283.
+Package pdftex.def Info: sapinupdate.png used on input line 282.
 (pdftex.def)             Requested size: 85.8204pt x 159.09398pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [12pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
+ [15pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
 6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.288 
+l.287 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 2.7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.288 
+l.287 
        <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/maison_age1_2.png> <D:
 /Samuel/GitHub/Invasion/Written Text/Graphisme/sapin.png>]
-<screen_menu_ingame.png, id=350, 1027.84pt x 770.88pt>
+<screen_menu_ingame.png, id=366, 1027.84pt x 770.88pt>
 File: screen_menu_ingame.png Graphic file (type png)
 
 <use screen_menu_ingame.png>
-Package pdftex.def Info: screen_menu_ingame.png used on input line 291.
+Package pdftex.def Info: screen_menu_ingame.png used on input line 290.
 (pdftex.def)             Requested size: 411.12872pt x 308.34654pt.
- [13pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
+ [16pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
 8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.301 \subsubsection
-                    {Liste der Musiktitel}pdfTeX warning (ext4): destination wi
-th the same identifier (name{figure.2.9}) has been already used, duplicate igno
-red
+l.299 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+2.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.301 \subsubsection
-                    {Liste der Musiktitel} <D:/Samuel/GitHub/Invasion/Written T
-ext/Graphisme/sapinupdate.png> <D:/Samuel/GitHub/Invasion/Written Text/Graphism
-e/screen_menu_ingame.png>] [14]
+l.299 
+       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/sapinupdate.png> <D:/S
+amuel/GitHub/Invasion/Written Text/Graphisme/screen_menu_ingame.png>] [17]
+[18
+
+]
 Kapitel 3.
-<blenderlogo.png, id=368, 461.725pt x 128.48pt>
+<blenderlogo.png, id=387, 461.725pt x 128.48pt>
 File: blenderlogo.png Graphic file (type png)
  <use blenderlogo.png>
-Package pdftex.def Info: blenderlogo.png used on input line 309.
+Package pdftex.def Info: blenderlogo.png used on input line 308.
 (pdftex.def)             Requested size: 199.16928pt x 55.41978pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 315.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 314.
 
 
 ("C:\Programme\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-<audi.png, id=376, 803.0pt x 501.875pt>
+<audi.png, id=395, 803.0pt x 501.875pt>
 File: audi.png Graphic file (type png)
  <use audi.png>
-Package pdftex.def Info: audi.png used on input line 321.
+Package pdftex.def Info: audi.png used on input line 320.
 (pdftex.def)             Requested size: 200.74951pt x 125.46843pt.
 
-<watch.jpg, id=377, 803.0pt x 568.1225pt>
+<watch.jpg, id=396, 803.0pt x 568.1225pt>
 File: watch.jpg Graphic file (type jpg)
  <use watch.jpg>
-Package pdftex.def Info: watch.jpg used on input line 329.
+Package pdftex.def Info: watch.jpg used on input line 328.
 (pdftex.def)             Requested size: 200.74951pt x 142.03027pt.
 
-Underfull \vbox (badness 7888) has occurred while \output is active []
+Overfull \hbox (43.7327pt too wide) in paragraph at lines 335--335
+[][][]\T1/cmr/m/n/10 Das Be-such-te Tu-to-ri-al: [][]$\T1/cmtt/m/n/10 http : / 
+/ www . siteduzero . com / tutoriel-[]3-[]11714-[]debutez-[]dans-[]la-[]3d-[]av
+ec-[]blender .$
+ []
 
- [15
-
-pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1}) 
-has been already used, duplicate ignored
+[19pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.343 
+l.338 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 3.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.343 
+l.338 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 3.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.343 
+l.338 
        <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/blenderlogo.png (PNG c
 opy)> <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/audi.png> <D:/Samuel/Gi
 tHub/Invasion/Written Text/Graphisme/watch.jpg>]
-<Abb3_1_1.png, id=394, 246.9225pt x 242.9075pt>
+<Abb3_1_1.png, id=416, 246.9225pt x 242.9075pt>
 File: Abb3_1_1.png Graphic file (type png)
  <use Abb3_1_1.png>
-Package pdftex.def Info: Abb3_1_1.png used on input line 347.
-(pdftex.def)             Requested size: 160.49771pt x 157.88799pt.
+Package pdftex.def Info: Abb3_1_1.png used on input line 346.
+(pdftex.def)             Requested size: 98.76724pt x 97.16127pt.
 
-<Abb3_1_2.png, id=395, 419.5675pt x 179.67125pt>
+<Abb3_1_2.png, id=417, 419.5675pt x 179.67125pt>
 File: Abb3_1_2.png Graphic file (type png)
  <use Abb3_1_2.png>
-Package pdftex.def Info: Abb3_1_2.png used on input line 354.
-(pdftex.def)             Requested size: 272.71564pt x 116.78491pt.
+Package pdftex.def Info: Abb3_1_2.png used on input line 353.
+(pdftex.def)             Requested size: 167.82402pt x 71.86722pt.
 
-<Abb3_1_3.png, id=396, 210.7875pt x 55.20625pt>
+<Abb3_1_3.png, id=418, 210.7875pt x 55.20625pt>
 File: Abb3_1_3.png Graphic file (type png)
  <use Abb3_1_3.png>
-Package pdftex.def Info: Abb3_1_3.png used on input line 363.
-(pdftex.def)             Requested size: 137.01025pt x 35.88362pt.
-
-<Abb3_1_4.png, id=397, 504.88625pt x 387.4475pt>
-File: Abb3_1_4.png Graphic file (type png)
- <use Abb3_1_4.png>
-Package pdftex.def Info: Abb3_1_4.png used on input line 371.
-(pdftex.def)             Requested size: 328.17215pt x 251.83789pt.
-
-<Abb3_1_5.png, id=398, 504.88625pt x 387.4475pt>
-File: Abb3_1_5.png Graphic file (type png)
- <use Abb3_1_5.png>
-Package pdftex.def Info: Abb3_1_5.png used on input line 378.
-(pdftex.def)             Requested size: 328.17215pt x 251.83789pt.
-
-Underfull \vbox (badness 1675) has occurred while \output is active []
-
- [16pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+Package pdftex.def Info: Abb3_1_3.png used on input line 362.
+(pdftex.def)             Requested size: 105.3935pt x 27.60304pt.
+ [20pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.382 \end{figure}
-                  pdfTeX warning (ext4): destination with the same identifier (
-name{figure.3.5}) has been already used, duplicate ignored
+l.367 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+3.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.382 \end{figure}
-                  pdfTeX warning (ext4): destination with the same identifier (
-name{figure.3.6}) has been already used, duplicate ignored
+l.367 
+       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/Abb3_1_1.png> <D:/Samu
+el/GitHub/Invasion/Written Text/Graphisme/Abb3_1_2.png>]
+<Abb3_1_4.png, id=427, 504.88625pt x 387.4475pt>
+File: Abb3_1_4.png Graphic file (type png)
+ <use Abb3_1_4.png>
+Package pdftex.def Info: Abb3_1_4.png used on input line 370.
+(pdftex.def)             Requested size: 252.44249pt x 193.72327pt.
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.382 \end{figure}
-                   <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/Abb3_1_1.p
-ng> <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/Abb3_1_2.png> <D:/Samuel/
-GitHub/Invasion/Written Text/Graphisme/Abb3_1_3.png>]
-<Abb3_1_6.png, id=407, 503.8825pt x 386.44376pt>
+<Abb3_1_5.png, id=428, 504.88625pt x 387.4475pt>
+File: Abb3_1_5.png Graphic file (type png)
+ <use Abb3_1_5.png>
+Package pdftex.def Info: Abb3_1_5.png used on input line 377.
+(pdftex.def)             Requested size: 252.44249pt x 193.72327pt.
+
+<Abb3_1_6.png, id=429, 503.8825pt x 386.44376pt>
 File: Abb3_1_6.png Graphic file (type png)
  <use Abb3_1_6.png>
-Package pdftex.def Info: Abb3_1_6.png used on input line 386.
-(pdftex.def)             Requested size: 327.51974pt x 251.18546pt.
+Package pdftex.def Info: Abb3_1_6.png used on input line 385.
+(pdftex.def)             Requested size: 251.94063pt x 193.2214pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 5302) has occurred while \output is active []
 
- [17pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
-7}) has been already used, duplicate ignored
+ [21pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.391 
+l.390 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+3.7}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.390 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 3.8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.391 
-       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/Abb3_1_4.png> <D:/Samu
-el/GitHub/Invasion/Written Text/Graphisme/Abb3_1_5.png>]
-<Abb3_1_7.png, id=416, 503.8825pt x 386.44376pt>
+l.390 
+       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/Abb3_1_3.png> <D:/Samu
+el/GitHub/Invasion/Written Text/Graphisme/Abb3_1_4.png> <D:/Samuel/GitHub/Invas
+ion/Written Text/Graphisme/Abb3_1_5.png>]
+<Abb3_1_7.png, id=439, 503.8825pt x 386.44376pt>
 File: Abb3_1_7.png Graphic file (type png)
  <use Abb3_1_7.png>
-Package pdftex.def Info: Abb3_1_7.png used on input line 394.
-(pdftex.def)             Requested size: 327.51974pt x 251.18546pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [18pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+Package pdftex.def Info: Abb3_1_7.png used on input line 393.
+(pdftex.def)             Requested size: 251.94063pt x 193.2214pt.
+ [22pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.402 
+l.401 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 3.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.402 
+l.401 
        <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/Abb3_1_6.png> <D:/Samu
 el/GitHub/Invasion/Written Text/Graphisme/Abb3_1_7.png>]
-<belndermainscreen.png, id=425, 1284.8pt x 1027.84pt>
+<belndermainscreen.png, id=450, 1284.8pt x 1027.84pt>
 File: belndermainscreen.png Graphic file (type png)
 
 <use belndermainscreen.png>
-Package pdftex.def Info: belndermainscreen.png used on input line 405.
+Package pdftex.def Info: belndermainscreen.png used on input line 404.
 (pdftex.def)             Requested size: 449.68674pt x 359.74939pt.
 
-<belndersplash.png, id=426, 502.87875pt x 513.92pt>
+<belndersplash.png, id=451, 502.87875pt x 513.92pt>
 File: belndersplash.png Graphic file (type png)
  <use belndersplash.png>
-Package pdftex.def Info: belndersplash.png used on input line 415.
+Package pdftex.def Info: belndersplash.png used on input line 414.
 (pdftex.def)             Requested size: 326.86731pt x 334.04404pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [19pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+ [23pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.420 
+l.419 
        <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/belndermainscreen.png>
-] <Male2.png, id=436, 428.60126pt x 501.875pt>
+] <Male2.png, id=459, 428.60126pt x 501.875pt>
 File: Male2.png Graphic file (type png)
  <use Male2.png>
-Package pdftex.def Info: Male2.png used on input line 436.
+Package pdftex.def Info: Male2.png used on input line 435.
 (pdftex.def)             Requested size: 128.58136pt x 150.56366pt.
 
-<archer1.png, id=437, 207.77625pt x 401.5pt>
+<archer1.png, id=460, 207.77625pt x 401.5pt>
 File: archer1.png Graphic file (type png)
  <use archer1.png>
-Package pdftex.def Info: archer1.png used on input line 444.
+Package pdftex.def Info: archer1.png used on input line 443.
 (pdftex.def)             Requested size: 62.33334pt x 120.45091pt.
-
-Underfull \vbox (badness 4060) has occurred while \output is active []
-
- [20pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+ [24pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.450 
-       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/belndersplash.png>]
-<chaume.png, id=448, 130.086pt x 97.5645pt>
+l.448 \end{figure}
+                   <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/belnderspl
+ash.png>] <chaume.png, id=471, 130.086pt x 97.5645pt>
 File: chaume.png Graphic file (type png)
  <use chaume.png>
-Package pdftex.def Info: chaume.png used on input line 458.
+Package pdftex.def Info: chaume.png used on input line 457.
 (pdftex.def)             Requested size: 130.08566pt x 97.56424pt.
 
-<centreville.png, id=449, 501.875pt x 376.40625pt>
+<centreville.png, id=472, 501.875pt x 376.40625pt>
 File: centreville.png Graphic file (type png)
  <use centreville.png>
-Package pdftex.def Info: centreville.png used on input line 466.
+Package pdftex.def Info: centreville.png used on input line 465.
 (pdftex.def)             Requested size: 200.74643pt x 150.55983pt.
 
-<blender_schmiede_grund.png, id=450, 312.16624pt x 331.2375pt>
+<blender_schmiede_grund.png, id=473, 312.16624pt x 331.2375pt>
 File: blender_schmiede_grund.png Graphic file (type png)
 
 <use blender_schmiede_grund.png>
-Package pdftex.def Info: blender_schmiede_grund.png used on input line 478.
+Package pdftex.def Info: blender_schmiede_grund.png used on input line 477.
 (pdftex.def)             Requested size: 140.47351pt x 149.05548pt.
 
-<blender_schmiede_dach.png, id=451, 248.93pt x 206.7725pt>
+<blender_schmiede_dach.png, id=474, 248.93pt x 206.7725pt>
 File: blender_schmiede_dach.png Graphic file (type png)
 
 <use blender_schmiede_dach.png>
-Package pdftex.def Info: blender_schmiede_dach.png used on input line 486.
+Package pdftex.def Info: blender_schmiede_dach.png used on input line 485.
 (pdftex.def)             Requested size: 161.80257pt x 134.40053pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [21pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+ [25pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 13}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.492 
+l.491 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 3.14}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.492 
+l.491 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 3.15}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.492 
+l.491 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 3.16}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.492 
+l.491 
        <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/Male2.png> <D:/Samuel/
 GitHub/Invasion/Written Text/Graphisme/archer1.png> <D:/Samuel/GitHub/Invasion/
 Written Text/Graphisme/chaume.png> <D:/Samuel/GitHub/Invasion/Written Text/Grap
 hisme/centreville.png>]
-<blender_schmiede_final1.png, id=461, 277.035pt x 279.0425pt>
+<blender_schmiede_final1.png, id=485, 277.035pt x 279.0425pt>
 File: blender_schmiede_final1.png Graphic file (type png)
 
 <use blender_schmiede_final1.png>
-Package pdftex.def Info: blender_schmiede_final1.png used on input line 496.
+Package pdftex.def Info: blender_schmiede_final1.png used on input line 495.
 (pdftex.def)             Requested size: 138.51715pt x 139.5209pt.
 
-<blender_schmiede_final2.png, id=462, 304.13625pt x 216.81pt>
+<blender_schmiede_final2.png, id=486, 304.13625pt x 216.81pt>
 File: blender_schmiede_final2.png Graphic file (type png)
 
 <use blender_schmiede_final2.png>
-Package pdftex.def Info: blender_schmiede_final2.png used on input line 504.
+Package pdftex.def Info: blender_schmiede_final2.png used on input line 503.
 (pdftex.def)             Requested size: 197.6862pt x 140.92482pt.
 
 
-LaTeX Warning: Reference `Bogensch\"uzen' on page 22 undefined on input line 51
-7.
+LaTeX Warning: Reference `Bogensch\"utzen' on page 26 undefined on input line 5
+16.
 
-<archer.png, id=464, 220.825pt x 221.82875pt>
+<archer.png, id=488, 220.825pt x 221.82875pt>
 File: archer.png Graphic file (type png)
  <use archer.png>
-Package pdftex.def Info: archer.png used on input line 522.
+Package pdftex.def Info: archer.png used on input line 521.
 (pdftex.def)             Requested size: 77.2899pt x 77.6412pt.
 
-<lancier.png, id=465, 70.2625pt x 121.45375pt>
+<lancier.png, id=489, 70.2625pt x 121.45375pt>
 File: lancier.png Graphic file (type png)
  <use lancier.png>
-Package pdftex.def Info: lancier.png used on input line 530.
+Package pdftex.def Info: lancier.png used on input line 529.
 (pdftex.def)             Requested size: 45.67007pt x 78.94398pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [22pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+ [26pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 17}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.536 
+l.535 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 3.18}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.536 
+l.535 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 3.19}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.536 
+l.535 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 3.20}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.536 
+l.535 
        <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/blender_schmiede_grund
 .png> <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/blender_schmiede_dach.p
 ng> <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/blender_schmiede_final1.p
 ng> <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/blender_schmiede_final2.p
-ng>] <barbarian.png, id=478, 81.30376pt x 144.54pt>
+ng>] <barbarian.png, id=502, 81.30376pt x 144.54pt>
 File: barbarian.png Graphic file (type png)
  <use barbarian.png>
-Package pdftex.def Info: barbarian.png used on input line 540.
+Package pdftex.def Info: barbarian.png used on input line 539.
 (pdftex.def)             Requested size: 40.65176pt x 72.2698pt.
 
-<villager.png, id=479, 70.2625pt x 104.39pt>
+<villager.png, id=503, 70.2625pt x 104.39pt>
 File: villager.png Graphic file (type png)
  <use villager.png>
-Package pdftex.def Info: villager.png used on input line 548.
+Package pdftex.def Info: villager.png used on input line 547.
 (pdftex.def)             Requested size: 45.67007pt x 67.85268pt.
- [23pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
-21}) has been already used, duplicate ignored
+
+Overfull \hbox (0.81573pt too wide) in paragraph at lines 572--573
+[]\T1/cmr/m/n/12 Animation für das Ein-sam-meln von Gold, Stein, Nah-rung wenn
+ []
+
+[27pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2
+1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.579 \item [Attack 45°:]
-                          Verschiedene Winkeln des Angriffs (nur bei der Kat...
+l.573 \item [Build:]
+                     Animation für den Bau der Gebäude (nur bei der Dorfbewo...
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.22})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.579 \item [Attack 45°:]
-                          Verschiedene Winkeln des Angriffs (nur bei der Kat...
+l.573 \item [Build:]
+                     Animation für den Bau der Gebäude (nur bei der Dorfbewo...
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.23})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.579 \item [Attack 45°:]
-                          Verschiedene Winkeln des Angriffs (nur bei der Kat...
+l.573 \item [Build:]
+                     Animation für den Bau der Gebäude (nur bei der Dorfbewo...
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.24})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.579 \item [Attack 45°:]
-                          Verschiedene Winkeln des Angriffs (nur bei der Kat...
+l.573 \item [Build:]
+                     Animation für den Bau der Gebäude (nur bei der Dorfbewo...
  <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/archer.png> <D:/Samuel/GitHu
 b/Invasion/Written Text/Graphisme/lancier.png> <D:/Samuel/GitHub/Invasion/Writt
 en Text/Graphisme/barbarian.png> <D:/Samuel/GitHub/Invasion/Written Text/Graphi
-sme/villager.png>] <iposchl.png, id=501, 634.37pt x 427.5975pt>
+sme/villager.png>] <iposchl.png, id=524, 634.37pt x 427.5975pt>
 File: iposchl.png Graphic file (type png)
 
 <use iposchl.png>
-Package pdftex.def Info: iposchl.png used on input line 591.
+Package pdftex.def Info: iposchl.png used on input line 590.
 (pdftex.def)             Requested size: 475.77632pt x 320.69733pt.
- <knoche.png, id=502, 78.2925pt x 172.645pt>
+
+Overfull \hbox (3.74509pt too wide) in paragraph at lines 590--591
+ [] 
+ []
+
+[28] <knoche.png, id=530, 151.56625pt x 401.5pt>
 File: knoche.png Graphic file (type png)
  <use knoche.png>
-Package pdftex.def Info: knoche.png used on input line 599.
-(pdftex.def)             Requested size: 39.14615pt x 86.32228pt.
+Package pdftex.def Info: knoche.png used on input line 598.
+(pdftex.def)             Requested size: 68.20418pt x 180.67332pt.
 
-[24pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2
-5}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.604 
-       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/iposchl.png>]
-<sqlt.png, id=509, 155.58125pt x 394.47375pt>
+<sqlt.png, id=531, 155.58125pt x 394.47375pt>
 File: sqlt.png Graphic file (type png)
  <use sqlt.png>
 Package pdftex.def Info: sqlt.png used on input line 607.
 (pdftex.def)             Requested size: 77.79042pt x 197.23639pt.
 
-<archer_sqlt.png, id=510, 237.88875pt x 283.0575pt>
+<archer_sqlt.png, id=532, 237.88875pt x 283.0575pt>
 File: archer_sqlt.png Graphic file (type png)
  <use archer_sqlt.png>
 Package pdftex.def Info: archer_sqlt.png used on input line 615.
-(pdftex.def)             Requested size: 118.94408pt x 141.5284pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 626.
+(pdftex.def)             Requested size: 142.73433pt x 169.8358pt.
+
+Underfull \vbox (badness 3907) has occurred while \output is active []
+
+ [29pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+25}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.621 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+3.26}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.621 
+       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/iposchl.png> <D:/Samue
+l/GitHub/Invasion/Written Text/Graphisme/knoche.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 627.
 
 
 ("C:\Programme\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 626.
- [25pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
-26}) has been already used, duplicate ignored
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 627.
+ [30pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+27}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.628 \item \fbox
-                 {3} Rechte PerspektivepdfTeX warning (ext4): destination with 
-the same identifier (name{figure.3.27}) has been already used, duplicate ignore
-d
+l.642 \item \fbox
+                 {Linksklick} Cursor bewegenpdfTeX warning (ext4): destination 
+with the same identifier (name{figure.3.28}) has been already used, duplicate i
+gnored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.628 \item \fbox
-                 {3} Rechte PerspektivepdfTeX warning (ext4): destination with 
-the same identifier (name{figure.3.28}) has been already used, duplicate ignore
-d
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.628 \item \fbox
-                 {3} Rechte Perspektive <D:/Samuel/GitHub/Invasion/Written Text
-/Graphisme/knoche.png> <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/sqlt.p
-ng> <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/archer_sqlt.png>]
-[26] [27] [28
-
-]
+l.642 \item \fbox
+                 {Linksklick} Cursor bewegen <D:/Samuel/GitHub/Invasion/Written
+ Text/Graphisme/sqlt.png> <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/arc
+her_sqlt.png>] [31] [32]
 Kapitel 4.
-<wacom-intuos4l.png, id=537, 451.6875pt x 307.1475pt>
+<wacom-intuos4l.png, id=561, 451.6875pt x 307.1475pt>
 File: wacom-intuos4l.png Graphic file (type png)
  <use wacom-intuos4l.png>
-Package pdftex.def Info: wacom-intuos4l.png used on input line 697.
+Package pdftex.def Info: wacom-intuos4l.png used on input line 698.
 (pdftex.def)             Requested size: 170.71652pt x 116.08923pt.
 
-<erste_zeichnung.png, id=539, 823.075pt x 525.965pt>
+<erste_zeichnung.png, id=563, 823.075pt x 525.965pt>
 File: erste_zeichnung.png Graphic file (type png)
  <use erste_zeichnung.png>
-Package pdftex.def Info: erste_zeichnung.png used on input line 712.
+Package pdftex.def Info: erste_zeichnung.png used on input line 713.
 (pdftex.def)             Requested size: 164.61208pt x 105.19113pt.
 
-[29pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1
-}) has been already used, duplicate ignored
+[33
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.722 D
-       ie Installation ist eine normale einfache Installation. Wenn Sie das ...
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2}) 
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.722 D
-       ie Installation ist eine normale einfache Installation. Wenn Sie das ...
- <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/wacom-intuos4l.png> <D:/Samu
-el/GitHub/Invasion/Written Text/Graphisme/erste_zeichnung.png>]
-<gimp_screen.png, id=548, 1284.8pt x 1027.84pt>
+l.724 
+       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/wacom-intuos4l.png>]
+<gimp_screen.png, id=570, 1284.8pt x 1027.84pt>
 File: gimp_screen.png Graphic file (type png)
  <use gimp_screen.png>
-Package pdftex.def Info: gimp_screen.png used on input line 726.
+Package pdftex.def Info: gimp_screen.png used on input line 727.
 (pdftex.def)             Requested size: 449.68674pt x 359.74939pt.
 
-<gimp_werkzeugkasten.png, id=549, 204.765pt x 243.91125pt>
+<gimp_werkzeugkasten.png, id=571, 204.765pt x 243.91125pt>
 File: gimp_werkzeugkasten.png Graphic file (type png)
 
 <use gimp_werkzeugkasten.png>
-Package pdftex.def Info: gimp_werkzeugkasten.png used on input line 733.
-(pdftex.def)             Requested size: 142.26378pt x 169.4713pt.
- [30pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
-3}) has been already used, duplicate ignored
+Package pdftex.def Info: gimp_werkzeugkasten.png used on input line 734.
+(pdftex.def)             Requested size: 170.71652pt x 203.36555pt.
+ [34pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.744 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-4.4}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.744 
-       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/gimp_screen.png> <D:/S
-amuel/GitHub/Invasion/Written Text/Graphisme/gimp_werkzeugkasten.png>]
-<gimp_texturien.png, id=560, 616.704pt x 493.3632pt>
-File: gimp_texturien.png Graphic file (type png)
- <use gimp_texturien.png>
-Package pdftex.def Info: gimp_texturien.png used on input line 747.
-(pdftex.def)             Requested size: 400.85284pt x 320.68228pt.
-
-<Photoshopscreen.png, id=562, 1284.8pt x 1027.84pt>
-File: Photoshopscreen.png Graphic file (type png)
- <use Photoshopscreen.png>
-Package pdftex.def Info: Photoshopscreen.png used on input line 760.
-(pdftex.def)             Requested size: 513.9109pt x 411.12872pt.
-
-Overfull \hbox (13.42691pt too wide) in paragraph at lines 760--761
- [] 
- []
-
-[31pdfTeX warning (ext4): destination with the same identifier (name{figure.4.5
-}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.765 
-       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/gimp_texturien.png>]
-<icon.png, id=570, 256.96pt x 256.96pt>
-File: icon.png Graphic file (type png)
- <use icon.png>
-Package pdftex.def Info: icon.png used on input line 767.
-(pdftex.def)             Requested size: 99.58464pt x 99.58664pt.
- [32pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
-6}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.778 \chapter
-              {Website}pdfTeX warning (ext4): destination with the same identif
-ier (name{figure.4.7}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.778 \chapter
-              {Website} <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/Photo
-shopscreen.png> <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/icon.png>]
-Kapitel 5.
-<Joomla.png, id=583, 220.825pt x 55.20625pt>
-File: Joomla.png Graphic file (type png)
- <use Joomla.png>
-Package pdftex.def Info: Joomla.png used on input line 781.
-(pdftex.def)             Requested size: 142.26378pt x 35.56773pt.
- [33
-
-pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) 
+l.739 D
+       ie zwei Fenster können nach Geschmack bewegt werden sind aber viellei...
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.3}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.807 
-       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/Joomla.png>]
-<website.png, id=600, 1284.8pt x 1027.84pt>
-File: website.png Graphic file (type png)
- <use website.png>
-Package pdftex.def Info: website.png used on input line 818.
-(pdftex.def)             Requested size: 513.9109pt x 411.12872pt.
+l.739 D
+       ie zwei Fenster können nach Geschmack bewegt werden sind aber viellei...
+ <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/erste_zeichnung.png> <D:/Sam
+uel/GitHub/Invasion/Written Text/Graphisme/gimp_screen.png>]
+<gimp_texturien.png, id=582, 616.704pt x 493.3632pt>
+File: gimp_texturien.png Graphic file (type png)
+ <use gimp_texturien.png>
+Package pdftex.def Info: gimp_texturien.png used on input line 752.
+(pdftex.def)             Requested size: 400.85284pt x 320.68228pt.
 
-Overfull \hbox (13.42691pt too wide) in paragraph at lines 818--819
- [] 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [35pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.757 
+       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/gimp_werkzeugkasten.pn
+g>] <icon.png, id=591, 256.96pt x 256.96pt>
+File: icon.png Graphic file (type png)
+ <use icon.png>
+Package pdftex.def Info: icon.png used on input line 761.
+(pdftex.def)             Requested size: 99.58464pt x 99.58664pt.
+
+Overfull \hbox (39.24956pt too wide) in paragraph at lines 770--771
+[]\T1/cmr/m/n/12 Für die An-de-ren Menü-knöp-fe ha-be ich ein an-de-res Tu-to-r
+i-al ge-le-sen: [][]$\T1/cmtt/m/n/12 http : / / www . photoshopstar .$
  []
 
-[34pdfTeX warning (ext4): destination with the same identifier (name{figure.5.2
+[36pdfTeX warning (ext4): destination with the same identifier (name{figure.4.5
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.824 \chapter
+l.771 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+4.6}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.771 
+       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/gimp_texturien.png> <D
+:/Samuel/GitHub/Invasion/Written Text/Graphisme/icon.png>]
+<Photoshopscreen.png, id=601, 1284.8pt x 1027.84pt>
+File: Photoshopscreen.png Graphic file (type png)
+ <use Photoshopscreen.png>
+Package pdftex.def Info: Photoshopscreen.png used on input line 776.
+(pdftex.def)             Requested size: 385.44298pt x 308.35437pt.
+
+[37pdfTeX warning (ext4): destination with the same identifier (name{figure.4.7
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.782 \chapter
+              {Website} <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/Photo
+shopscreen.png>] [38
+
+]
+Kapitel 5.
+<Joomla.png, id=614, 289.08pt x 73.2336pt>
+File: Joomla.png Graphic file (type png)
+ <use Joomla.png>
+Package pdftex.def Info: Joomla.png used on input line 785.
+(pdftex.def)             Requested size: 170.71652pt x 43.24765pt.
+
+Underfull \vbox (badness 3746) has occurred while \output is active []
+
+ [39pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
+1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.804 \subsubsection
+                    {Problem mit den Positionen der Menus} <D:/Samuel/GitHub/In
+vasion/Written Text/Graphisme/Joomla.png>]
+<website.png, id=630, 1284.8pt x 1027.84pt>
+File: website.png Graphic file (type png)
+ <use website.png>
+Package pdftex.def Info: website.png used on input line 822.
+(pdftex.def)             Requested size: 475.36856pt x 380.29485pt.
+
+Overfull \hbox (3.33733pt too wide) in paragraph at lines 822--823
+ [] 
+ []
+
+[40] [41pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.5.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.828 \chapter
               {Github} <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/websit
-e.png>]
+e.png>] [42
+
+]
 Kapitel 6.
-<githublogo.png, id=610, 585.18625pt x 259.97125pt>
+<githublogo.png, id=650, 585.18625pt x 259.97125pt>
 File: githublogo.png Graphic file (type png)
  <use githublogo.png>
-Package pdftex.def Info: githublogo.png used on input line 827.
-(pdftex.def)             Requested size: 199.16928pt x 88.48029pt.
+Package pdftex.def Info: githublogo.png used on input line 831.
+(pdftex.def)             Requested size: 227.62204pt x 101.12259pt.
 
-<git_local-remote.png, id=611, 355.5684pt x 291.489pt>
+<git_local-remote.png, id=653, 355.5684pt x 291.489pt>
 File: git_local-remote.png Graphic file (type png)
 
 <use git_local-remote.png>
-Package pdftex.def Info: git_local-remote.png used on input line 842.
+Package pdftex.def Info: git_local-remote.png used on input line 852.
 (pdftex.def)             Requested size: 284.4551pt x 233.19151pt.
 
-Overfull \hbox (93.09401pt too wide) in paragraph at lines 848--849
-\T1/cmr/m/n/10 An-lei-tung wie die Äste funk-tion-nie-ren fin-den Sie un-ter []
-[]$\T1/cmtt/m/n/10 http : / / git-[]scm . com / book / en / Git-[]Branching-[]B
-asic-[]Branching-[]and-[]Merging$[][] 
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[35
-
-pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1}) 
-has been already used, duplicate ignored
+ [43pdfTeX warning (ext4): destination with the same identifier (name{figure.6.
+1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.849 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-6.2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.849 
-       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/githublogo.png> <D:/Sa
-muel/GitHub/Invasion/Written Text/Graphisme/git_local-remote.png>]
-<git_konsole.png, id=622, 670.505pt x 332.24126pt>
+l.857 
+       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/githublogo.png>]
+<git_konsole.png, id=663, 670.505pt x 332.24126pt>
 File: git_konsole.png Graphic file (type png)
  <use git_konsole.png>
-Package pdftex.def Info: git_konsole.png used on input line 860.
+Package pdftex.def Info: git_konsole.png used on input line 864.
 (pdftex.def)             Requested size: 335.25168pt x 166.12021pt.
 
-<git_oldscreen.png, id=623, 849.1725pt x 523.9575pt>
+<git_oldscreen.png, id=664, 849.1725pt x 523.9575pt>
 File: git_oldscreen.png Graphic file (type png)
  <use git_oldscreen.png>
-Package pdftex.def Info: git_oldscreen.png used on input line 868.
+Package pdftex.def Info: git_oldscreen.png used on input line 872.
 (pdftex.def)             Requested size: 339.66298pt x 209.57928pt.
 
-<git_newscreen.png, id=624, 1228.59pt x 674.52pt>
-File: git_newscreen.png Graphic file (type png)
- <use git_newscreen.png>
-Package pdftex.def Info: git_newscreen.png used on input line 876.
-(pdftex.def)             Requested size: 368.57985pt x 202.35756pt.
-
-[36pdfTeX warning (ext4): destination with the same identifier (name{figure.6.3
+[44pdfTeX warning (ext4): destination with the same identifier (name{figure.6.2
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.881 
+l.877 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
-6.4}) has been already used, duplicate ignored
+6.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.881 
-       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/git_konsole.png> <D:/S
-amuel/GitHub/Invasion/Written Text/Graphisme/git_oldscreen.png>]
-<git_webrepository.png, id=632, 1041.8925pt x 689.57625pt>
+l.877 
+       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/git_local-remote.png> 
+<D:/Samuel/GitHub/Invasion/Written Text/Graphisme/git_konsole.png>]
+<git_newscreen.png, id=673, 1228.59pt x 674.52pt>
+File: git_newscreen.png Graphic file (type png)
+ <use git_newscreen.png>
+Package pdftex.def Info: git_newscreen.png used on input line 880.
+(pdftex.def)             Requested size: 368.57985pt x 202.35756pt.
+
+<git_webrepository.png, id=674, 1041.8925pt x 689.57625pt>
 File: git_webrepository.png Graphic file (type png)
 
 <use git_webrepository.png>
-Package pdftex.def Info: git_webrepository.png used on input line 886.
+Package pdftex.def Info: git_webrepository.png used on input line 890.
 (pdftex.def)             Requested size: 416.74962pt x 275.8256pt.
- [37pdfTeX warning (ext4): destination with the same identifier (name{figure.6.
-5}) has been already used, duplicate ignored
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [45pdfTeX warning (ext4): destination with the same identifier (name{figure.6.
+4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.894 \chapter
-              {Die CD}pdfTeX warning (ext4): destination with the same identifi
-er (name{figure.6.6}) has been already used, duplicate ignored
+l.895 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+6.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.894 \chapter
-              {Die CD} <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/git_ne
-wscreen.png> <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/git_webrepositor
-y.png>] [38
+l.895 
+       <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/git_oldscreen.png> <D:
+/Samuel/GitHub/Invasion/Written Text/Graphisme/git_newscreen.png>] [46pdfTeX wa
+rning (ext4): destination with the same identifier (name{figure.6.6}) has been 
+already used, duplicate ignored
 
-]
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.898 \chapter
+              {Die CD} <D:/Samuel/GitHub/Invasion/Written Text/Graphisme/git_we
+brepository.png>]
 Kapitel 7.
-[39] [40
+[47
 
-] [41
+] [48
 
-] [42
+] [49
+
+] [50
 
 ]
-Overfull \hbox (14.22401pt too wide) in paragraph at lines 911--923
-\T1/cmr/m/n/10 Abb  [][]4.1[][]: [][]$\T1/cmtt/m/n/10 http : / / www . pcdistri
+Overfull \hbox (27.79709pt too wide) in paragraph at lines 914--926
+\T1/cmr/m/n/12 Abb  [][]3.13[][]: [][]$\T1/cmtt/m/n/12 http : / / www . the-[]b
+lueprints . com / blueprints-[]depot-[]restricted / humans / humans /$
+ []
+
+
+Overfull \hbox (2.10312pt too wide) in paragraph at lines 914--926
+\T1/cmr/m/n/12 Abb  [][]3.21[][]: [][]$\T1/cmtt/m/n/12 http : / / www . larouss
+e . fr / encyclopedie / data / images / 1002785-[]Archer _ fran %$
+ []
+
+
+Overfull \hbox (133.04639pt too wide) in paragraph at lines 914--926
+\T1/cmr/m/n/12 Abb  [][]4.1[][]: [][]$\T1/cmtt/m/n/12 http : / / www . pcdistri
 ct . com / modules / productcatalog / product _ images / 127771-[]wacom-[]intuo
 s4-[]9646 .$
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 923.
-[43]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 923.
+
+Overfull \hbox (33.77051pt too wide) in paragraph at lines 914--926
+\T1/cmr/m/n/12 Abb  [][]5.1[][]: [][]$\T1/cmtt/m/n/12 http : / / 2 . bp . blogs
+pot . com / -[]ay3RBP44TNY / ThKvZmG7M-[]I / AAAAAAAAAIU / 0jA9egy1aes /$
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 926.
+[51]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 926.
  ("D:\Samuel\GitHub\Invasion\Written Text\Graphisme\Maturarbeit.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 923.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 923.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 926.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 926.
 Package rerunfilecheck Info: File `Maturarbeit.out' has not changed.
-(rerunfilecheck)             Checksum: 761C1CC1A06C8269ACC6A5C53E78B0DA;1921.
+(rerunfilecheck)             Checksum: 675F0DD4510C5167A3E5188C0878784F;1995.
 
 
 LaTeX Warning: There were undefined references.
@@ -1278,35 +1311,35 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 923.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 926.
  ) 
 Here is how much of TeX's memory you used:
- 6681 strings out of 493921
- 97005 string characters out of 3148826
- 188474 words of memory out of 3000000
- 9633 multiletter control sequences out of 15000+200000
- 18375 words of font info for 38 fonts, out of 3000000 for 9000
+ 6679 strings out of 493921
+ 97009 string characters out of 3148826
+ 187226 words of memory out of 3000000
+ 9622 multiletter control sequences out of 15000+200000
+ 17750 words of font info for 39 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,9n,28p,2325b,404s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,9n,28p,2319b,468s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Programme/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t1.enc}<C:/Program
 me/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Programme/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Programme/MiKTeX 2.9/fonts/type1
-/public/cm-super/sfbx1000.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-su
-per/sfbx1200.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx1440.
-pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx2074.pfb><C:/Progr
-amme/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx2488.pfb><C:/Programme/MiKTeX 2
-.9/fonts/type1/public/cm-super/sfrm0600.pfb><C:/Programme/MiKTeX 2.9/fonts/type
-1/public/cm-super/sfrm0700.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-s
-uper/sfrm0800.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm0900
-.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1000.pfb><C:/Prog
-ramme/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1440.pfb><C:/Programme/MiKTeX 
-2.9/fonts/type1/public/cm-super/sfrm2488.pfb><C:/Programme/MiKTeX 2.9/fonts/typ
-e1/public/cm-super/sfsl1000.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-
-super/sfti0900.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sftt080
-0.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on Maturarbeit.pdf (49 pages, 10201423 bytes).
+9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Programme/MiKTeX 2.9/fonts/type1
+/public/cm-super/sfbx1200.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-su
+per/sfbx1440.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx1728.
+pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx2488.pfb><C:/Progr
+amme/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm0700.pfb><C:/Programme/MiKTeX 2
+.9/fonts/type1/public/cm-super/sfrm0800.pfb><C:/Programme/MiKTeX 2.9/fonts/type
+1/public/cm-super/sfrm1000.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-s
+uper/sfrm1095.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1200
+.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Prog
+ramme/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm2488.pfb><C:/Programme/MiKTeX 
+2.9/fonts/type1/public/cm-super/sfsl1200.pfb><C:/Programme/MiKTeX 2.9/fonts/typ
+e1/public/cm-super/sfti1095.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-
+super/sftt1000.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-super/sftt120
+0.pfb>
+Output written on Maturarbeit.pdf (57 pages, 10228406 bytes).
 PDF statistics:
- 799 PDF objects out of 1000 (max. 8388607)
- 214 named destinations out of 1000 (max. 500000)
- 548 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 845 PDF objects out of 1000 (max. 8388607)
+ 223 named destinations out of 1000 (max. 500000)
+ 556 words of extra memory for PDF output out of 10000 (max. 10000000)
 
