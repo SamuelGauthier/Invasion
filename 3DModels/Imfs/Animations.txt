@@ -11,6 +11,41 @@ Death1:			141-160
 Death2:			161-175
 
 ----------------
+Barbarian Archer
+----------------
+
+Idle1: 			1-50
+Walk:			51-61
+Attack1:		62-82
+Attack2:		83-95
+Death1:			96-105
+Death2:			106-119
+
+----------------
+Barbarian Lancier
+----------------
+
+Idle1: 			1-25
+Idle2: 			26-56
+Walk:			57-75
+Attack1:		76-85
+Attack2:		86-92
+Death1:			93-105
+Death2:			106-115
+
+----------------
+Soldat
+----------------
+
+Idle1: 			1-40
+Idle2: 			41-74
+Walk:			75-95
+Attack1:		96-108
+Attack2:		109-124
+Death1:			125-146
+Death2:			147-165
+
+----------------
 Villager-female
 ----------------
 
