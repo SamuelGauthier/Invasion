@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2012.7.23)  17 OCT 2012 00:19
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2012.7.23)  27 OCT 2012 20:56
 entering extended mode
 **D:/Samuel/GitHub/Invasion/Written*Text/Graphisme/Maturarbeit.tex
 ("D:/Samuel/GitHub/Invasion/Written Text/Graphisme/Maturarbeit.tex"
@@ -270,6 +270,9 @@ Package hyperref Info: Option `bookmarksopen' set `true' on input line 26.
 ("D:\Samuel\GitHub\Invasion\Written Text\Graphisme\Maturarbeit.aux"
 
 LaTeX Warning: Label `"`Next"'' multiply defined.
+
+
+LaTeX Warning: Label `Bogensch\"utze' multiply defined.
 
 )
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
@@ -1257,7 +1260,7 @@ lueprints . com / blueprints-[]depot-[]restricted / humans / humans /$
 
 
 Overfull \hbox (2.10312pt too wide) in paragraph at lines 979--991
-\T1/cmr/m/n/12 Abb  [][]3.14[][]: [][]$\T1/cmtt/m/n/12 http : / / www . larouss
+\T1/cmr/m/n/12 Abb  [][]3.21[][]: [][]$\T1/cmtt/m/n/12 http : / / www . larouss
 e . fr / encyclopedie / data / images / 1002785-[]Archer _ fran %$
  []
 
@@ -1289,10 +1292,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 991.
  ) 
 Here is how much of TeX's memory you used:
- 6698 strings out of 493921
- 96894 string characters out of 3148826
- 186232 words of memory out of 3000000
- 9618 multiletter control sequences out of 15000+200000
+ 6697 strings out of 493921
+ 96875 string characters out of 3148826
+ 186184 words of memory out of 3000000
+ 9617 multiletter control sequences out of 15000+200000
  17061 words of font info for 38 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  29i,9n,28p,2319b,468s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1311,7 +1314,7 @@ ramme/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm2488.pfb><C:/Programme/MiKTeX
 2.9/fonts/type1/public/cm-super/sfsl1200.pfb><C:/Programme/MiKTeX 2.9/fonts/typ
 e1/public/cm-super/sftt1000.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/cm-
 super/sftt1200.pfb>
-Output written on Maturarbeit.pdf (57 pages, 11985122 bytes).
+Output written on Maturarbeit.pdf (57 pages, 11984826 bytes).
 PDF statistics:
  874 PDF objects out of 1000 (max. 8388607)
  247 named destinations out of 1000 (max. 500000)
