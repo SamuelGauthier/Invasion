@@ -2,7 +2,7 @@
 
 <h2>Version History</h2>
 
-* <strong>Alpha 08:</strong> Multiple bugfixes. Units are resized
+* <strong>Alpha 08:</strong> Multiple bugfixes. Units are resized.
 * <strong>Alpha:</strong> First release
 
 <h2>Bugs</h2>
