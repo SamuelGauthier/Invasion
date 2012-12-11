@@ -2,7 +2,7 @@
 
 <h2>Version History</h2>
 
-* <strong>Alpha 12:</strong> 
+* <strong>Alpha 15:</strong> Many bugfixes. Menu interface added, more waves ar comming, description of each building (in french for the moment), and more...
 * <strong>Alpha 09:</strong> Minor bugfixes. Counter has been added.
 * <strong>Alpha 08:</strong> Multiple bugfixes. Units are resized.
 * <strong>Alpha:</strong> First release
