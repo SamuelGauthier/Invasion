@@ -31,10 +31,10 @@ struct IMFFile {
 	// Fichier .imf
 	//-----------------------------------
 	int numTris;
-	Triangle tris[numTri][numFrames];
+	Triangle tris[numTris][numFrames];
 };
 
-numFrames = (file_size - 4)/(numTri * sizeof(Triangle));
+numFrames = (file_size - 4)/(numTris * sizeof(Triangle));
 
 
 Optimisations possibles
