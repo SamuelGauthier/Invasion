@@ -1,0 +1,27 @@
+invRTS.cpp [ Très Important !]
+-------------------------
+
+- Moteur de scripts
+- Fonctions utilisés par les scripts
+
+invEntity.cpp [ Important !]
+----------------------------
+
+- Fonctions d'animations pour les unités
+- Fonctions de dessin poues les unités, quads
+
+invBase.cpp [ Important !]
+--------------------------
+
+- Fonctions pour mettre en place le contexte
+- La classe invFlow, boucle de jeu modulaire ( expérimental )
+
+invSchedule.cpp [ Important !]
+------------------------------
+
+- Fonctions qui gère les invTasks ( threads "concurrents" ).
+
+invTex.cpp [ moins Important !]
+-------------------------------
+
+- Fonctions pour les textures
