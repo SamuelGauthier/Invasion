@@ -8,7 +8,7 @@ invEntity.cpp [ Important !]
 ----------------------------
 
 - Fonctions d'animations pour les unités
-- Fonctions de dessin poues les unités, quads
+- Fonctions de dessin pour les unités, quads
 
 invBase.cpp [ Important !]
 --------------------------
