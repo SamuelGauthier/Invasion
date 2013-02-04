@@ -1,0 +1,50 @@
+Structure d'un fichier IMF ( Invasion Model File )
+--------------------------------------------------
+
+[Pseudo-code C à but explicatif]
+
+struct IMFFile {
+	struct Vec3f {
+		float v[3];
+	};
+
+	struct Vec2f {
+		float v[2];
+	};
+
+	struct Triangle {
+		Vec3f v0;			// <-- position
+		Vec3f n0;			// <-- orientation de la normal
+		Vec2f t0;			// <-- coordonnée de la texture
+
+		Vec3f v1;
+		Vec3f n1;
+		Vec2f t1;
+
+		Vec3f v2;
+		Vec3f n2;
+		Vec2f t2;
+	};
+
+
+	//-----------------------------------
+	// Fichier .imf
+	//-----------------------------------
+	int numTris;
+	Triangle tris[numTri][numFrames];
+};
+
+numFrames = (file_size - 4)/(numTri * sizeof(Triangle));
+
+
+Optimisations possibles
+------------------------
+
+- Indexer les vertices pour une économie de place
+- Transformer les floats en u16 ou u8 également pour économiser de la place
+- Animation squelattale
+
+Plus d'informations
+-------------------
+
+src/Converter/main.cpp
