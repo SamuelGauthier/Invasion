@@ -1,0 +1,7 @@
+FMOD
+FreeType Library
+Glew
+Lua
+OpenGL
+SDL
+SDL_image
