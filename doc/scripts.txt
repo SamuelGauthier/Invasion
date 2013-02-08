@@ -1,0 +1,53 @@
+Les Scripts
+-----------
+
+Créer une nouvelle unité
+------------------------
+
+Le plus simple est de dupliquer le script d'une unité déjà existante et
+d'ajuster les paramètres.
+
+Script en général
+-----------------
+
+Les scripts dans le moteur Invasion fonctionnent avec des signals. Les fonctions dans les scripts peuvent
+être lier à un signal et lorsque ce signal est émis, la fonction est executé. Les numéros pour les signaux
+n'ont malheuresement pas été répétoriés.
+
+Un exemple ( pause.lua ):
+
+--------------------------------------------------------------------------------------
+info = {
+	name = "Pause",
+	entry_point = "Init",
+}
+
+local function pause_process(key)
+	if key == 112 then	-- 112 : p
+		MsgBox("Pause")
+	end
+end
+
+local function pause(key)
+	myprint("pause " .. key)
+	StartThread(pause_process, false, key)
+end
+
+function Init()
+	AttachGlobal(pause, 37)
+end
+--------------------------------------------------------------------------------------
+
+info - l'entête qui va être lu lors du chargement du script
+Init - fonction qui va être executé lors du chargement du script ( spécifié dans "info" )
+AttachGlobal - Attache la fonction pause au signal 37 ( KEYDOWN )
+pause - fonction qui va être executé lorsque le signal 37 est émis
+StartThread - démarre un thread ( pause_process ), qui n'est pas en arrière plan et passe comme arguement la touche pressé
+pause_process - thread, car la pause peut durer un certain temps
+MsgBox - affiche une message pause et attends que l'utilisateur presse une touche
+
+Plus d'infos
+------------
+
+src/Game/invRTS.cpp
+src/Game/invSchedule.cpp
