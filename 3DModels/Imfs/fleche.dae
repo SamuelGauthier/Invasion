@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.63.0 r46461:46487M</authoring_tool>
+    </contributor>
+    <created>2013-04-28T20:27:58</created>
+    <modified>2013-04-28T20:27:58</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_geometries>
+    <geometry id="Circle-mesh" name="Circle">
+      <mesh>
+        <source id="Circle-mesh-positions">
+          <float_array id="Circle-mesh-positions-array" count="57">5.1156e-7 0.04784548 -2.593819 -0.04143458 -0.0239222 -2.593819 0.04143559 -0.0239222 -2.593819 -3.79562e-7 0.04784488 1.982911 -0.04143548 -0.02392286 1.982911 0.0414347 -0.0239228 1.982911 0.1378042 -0.08345407 1.831466 -8.67019e-4 0.1540187 1.831466 -0.1414355 -0.08264589 1.831466 -0.002788841 3.03142e-4 2.699608 6.29739e-7 0.1887145 -3.200776 5.32736e-7 0.1480766 -2.70258 0.1374013 -0.08801823 -3.200597 0.1320698 -0.08256828 -2.711111 -0.1271814 -0.07303994 -3.199528 -0.100574 -0.05724328 -2.721773 -0.04573076 -0.0256505 -3.085497 0.04262232 -0.02433866 -3.086566 6.07536e-7 0.04802697 -3.086745</float_array>
+          <technique_common>
+            <accessor source="#Circle-mesh-positions-array" count="19" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Circle-mesh-normals">
+          <float_array id="Circle-mesh-normals-array" count="57">0.8660255 0.5 2.34514e-7 -0.8660253 0.5 0 1.3486e-7 -1 -1.34304e-7 -0.00288099 -0.9954186 0.09557008 0.8599796 0.5021817 0.09082138 -0.8564282 0.5086811 0.08817249 0.00207895 0.9315115 -0.3637058 -0.8156198 -0.4750294 -0.3303201 0.8086572 -0.4771826 -0.3440498 0.03218239 0.8993222 -0.4361009 -0.0119546 -0.009511649 -0.9998833 0.7918695 -0.411561 -0.4511765 -0.787 -0.4063143 -0.4642624 0.8831123 0.4686705 0.02146434 0.7988631 0.4469804 0.4025251 -0.8988004 0.4369078 0.03562474 -0.8494855 0.4125899 0.3288526 -0.08122235 -0.9964148 0.02367401 -0.08665275 -0.9364147 0.3400276</float_array>
+          <technique_common>
+            <accessor source="#Circle-mesh-normals-array" count="19" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Circle-mesh-map-0">
+          <float_array id="Circle-mesh-map-0-array" count="144">0.07106286 0.2769922 0.8284379 0.929972 0.8166145 0.9436857 0.05923849 0.2907068 0.07106286 0.2769922 0.08288723 0.2632776 0.8402614 0.9162582 0.8284379 0.929972 0.852085 0.9025444 0.8402614 0.9162582 0.08288723 0.2632776 0.09471154 0.2495629 0.4504846 0.9324055 0.432393 0.7403091 0.4932847 0.7441797 0.4504846 0.9324055 0.323202 0.7872853 0.3742011 0.7555123 0.3742011 0.7555123 0.432393 0.7403091 0.4504846 0.9324055 0.474487 0.7073797 0.4932847 0.7441797 0.432393 0.7403091 0.456415 0.70625 0.323202 0.7872853 0.323202 0.7459622 0.3385861 0.7364124 0.3742011 0.7555123 0.4020058 0.711784 0.432393 0.7403091 0.3742011 0.7555123 0.384506 0.7164349 0.3626334 0.668935 0.3739519 0.6385946 0.362458 0.6230347 0.3271322 0.6230534 0.2411952 0.5695102 0.2833702 0.5473923 0.2833702 0.5935102 0.2782083 0.5744912 0.2642381 0.5333937 0.2452208 0.525 0.2153904 0.5441663 0.3271322 0.6230534 0.331502 0.5873156 0.3186056 0.5737217 0.2782083 0.5744912 0.2542425 0.6917145 0.3271322 0.6230534 0.2782083 0.5744912 0.217507 0.6665596 0.2034329 0.6949213 0.2306386 0.7093934 0.2542425 0.6917145 0.217507 0.6665596 0.217507 0.6665596 0.2782083 0.5744912 0.2153904 0.5441663 0.1706995 0.649859 0.175148 0.6962111 0.2034329 0.6949213 0.217507 0.6665596 0.1706995 0.649859 0.2766662 0.7288802 0.3626334 0.668935 0.3271322 0.6230534 0.2542425 0.6917145 0.2306386 0.7093934 0.2393545 0.7288803 0.2766662 0.7288802 0.2542425 0.6917145</float_array>
+          <technique_common>
+            <accessor source="#Circle-mesh-map-0-array" count="72" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Circle-mesh-vertices">
+          <input semantic="POSITION" source="#Circle-mesh-positions"/>
+        </vertices>
+        <polylist count="19">
+          <input semantic="VERTEX" source="#Circle-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Circle-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Circle-mesh-map-0" offset="2" set="0"/>
+          <vcount>4 4 4 3 3 3 4 4 4 4 3 4 4 4 4 4 4 4 4 </vcount>
+          <p>0 0 0 3 0 1 5 0 2 2 0 3 0 1 4 1 1 5 4 1 6 3 1 7 5 2 8 4 2 9 1 2 10 2 2 11 9 3 12 8 3 13 6 3 14 9 4 15 6 4 16 7 4 17 7 5 18 8 5 19 9 5 20 5 6 21 6 6 22 8 6 23 4 6 24 6 7 25 5 7 26 3 7 27 7 7 28 4 8 29 8 8 30 7 8 31 3 8 32 14 9 33 16 9 34 17 9 35 12 9 36 16 10 37 18 10 38 17 10 39 10 11 40 18 11 41 16 11 42 14 11 43 12 12 44 17 12 45 18 12 46 10 12 47 13 13 48 12 13 49 10 13 50 11 13 51 0 14 52 2 14 53 13 14 54 11 14 55 11 15 56 10 15 57 14 15 58 15 15 59 1 16 60 0 16 61 11 16 62 15 16 63 15 17 64 14 17 65 12 17 66 13 17 67 2 18 68 1 18 69 15 18 70 13 18 71</p>
+        </polylist>
+      </mesh>
+      <extra><technique profile="MAYA"><double_sided>1</double_sided></technique></extra>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Circle" type="NODE">
+        <translate sid="location">0 0 0</translate>
+        <rotate sid="rotationZ">0 0 1 0</rotate>
+        <rotate sid="rotationY">0 1 0 -89.99999</rotate>
+        <rotate sid="rotationX">1 0 0 -7.69819e-6</rotate>
+        <scale sid="scale">1 1 1</scale>
+        <instance_geometry url="#Circle-mesh"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
