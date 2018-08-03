@@ -59,7 +59,7 @@ Issues](https://github.com/SamuelGauthier/Invasion/issues)
 The compiled game can be downloaded under
 [sourceforge](https://sourceforge.net/projects/gameinvasion/)
 
-## Licence ![license](https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png) 
+## License ![license](https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png) 
 
 Invasion (c) by Invasion Team
 
