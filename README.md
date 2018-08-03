@@ -1,4 +1,4 @@
-# Invasion
+# <img src="icone.png" alt="drawing" width="100px"/> Invasion
 
 #### Table of Contents
 1. [Version History](#version-history)
@@ -18,7 +18,7 @@ etc.
 Keep yourself up to date by reading our
 [devblog](http://invasion.montmartel.com/index.php/blog).
 
-## <img src="icone.png" alt="drawing" width="50px"/> Story 
+## Story 
 
 Imagine: You come from a Kingdom, far, far away, to explore new territories for
 your Empire. The place where you settled down looks beautiful, peaceful, and
