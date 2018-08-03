@@ -1,11 +1,12 @@
 # <img src="icone.png" alt="drawing" width="100px"/> Invasion
 
 #### Table of Contents
-1. [Version History](#version-history)
-2. [Screenshot](#screenshot)
-3. [Bugs](#bugs)
-4. [Download](#download)
-5. [License](#license)
+* [Story](#story)
+* [Version History](#version-history)
+* [Screenshot](#screenshot)
+* [Bugs](#bugs)
+* [Download](#download)
+* [License](#license)
 
 The Invasion project is a mix of real time strategy and tower defense game. It
 will lead you through the middle ages and the dark times of the barbarian
