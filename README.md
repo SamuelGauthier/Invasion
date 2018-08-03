@@ -6,8 +6,30 @@ The Invasion project is a mix of real time strategy and tower defense game. It
 will lead you through the middle ages and the dark times of the barbarian
 invasions...
 
+Everything has been developed from scratch: UI, buildings, units, game engine,
+etc.
+
+
 Keep yourself up to date by reading our
 [devblog](http://invasion.montmartel.com/index.php/blog).
+
+## ![invasion_logo](icone.png) Story 
+
+Imagine: You come from a Kingdom, far, far away, to explore new territories for
+your Empire. The place where you settled down looks beautiful, peaceful, and
+lonely. However, one day, you are being attacked: those thieves  want your Gold,
+resources and wives. Fortunately, you have some soldiers to protect your
+village.  The attack was just beaten back. Yet you know who these strange people
+are: barbarians, mercenaries. They will come back. From now on it is war! You
+have to build defenses. Towers, walls, barracks, archery facilities are built.
+Farmers are trained to become soldiers and the little village turns into a
+fortified town. A second battle takes place and you lose a lot of your people.
+You have to urgently develop better arms, suits of armor and boots. Now, all of
+your farmers are soldiers and their wives have to work in the fields, cut down
+trees, collect stone and gold. The war machinery is in full motion. Your only
+task is to defend your village or you are going to die.
+
+Good luck knight and don’t forget: barbarians are able to come from anywhere…
 
 ## Version History
 
