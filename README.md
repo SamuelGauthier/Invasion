@@ -1,6 +1,11 @@
 # Invasion
 
-![Screenshot](./Screens/ingame_1.jpeg)
+#### Table of Contents
+1. [Version History](#version-history)
+2. [Screenshot](#screenshot)
+3. [Bugs](#bugs)
+4. [Download](#download)
+5. [License](#license)
 
 The Invasion project is a mix of real time strategy and tower defense game. It
 will lead you through the middle ages and the dark times of the barbarian
@@ -13,7 +18,7 @@ etc.
 Keep yourself up to date by reading our
 [devblog](http://invasion.montmartel.com/index.php/blog).
 
-## ![invasion_logo](icone.png) Story 
+## <img src="icone.png" alt="drawing" width="50px"/> Story 
 
 Imagine: You come from a Kingdom, far, far away, to explore new territories for
 your Empire. The place where you settled down looks beautiful, peaceful, and
@@ -39,6 +44,10 @@ Good luck knight and donâ€™t forget: barbarians are able to come from anywhereâ€
 * **Alpha 08:** Multiple bugfixes. Units are resized.
 * **Alpha 01:** First release
 
+## Screenshot
+
+![Screenshot](./Screens/ingame_1.jpeg)
+
 ## Bugs
 
 Please report all bugs via the [GitHub
@@ -58,3 +67,4 @@ Attribution-NonCommercial-ShareAlike 4.0 International License.
 
 You should have received a copy of the license along with this
 work. If not, see <http://creativecommons.org/licenses/by-nc-sa/4.0/>.
+
